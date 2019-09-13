@@ -15,28 +15,28 @@
 // Connexion à la base de données
 try
 {
-    $bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+    $db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
 }
 catch(Exception $e)
 {
     die('Erreur : '.$e->getMessage());
 }
 
-$billets = $bdd -> query("SELECT id, titre, contenu, DATE_FORMAT(date_creation, '%d/%m/%Y') AS jour, DATE_FORMAT(date_creation, '%Hh%imin%ss') AS heure  FROM billets ORDER BY id DESC");
+$posts = $db -> query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y') AS day_post, DATE_FORMAT(creation_date, '%Hh%imin%ss') AS hour_post  FROM posts ORDER BY id DESC");
 
-while ($billet = $billets->fetch()) {
+while ($post = $posts->fetch()) {
     ?>
 
     <div class="news">
-        <h3><?php echo $billet['titre'] . " Publié le " . $billet['jour'] . " à " . $billet['heure']; ?>  </h3>
-        <p><?php echo $billet['contenu']; ?></p>
-        <a href=<?php echo "commentaires.php?id=" . $billet['id'];?>>Commentaires</a>
+        <h3><?php echo $post['title'] . " Publié le " . $post['day_post'] . " à " . $post['hour_post']; ?>  </h3>
+        <p><?php echo $post['content']; ?></p>
+        <a href=<?php echo "commentaires.php?id=" . $post['id'];?>>Commentaires</a>
     </div>
 
 <?php
     };
 
-$billets->closeCursor(); // Termine le traitement de la requête
+$posts->closeCursor(); // Termine le traitement de la requête
 ?>
 
 

@@ -15,43 +15,43 @@
 // Connexion à la base de données
 try
 {
-    $bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+    $db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
 }
 catch(Exception $e)
 {
     die('Erreur : '.$e->getMessage());
 }
 
-$nbBillet = $_GET['id'];
+$nbPost = $_GET['id'];
 
-$articles = $bdd -> query("SELECT id, titre, contenu, DATE_FORMAT(date_creation, '%d/%m/%Y') AS jourb, DATE_FORMAT(date_creation, '%Hh%imin%ss') AS heureb  FROM billets WHERE id=$nbBillet ");
+$news = $db -> query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y') AS day_post, DATE_FORMAT(creation_date, '%Hh%imin%ss') AS hour_post  FROM posts WHERE id=$nbPost ");
 
-$commentaires = $bdd -> query("SELECT id, id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y') AS jourc, DATE_FORMAT(date_commentaire, '%Hh%imin%ss') AS heurec FROM commentaires WHERE id_billet=$nbBillet ORDER BY id");
+$comments = $db -> query("SELECT id, id_post, author, comment, DATE_FORMAT(date_publication, '%d/%m/%Y') AS day_comment, DATE_FORMAT(date_publication, '%Hh%imin%ss') AS hour_comment FROM comments WHERE id_post=$nbPost ORDER BY id");
 
-while ($article = $articles->fetch()) {
+while ($new = $news->fetch()) {
     ?>
 
     <div class="news">
-        <h3><?php echo $article['titre'] . " Publié le " . $article['jourb'] . " à " . $article['heureb']; ?>  </h3>
-        <p><?php echo $article['contenu']; ?></p>
+        <h3><?php echo $new['title'] . " Publié le " . $new['day_post'] . " à " . $new['hour_post']; ?>  </h3>
+        <p><?php echo $new['content']; ?></p>
     </div>
     <?php
 };
-$articles->closeCursor(); // Termine le traitement de la requête
+$news->closeCursor(); // Termine le traitement de la requête
 ?>
 
     <h4>Commentaires :</h4>
 
 <?php
-while ($commentaire = $commentaires->fetch()) {
+while ($comment = $comments->fetch()) {
   ?>
 
-    <p><strong><?php echo $commentaire['auteur']?></strong><?php echo " Publié le " . $commentaire['jourc'] . " à " . $commentaire['heurec'];?> </p>
-    <p><?php echo $commentaire['commentaire'];?> </p>
+    <p><strong><?php echo $comment['author']?></strong><?php echo " Publié le " . $comment['day_comment'] . " à " . $comment['hour_comment'];?> </p>
+    <p><?php echo $comment['comment'];?> </p>
 <?php
 }
 
-$commentaires->closeCursor(); // Termine le traitement de la requête
+$comments->closeCursor(); // Termine le traitement de la requête
 ?>
 
 
