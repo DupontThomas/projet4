@@ -1,7 +1,8 @@
 <?php
+use Tracy\Debugger;
 
-require('model.php');
+require('src/model/model.php');
 
-$posts = getPosts();
+$listPosts = getPosts();
 
-require('home_page.php');
+require('src/view/home_page.php');
