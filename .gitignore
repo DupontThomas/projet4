@@ -1,5 +1,5 @@
 .idea/
-config/db.php
+config/DbConnection.php
 config/db.sql
 public/img/
 public/node_modules/
