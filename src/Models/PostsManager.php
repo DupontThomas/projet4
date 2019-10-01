@@ -1,11 +1,8 @@
 <?php
+namespace App\models;
 
-namespace App\Models;
 
-
-use Config\DbConnection;
-
-class PostsManager extends DbConnection {
+class PostsManager extends Manager {
 
     function getLastPost() {
         $db = $this->dbConnect();
