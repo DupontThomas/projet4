@@ -1,11 +1,11 @@
 <?php
 session_start();
+use App\Controllers\Router;
 
 require_once '../vendor/autoload.php';
 
 use Tracy\Debugger;
 Debugger::enable();
 
-//require('../config/DbConnection.php');
-require('../src/controllers/Test.php');
-//require('../src/models/CommentManager.php');
+$router = new Router();
+$router->run();

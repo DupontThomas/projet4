@@ -1,16 +1,12 @@
-
-
-{% block post %}
+<div>
     <section>
-        <h3> Partie {{ post.id }} : <strong>{{ post.title }}</strong> | Publié le {{ post.creation_date_fr }}</h3>
+        <h3> Partie {{ post.id }} : <strong>{{ post.title }}</strong> | Publié le {{ post.creation_date }}</h3>
         <div>
             <p>{{ post.content }}</p>
         </div>
 
     </section>
-
-{% endblock %}
-
+</div>
 
 {% for comment in comments %}
 
@@ -22,3 +18,7 @@
     </section>
 
 {% endfor %}
+
+
+
+

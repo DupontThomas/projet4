@@ -3,11 +3,12 @@ namespace App\Controllers;
 
 use App\Models\PostsManager;
 
-class PostsController {
+class PostsController extends Controller {
 
     function lastPost() {
+        $id_post= $_GET['id'];
         $postManager = new PostsManager();
-        $lastPost = $postManager->getLastPost();
-        return $lastPost;
+        $lastPosts = $postManager->getLastPost($id_post);
+        echo $this->render('chapter.twig', ['post' => $lastPosts]);
     }
 }

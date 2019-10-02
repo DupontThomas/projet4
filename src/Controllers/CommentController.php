@@ -3,12 +3,12 @@ namespace App\Controllers;
 
 use App\Models\CommentManager;
 
-class CommentController {
+class CommentController extends Controller {
     function displayComment() {
 
-        $id_post= 1;
+        $id_post= $_GET['id'];
         $commentManager = new CommentManager();
         $comments=$commentManager->getComment($id_post);
-        return $comments;
+        echo $this->render('chapter.twig', ['comments' => $comments]);
     }
 }

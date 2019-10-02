@@ -1,16 +1,19 @@
 <?php
 namespace App\Controllers;
+use Twig\Environment;
 
 
-class Controller {
+class Controller
+{
+    private $twig;
 
-function __construct()
+    public function __construct(Environment $twig)
     {
-        $loader = new \Twig\Loader\FilesystemLoader('../src/views');
-        $twig = new \Twig\Environment($loader, [
-            'cache' => false,
-        ]);
+        $this->twig = $twig;
+    }
+
+    public function render($view, array $params = [])
+    {
+        return $this->twig->render($view, $params);
     }
 }
-
-
