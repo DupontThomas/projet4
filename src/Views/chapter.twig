@@ -1,0 +1,31 @@
+{% extends "layout.twig" %}
+
+{% block posts %}
+    <div>
+        <section>
+            <h3> Partie {{ post.id }} : <strong>{{ post.title }}</strong> | Publié le {{ post.postDate }}</h3>
+            <div>
+                <p>{{ post.content }}</p>
+            </div>
+
+        </section>
+    </div>
+{% endblock posts %}
+
+{% block comments %}
+
+    {% for comment in comments %}
+        <h4>Commentaires : </h4>
+        <section>
+
+            <h5>Posté par : <strong>{{ comment.author }}</strong>, le {{ comment.date_publication_fr }}</h5>
+            <div>
+                <p>{{ comment.comment }}</p>
+            </div>
+        </section>
+
+    {% endfor %}
+{% endblock comments %}
+
+
+
