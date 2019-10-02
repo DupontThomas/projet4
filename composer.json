@@ -1,0 +1,33 @@
+{
+    "name": "Thomas/projet4",
+    "version": "0.0.1",
+    "type": "library",
+    "description": "Fourth project for openclassrooms's web developer formation",
+
+    "require": {
+        "twig/twig": "^2.10",
+        "php": "^7.3"
+    },
+
+    "require-dev": {
+        "tracy/tracy": "^2.6"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas DUPONT",
+            "email": "thomas.dupont1@laposte.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+
+    "config": {
+        "platform": {
+            "php": "7.3"
+        }
+
+}
