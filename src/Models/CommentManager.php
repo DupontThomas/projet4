@@ -1,7 +1,6 @@
 <?php
 namespace App\Models;
 
-
 class CommentManager extends Manager {
 
     function getComment($id_post) {
@@ -12,5 +11,4 @@ class CommentManager extends Manager {
         $listComments = $req->fetchAll();
         return $listComments;
     }
-
 }

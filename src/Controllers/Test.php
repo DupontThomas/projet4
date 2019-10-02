@@ -11,4 +11,4 @@ $twig = new \Twig\Environment($loader, [
 $comment= new Commentcontroller();
 $comm = $comment-> displayComment();
 
-echo $twig->render('home.twig', ['comments' => 'kiki']);
+echo $twig->render('home.twig', ['comments' => $comm]);
