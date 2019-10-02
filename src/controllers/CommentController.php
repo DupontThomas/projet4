@@ -1,9 +1,8 @@
 <?php
-namespace App\controllers;
+namespace App\Controllers;
 
 
-use App\models\CommentManager;
-require('../models/CommentManager.php');
+use App\Models\CommentManager;
 
 class CommentController {
 
