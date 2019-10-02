@@ -11,5 +11,4 @@ class PostsManager extends Manager {
         $lastPost = $req->fetch();
         return $lastPost;
     }
-
 }
