@@ -1,0 +1,24 @@
+
+
+{% block post %}
+    <section>
+        <h3> Partie {{ post.id }} : <strong>{{ post.title }}</strong> | Publié le {{ post.creation_date_fr }}</h3>
+        <div>
+            <p>{{ post.content }}</p>
+        </div>
+
+    </section>
+
+{% endblock %}
+
+
+{% for comment in comments %}
+
+    <section>
+        <h3>Posté par : <strong>{{ comment.author }}</strong>, le {{ comment.date_publication_fr }}</h3>
+        <div>
+            <p>{{ comment.comment }}</p>
+        </div>
+    </section>
+
+{% endfor %}
