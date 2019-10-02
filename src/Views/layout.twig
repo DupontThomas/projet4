@@ -9,12 +9,20 @@
 <!------------------------------------------------------------------------->
 
     <header>
-
+        {% block title %}Titre par défaut{% endblock %}
     </header>
 
 <!------------------------------------------------------------------------->
 
     <body>
+
+        {% block posts %}
+            <p>Ceci est un test POST</p>
+        {% endblock posts %}
+
+        {% block comments %}
+            <p>Pas de commentaire</p>
+        {% endblock comments %}
 
     </body>
 

@@ -12,11 +12,25 @@ class Router {
             //'debug' => false
         ]);
 
-        $comment = new CommentController($twig);
-        $comment->displayComment();
+        if($_GET['id'] === 'home') {
+            $post = new PostsController($twig);
+            $post->chapterList();
+        }
+        else {
+            $post = new PostsController($twig);
+            $post->lastPost();
+        }
 
-        $post = new PostsController($twig);
-        $post->lastPost();
+
+
+        //$comment = new CommentController($twig);
+        //$comment->displayComment();
+
+
 
     }
 }
+
+/*
+
+*/
