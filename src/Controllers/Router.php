@@ -4,33 +4,29 @@ use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
 
-class Router {
-    public function run() {
-        $loader = new FilesystemLoader( '../src/Views');
-        $twig = new Environment($loader, [
-            'cache' => false,
-            //'debug' => false
-        ]);
+class Router
+{
+    /**
+     * @var PostsController
+     */
+    private $postsController;
 
-        if($_GET['id'] === 'home') {
-            $post = new PostsController($twig);
-            $post->chapterList();
+    public function __construct(PostsController $postsController)
+    {
+        $this->postsController = $postsController;
+    }
+
+
+    public function run()
+    {
+        if (ISSET($_GET['id'])) {
+            if ($_GET === 'home') {
+                $this->postsController->chapterList();
+            } else if (is_numeric($_GET)) {
+                $this->postsController->displayPost();
+            } else {
+                $this->postsController->chapterList();
+            }
         }
-        else {
-            $post = new PostsController($twig);
-            $post->lastPost();
-        }
-
-
-
-        //$comment = new CommentController($twig);
-        //$comment->displayComment();
-
-
-
     }
 }
-
-/*
-
-*/

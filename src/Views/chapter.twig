@@ -1,21 +1,27 @@
 {% extends "layout.twig" %}
 
-{% block posts %}
-    <div>
-        <section>
-            <h3> Partie {{ post.id }} : <strong>{{ post.title }}</strong> | Publié le {{ post.postDate }}</h3>
+{% block title %} {{ posts.title }}{% endblock %}
+
+        {% block posts %}
+
             <div>
-                <p>{{ post.content }}</p>
+                <section>
+                    <h3> Partie {{ posts.id }} : <strong>{{ posts.title }}</strong> | Publié le {{ posts.postDate }}</h3>
+                    <div>
+                        <p>{{ posts.content }}</p>
+                    </div>
+
+                </section>
             </div>
 
-        </section>
-    </div>
-{% endblock posts %}
+        {% endblock posts %}
+
+
 
 {% block comments %}
+    <h4>Commentaires : </h4>
 
     {% for comment in comments %}
-        <h4>Commentaires : </h4>
         <section>
 
             <h5>Posté par : <strong>{{ comment.author }}</strong>, le {{ comment.date_publication_fr }}</h5>
@@ -26,6 +32,4 @@
 
     {% endfor %}
 {% endblock comments %}
-
-
 
