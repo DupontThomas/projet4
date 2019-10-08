@@ -19,12 +19,18 @@ class Router
 
     public function run()
     {
+
+
         if (ISSET($_GET['id'])) {
-            if ($_GET === 'home') {
-                $this->postsController->chapterList();
-            } else if (is_numeric($_GET)) {
-                $this->postsController->displayPost();
-            } else {
+            if ($_GET['id'] === 1) {
+                $this->postsController->displayPost(1);
+            }
+            else if($_GET['id']=== 2) {
+
+                $this->postsController->displayPost(2);
+
+            }
+            else {
                 $this->postsController->chapterList();
             }
         }

@@ -6,8 +6,7 @@ use App\Models\PostsManager;
 
 class PostsController extends Controller {
 
-    function displayPost() {
-        $id_post= $_GET['id'];
+    function displayPost($id_post) {
         $postManager = new PostsManager();
         $lastPosts = $postManager->getLastPost();
         $commentManager = new CommentManager();

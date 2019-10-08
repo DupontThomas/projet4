@@ -26,6 +26,5 @@ class PostsManager extends Manager {
         $req->execute(array($id_post));
         $listPosts = $req->fetchAll();
         return $listPosts;
-
     }
 }
