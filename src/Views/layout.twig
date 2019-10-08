@@ -9,14 +9,20 @@
 <!------------------------------------------------------------------------->
 
     <header>
-        {% block title %}Titre par défaut{% endblock %}
 
-        {% block subTitle %}Sous-titre par défaut{% endblock %}
+        <ul>
+            <li><a href="http://localhost/projet4/public/?page=home">Home</a></li>
+            <li><a href="http://localhost/projet4/public/?page=chapters">Chapitres</a></li>
+        </ul>
     </header>
 
 <!------------------------------------------------------------------------->
 
     <body>
+
+        {% block title %}Titre par défaut{% endblock %}
+
+        {% block subTitle %}Sous-titre par défaut{% endblock %}
 
         {% block posts %}
 
