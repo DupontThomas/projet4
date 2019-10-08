@@ -1,12 +1,12 @@
 <?php
-session_start();
 use App\Controllers\Router;
-
-require_once '../vendor/autoload.php';
-
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Tracy\Debugger;
+
+require_once '../vendor/autoload.php';
+
+session_start();
 
 Debugger::enable();
 

@@ -1,5 +1,6 @@
 <?php
 namespace App\Controllers;
+
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -19,20 +20,33 @@ class Router
 
     public function run()
     {
+        $page = 'home';
+        $access = filter_input(INPUT_GET, 'page');
+
+        $id = null;
+        $chapter = filter_input(INPUT_GET, 'id');
+
+        if(ISSET($access)) {
+            $page = $access;
+        }
+
+        if(ISSET($chapter)) {
+            $id = $chapter;
+        }
 
 
-        if (ISSET($_GET['id'])) {
-            if ($_GET['id'] === 1) {
-                $this->postsController->displayPost(1);
-            }
-            else if($_GET['id']=== 2) {
-
-                $this->postsController->displayPost(2);
-
-            }
-            else {
+        switch ($page) {
+            case "chapters" :
                 $this->postsController->chapterList();
-            }
+                break;
+
+            case "chapter" :
+                $this->postsController->displayPost($id);
+                break;
+
+            default :
+                $this->postsController->lastChapter();
+                break;
         }
     }
 }

@@ -1,12 +1,12 @@
 {% extends "layout.twig" %}
 
-{% block title %} {{ posts.title }}{% endblock %}
+{% block title %} <h1>{{ posts.title }}</h1> {% endblock %}
 
         {% block posts %}
 
             <div>
                 <section>
-                    <h3> Partie {{ posts.id }} : <strong>{{ posts.title }}</strong> | Publié le {{ posts.postDate }}</h3>
+                    <h2> Publié le {{ posts.postDate }}</h2>
                     <div>
                         <p>{{ posts.content }}</p>
                     </div>
@@ -19,7 +19,7 @@
 
 
 {% block comments %}
-    <h4>Commentaires : </h4>
+    <h3>Commentaires : </h3>
 
     {% for comment in comments %}
         <section>
