@@ -34,9 +34,9 @@ class Router
             $id = $chapter;
         }
 
-
         switch ($page) {
             case "chapters" :
+
                 $this->postsController->chapterList();
                 break;
 
@@ -47,6 +47,9 @@ class Router
             default :
                 $this->postsController->lastChapter();
                 break;
+
+
+
         }
     }
 }

@@ -1,6 +1,6 @@
 {% extends "layout.twig" %}
 
-        {% block title %}Liste des chapitres{% endblock %}
+        {% block title %}CHAPTERLIST // Liste des chapitres{% endblock %}
 
 
         {% block posts %}
@@ -10,6 +10,7 @@
                     <h3> Partie {{ post.id }} : <strong>{{ post.title }}</strong> | Publié le {{ post.postDate }}</h3>
                     <div>
                         <p>{{ post.content }}</p>
+                        <a href="http://localhost/projet4/public/?page=chapter&id={{ post.id}}">Lire la suite</a>
                     </div>
 
                 </section>

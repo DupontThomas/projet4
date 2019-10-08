@@ -8,7 +8,6 @@ use Twig\Environment;
 class PostsController extends Controller
 {
     private $postManager = null;
-
     private $commentManager = null;
 
     public function __construct(Environment $twig)
@@ -19,10 +18,10 @@ class PostsController extends Controller
         $this->commentManager = new CommentManager();
     }
 
-    public function displayPost($id_post)
+    public function displayPost($id)
     {
-        $lastPosts = $this->postManager->getReadPost($id_post);
-        $listComment = $this->commentManager->getComment($id_post);
+        $lastPosts = $this->postManager->getReadPost($id);
+        $listComment = $this->commentManager->getComment($id);
 
         echo $this->render('chapter.twig', ['posts' => $lastPosts, 'comments' => $listComment]);
     }
