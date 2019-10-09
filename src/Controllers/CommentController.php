@@ -9,6 +9,6 @@ class CommentController extends Controller {
         $id_post= $_GET['id'];
         $commentManager = new CommentManager();
         $comments=$commentManager->getComment($id_post);
-        echo $this->render('chapter.twig', ['comments' => $comments]);
+        return $this->render('comments.twig', ['comments' => $comments]);
     }
 }

@@ -6,27 +6,31 @@
         <title>Blog de Jean Forteroche</title>
     </head>
 
-<!------------------------------------------------------------------------->
+<!-- ----------------------------------------------------------------------->
 
     <header>
-        {% block title %}Titre par défaut{% endblock %}
+
+        <ul>
+            <li><a href="http://localhost/projet4/public/?page=home">Home</a></li>
+            <li><a href="http://localhost/projet4/public/?page=chapters">Chapitres</a></li>
+        </ul>
     </header>
 
-<!------------------------------------------------------------------------->
+<!-- ----------------------------------------------------------------------->
 
     <body>
 
-        {% block posts %}
-            <p>Ceci est un test POST</p>
-        {% endblock posts %}
+        {% block title %}Titre par défaut{% endblock %}
 
-        {% block comments %}
-            <p>Pas de commentaire</p>
-        {% endblock comments %}
+        {% block subTitle %}{% endblock %}
+
+        {% block contents %}{% endblock contents %}
+
+        {% block comments %}{% endblock comments %}
 
     </body>
 
-<!------------------------------------------------------------------------->
+<!-- ----------------------------------------------------------------------->
 
     <footer>
 
