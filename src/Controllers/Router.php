@@ -26,7 +26,7 @@ class Router
             $page = $access;
         }
 
-        if(ISSET($chapter)) {
+        if(ISSET($chapter) && is_numeric ($chapter)) {
             $id = $chapter;
         }
 
@@ -39,6 +39,8 @@ class Router
             case "chapter" :
                 $this->postsController->displayPost($id);
                 break;
+
+
 
             default :
                 $this->postsController->lastChapter();

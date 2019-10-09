@@ -10,8 +10,6 @@ session_start();
 
 Debugger::enable();
 
-$get=$_GET;
-
 $loader = new FilesystemLoader( '../src/Views');
 $twig = new Environment($loader, [
     'cache' => false,

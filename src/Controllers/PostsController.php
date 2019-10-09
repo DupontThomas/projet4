@@ -20,10 +20,16 @@ class PostsController extends Controller
 
     public function displayPost($id)
     {
-        $lastPosts = $this->postManager->getReadPost($id);
-        $listComment = $this->commentManager->getComment($id);
+        $countPosts = $this->postManager->getCountPost();
+        if(is_numeric($id) && $id < $countPosts[0]) {
+            $lastPosts = $this->postManager->getReadPost($id);
+            $listComment = $this->commentManager->getComment($id);
 
-        echo $this->render('chapter.twig', ['posts' => $lastPosts, 'comments' => $listComment]);
+            echo $this->render('chapter.twig', ['posts' => $lastPosts, 'comments' => $listComment]);
+        }
+        else {
+            echo $this->render('error.twig');
+        }
     }
 
     public function chapterList()
@@ -37,5 +43,9 @@ class PostsController extends Controller
     {
         $lastChapter = $this->postManager->getLastPost();
         echo $this->render('home.twig', ['posts' => $lastChapter]);
+    }
+
+    public function errorChapter()
+    {
     }
 }

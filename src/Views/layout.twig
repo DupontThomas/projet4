@@ -6,7 +6,7 @@
         <title>Blog de Jean Forteroche</title>
     </head>
 
-<!------------------------------------------------------------------------->
+<!-- ----------------------------------------------------------------------->
 
     <header>
 
@@ -16,25 +16,21 @@
         </ul>
     </header>
 
-<!------------------------------------------------------------------------->
+<!-- ----------------------------------------------------------------------->
 
     <body>
 
         {% block title %}Titre par défaut{% endblock %}
 
-        {% block subTitle %}Sous-titre par défaut{% endblock %}
+        {% block subTitle %}{% endblock %}
 
-        {% block posts %}
+        {% block posts %}{% endblock posts %}
 
-        {% endblock posts %}
-
-        {% block comments %}
-
-        {% endblock comments %}
+        {% block comments %}{% endblock comments %}
 
     </body>
 
-<!------------------------------------------------------------------------->
+<!-- ----------------------------------------------------------------------->
 
     <footer>
 
