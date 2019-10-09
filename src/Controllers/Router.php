@@ -8,9 +8,10 @@ class Router
      */
     private $postsController;
 
-    public function __construct(PostsController $postsController)
+    public function __construct(PostsController $postsController, CommentController $commentController)
     {
         $this->postsController = $postsController;
+        $this->commentController = $commentController;
     }
 
 
@@ -37,6 +38,10 @@ class Router
 
             case "chapter" :
                 $this->postsController->displayPost($id);
+                break;
+
+            case "sendcom" :
+                $this->commentController->addComment($id);
                 break;
 
             case "error" :

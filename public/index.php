@@ -16,6 +16,8 @@ $twig = new Environment($loader, [
     //'debug' => false
 ]);
 
-$postcontroller= new \App\Controllers\PostsController($twig);
-$router = new Router($postcontroller);
+$postController= new \App\Controllers\PostsController($twig);
+$commentController = new \App\Controllers\CommentController($twig);
+
+$router = new Router($postController,$commentController);
 $router->run();

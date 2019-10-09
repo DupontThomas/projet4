@@ -1,14 +1,14 @@
 {% extends "layout.twig" %}
 
-{% block title %} <h1> CHAPTER /// {{ posts.title }}</h1> {% endblock %}
+{% block title %} <h1> CHAPTER /// {{ contents.title }}</h1> {% endblock %}
 
         {% block contents %}
 
             <div>
                 <section>
-                    <h2> Publié le {{ posts.postDate }}</h2>
+                    <h2> Publié le {{ contents.postDate }}</h2>
                     <div>
-                        <p>{{ posts.content }}</p>
+                        <p>{{ contents.content }}</p>
                     </div>
 
                 </section>
@@ -31,5 +31,18 @@
         </section>
 
     {% endfor %}
+
+    <h3>Ajouter un commentaire : </h3>
+
+    <form method="post" action="http://localhost/projet4/public/?page=sendcom&id={{ contents.id }}">
+        <label for="pseudo">Entrez un pseudo : </label>
+        <input required type="text" name="pseudo" id="pseudo"><br><br>
+
+        <label for="presentation">Votre message : </label>
+        <textarea required name="comment" id="comment"></textarea><br><br>
+
+        <input type="submit" value="Envoyer">
+    </form>
+
 {% endblock comments %}
 

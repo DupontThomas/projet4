@@ -10,4 +10,11 @@ class CommentManager extends Manager {
         $listComments = $req->fetchAll();
         return $listComments;
     }
+
+    public function addComment($id, $author, $comment)
+    {
+        $req = $this->dbConnect()->prepare("INSERT INTO comments (id, id_post, author, comment, date_publication) VALUES (NULL, ?, ?, ?, CURRENT_TIME())");
+        $newComment = $req->execute(array($id, $author, $comment));
+        return $newComment;
+    }
 }
