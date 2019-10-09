@@ -20,12 +20,12 @@ class PostsManager extends Manager
         return $listPosts;
     }
 
-    public function getCountPost()
+    public function checkPost($id_post)
     {
-        $req = $this->dbConnect()->prepare("SELECT COUNT(id) FROM posts");
-        $req->execute();
-        $countPost = $req->fetch();
-        return $countPost;
+        $req = $this->dbConnect()->prepare("SELECT COUNT(id) FROM posts WHERE id=?");
+        $req->execute(array($id_post));
+        $checkPost = $req->fetch();
+        return $checkPost;
     }
 
     public function getReadPost($id_post)

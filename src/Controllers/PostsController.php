@@ -20,15 +20,15 @@ class PostsController extends Controller
 
     public function displayPost($id)
     {
-        $countPosts = $this->postManager->getCountPost();
-        if(is_numeric($id) && $id < $countPosts[0]) {
+        $checkPost = $this->postManager->checkPost($id);
+
+        if($checkPost[0] > 0) {
             $lastPosts = $this->postManager->getReadPost($id);
             $listComment = $this->commentManager->getComment($id);
-
             echo $this->render('chapter.twig', ['posts' => $lastPosts, 'comments' => $listComment]);
         }
         else {
-            echo $this->render('error.twig');
+            $this->errorChapter();
         }
     }
 
@@ -47,5 +47,6 @@ class PostsController extends Controller
 
     public function errorChapter()
     {
+        echo $this->render('error.twig');
     }
 }
