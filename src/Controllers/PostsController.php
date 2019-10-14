@@ -36,7 +36,6 @@ class PostsController extends Controller
     {
         $listPosts = $this->postManager->getPostList();
         echo $this->render('chapterList.twig', ['contents' => $listPosts]);
-
     }
 
     public function lastChapter()
