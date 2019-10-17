@@ -2,7 +2,8 @@
 namespace App\Controllers;
 
 use App\Models\CommentManager;
-use App\Models\PostsManager;
+use App\Controllers\PostsController;
+use Twig\Environment;
 
 class CommentController extends Controller
 {
@@ -13,11 +14,7 @@ class CommentController extends Controller
 
         $commentManager = new CommentManager();
         $commentManager->addComment($id, $author, $comment);
-        $comments = $commentManager->getComment($id);
 
-        $postManager = new PostsManager();
-        $post = $postManager->getReadPost($id);
-
-        return $this->render('chapter.twig', ['contents' =>$post,'comments' => $comments]);
+        return $commentManager = "OK";
     }
 }

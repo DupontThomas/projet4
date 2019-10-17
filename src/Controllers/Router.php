@@ -42,6 +42,9 @@ class Router
 
             case "sendcom" :
                 $this->commentController->addComment($id);
+                if( $commentManager = "OK") {
+                    echo '<meta http-equiv="refresh" content="0;URL=http://localhost/projet4/public/?page=chapter&id=' . $id . '">';
+                }
                 break;
 
             case "error" :
