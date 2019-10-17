@@ -15,6 +15,6 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->addComment($id, $author, $comment);
 
-        return $commentManager = "OK";
+        return $addcomment = "OK";
     }
 }
