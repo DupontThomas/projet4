@@ -18,6 +18,8 @@ $twig = new Environment($loader, [
 
 $postController= new \App\Controllers\PostsController($twig);
 $commentController = new \App\Controllers\CommentController($twig);
+$userController = new \App\Controllers\UserController($twig);
 
-$router = new Router($postController,$commentController);
+
+$router = new Router($postController,$commentController,$userController);
 $router->run();

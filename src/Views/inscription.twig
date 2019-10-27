@@ -1,0 +1,40 @@
+{% extends "layout.twig" %}
+
+    {% block title %}<h1>Inscrivez-vous !</h1>{% endblock %}
+
+    {% block contents %}
+
+        <h2>Vous êtes déjà inscrit ? Connectez-vous :</h2>
+
+        <form method="post" action="http://localhost/projet4/public/?page=sendconnection">
+            <label for="pseudo">Votre pseudo :</label>
+            <input type="text" name="pseudo" id="pseudo">
+
+            <label for="password">Votre mot de passe :</label>
+            <input type="password" name="password" id="password" />
+
+            <input type="submit" value="Envoyer">
+        </form>
+
+        <h2>Pas encore inscrit ? Remplissez le formulaire ci-dessous pour rejoindre notre communauté :</h2>
+
+        <form method="post" action="http://localhost/projet4/public/?page=sendinscription">
+            <label for="pseudo">Votre pseudo :</label>
+            <input type="text" name="pseudo" id="pseudo">
+
+            <label for="password">Votre mot de passe :</label>
+            <input type="password" name="password" id="password" />
+
+            <label for="password2">Retapez votre mot de passe :</label>
+            <input type="password" name="password2" id="password2" />
+
+            <label for="email">Votre adresse e-mail :</label>
+            <input type="email" name="email" id="email"/>
+
+            <input type="submit" value="Envoyer">
+
+        </form>
+
+        <p>Devenir membre vous permettra de publier des commentaires sur mon site !</p>
+
+    {% endblock contents %}

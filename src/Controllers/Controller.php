@@ -17,4 +17,9 @@ class Controller
     {
         return $this->twig->render($view, $params);
     }
+
+    public function alert($message) {
+        $alert = "<script>alert('$message');</script>";
+        echo filter_var($alert);
+    }
 }
