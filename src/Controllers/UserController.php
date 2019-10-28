@@ -16,12 +16,12 @@ class UserController extends Controller
         $this->userManager = new UserManager();
     }
 
-    function display()
+    public function display()
     {
         echo $this->render('inscription.twig');
     }
 
-    function addUser()
+    public function addUser()
     {
         $pseudo = filter_input(INPUT_POST, 'pseudo');
         $mail = filter_input(INPUT_POST, 'email');
@@ -29,18 +29,40 @@ class UserController extends Controller
         $passwordCheck = filter_input(INPUT_POST, 'password2');
 
         if ($password === $passwordCheck) {
-            $this->userManager->checkPseudo($pseudo);
-
-            if ($checkPseudo[0] > 0) {
+            $checkPseudo = $this->userManager->checkPseudo($pseudo);
+            if ($checkPseudo[0] === "0") {
                 $cryptedPass = password_hash($password, PASSWORD_DEFAULT);
                 $this->userManager->addUser($pseudo, $mail, $cryptedPass);
+                echo $this->render("home.twig");
             } else {
                 $this->alert("Ce pseudo est déjà utilisé. Veuillez en choisir un autre");
+                echo $this->render("inscription.twig");
             }
         }
         else {
-                $this->alert("Les mots de passe ne sont pas identiques. Veuillez vérifier votre saisie.");
+            $this->alert("Les mots de passe ne sont pas identiques. Veuillez vérifier votre saisie.");
+            echo $this->render("inscription.twig");
         }
+    }
+
+    public function connection()
+    {
+        $pseudo = filter_input(INPUT_POST, 'pseudoConnection');
+
+        $user = $this->userManager->checkUser($pseudo);
+
+        $passwordOk = password_verify(filter_input(INPUT_POST, 'passwordConnection'), $user['pass']);
+
+        if($passwordOk) {
+            $_SESSION['pseudo'] = $pseudo;
+            $_SESSION['rank'] = $user['rank'];
+        } else {
+            $this->alert("Identifiant ou mot de passe incorrect !");
+            echo $this->render('inscription.twig');
+        }
+
+
+
     }
 }
 
