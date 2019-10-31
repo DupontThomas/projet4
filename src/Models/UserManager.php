@@ -22,7 +22,7 @@ class UserManager extends Manager
 
     public function checkUser($pseudo)
     {
-        $req = $this->dbConnect()->prepare("SELECT id, pseudo, pass, rank FROM users WHERE pseudo=?");
+        $req = $this->dbConnect()->prepare("SELECT pseudo, pass, rank FROM users WHERE pseudo=?");
         $req->execute(array($pseudo));
         $checkUser = $req->fetch(\PDO::FETCH_ASSOC);
         return $checkUser;

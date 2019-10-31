@@ -33,7 +33,7 @@ class UserController extends Controller
             if ($checkPseudo[0] === "0") {
                 $cryptedPass = password_hash($password, PASSWORD_DEFAULT);
                 $this->userManager->addUser($pseudo, $mail, $cryptedPass);
-                echo $this->render("home.twig");
+                $this->redirect('../public/index.php');
             } else {
                 $this->alert("Ce pseudo est déjà utilisé. Veuillez en choisir un autre");
                 echo $this->render("inscription.twig");
@@ -53,16 +53,25 @@ class UserController extends Controller
 
         $passwordOk = password_verify(filter_input(INPUT_POST, 'passwordConnection'), $user['pass']);
 
-        if($passwordOk) {
-            $_SESSION['pseudo'] = $pseudo;
-            $_SESSION['rank'] = $user['rank'];
+        if($user) {
+            if ($passwordOk) {
+                $_SESSION['pseudo'] = $pseudo;
+                $_SESSION['rank'] = $user['rank'];
+                $this->redirect('../public/index.php');
+            } else {
+                $this->alert("Identifiant ou mot de passe incorrect !");
+                echo $this->render('inscription.twig');
+            }
         } else {
             $this->alert("Identifiant ou mot de passe incorrect !");
             echo $this->render('inscription.twig');
         }
+    }
 
-
-
+    public function deconnection()
+    {
+        session_destroy();
+        $this->redirect('../public/index.php');
     }
 }
 

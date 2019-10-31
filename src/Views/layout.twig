@@ -15,6 +15,13 @@
             <li><a href="http://localhost/projet4/public/?page=chapters">Chapitres</a></li>
             <li><a href="http://localhost/projet4/public/?page=inscription">Connexion/Inscription</a></li>
             <li><a href="http://localhost/projet4/public/?page=delog">Se déconnecter</a></li>
+            {% block session %}
+                {% if session.pseudo is defined %}
+                    <p>Bienvenue {{ session.pseudo }}</p>
+                {% endif %}
+            {% endblock %}
+
+
         </ul>
     </header>
 

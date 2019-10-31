@@ -22,4 +22,10 @@ class Controller
         $alert = "<script>alert('$message');</script>";
         echo filter_var($alert);
     }
+
+    public function redirect($url)
+    {
+        $redirect = "<script>window.location = '$url'</script>";
+        echo filter_var($redirect);
+    }
 }

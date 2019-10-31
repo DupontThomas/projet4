@@ -49,6 +49,14 @@ class Router
                 $this->userController->addUser();
                 break;
 
+            case "sendconnection" :
+                $this->userController->connection();
+                break;
+
+            case "delog" :
+                $this->userController->deconnection();
+                break;
+
             case "sendcom" :
                 $this->commentController->addComment($id);
                 if( $addcomment = "OK") {
