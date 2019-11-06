@@ -34,4 +34,11 @@ class PostsManager extends Manager
         $readPost = $req->fetch();
         return $readPost;
     }
+
+    public function addPost($title, $content)
+    {
+        $req = $this->dbConnect()->prepare("INSERT INTO posts (id, title, content, creation_date) VALUES (NULL, ?, ?, CURRENT_TIME())");
+        $newPost = $req->execute(array($title, $content));
+        return $newPost;
+    }
 }

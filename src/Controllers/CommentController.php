@@ -2,13 +2,19 @@
 namespace App\Controllers;
 
 use App\Models\CommentManager;
+use App\Controllers\PostsController;
+use Twig\Environment;
 
-class CommentController extends Controller {
-    function displayComment() {
+class CommentController extends Controller
+{
+    function addComment($id)
+    {
+        $author = filter_input(INPUT_POST, 'pseudo');
+        $comment = filter_input(INPUT_POST, 'comment');
 
-        $id_post= $_GET['id'];
         $commentManager = new CommentManager();
-        $comments=$commentManager->getComment($id_post);
-        return $this->render('comments.twig', ['comments' => $comments]);
+        $commentManager->addComment($id, $author, $comment);
+
+        return $addcomment = "OK";
     }
 }

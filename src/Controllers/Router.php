@@ -8,9 +8,11 @@ class Router
      */
     private $postsController;
 
-    public function __construct(PostsController $postsController)
+    public function __construct(PostsController $postsController, CommentController $commentController, UserController $userController)
     {
         $this->postsController = $postsController;
+        $this->commentController = $commentController;
+        $this->userController = $userController;
     }
 
 
@@ -37,6 +39,40 @@ class Router
 
             case "chapter" :
                 $this->postsController->displayPost($id);
+                break;
+
+            case "inscription" :
+                $this->userController->display();
+                break;
+
+            case "sendinscription" :
+                $this->userController->addUser();
+                break;
+
+            case "sendconnection" :
+                $this->userController->connection();
+                break;
+
+            case "delog" :
+                $this->userController->deconnection();
+                break;
+
+            case "sendcom" :
+                $this->commentController->addComment($id);
+                if( $addcomment = "OK") {
+                    echo '<meta http-equiv="refresh" content="0;URL=http://localhost/projet4/public/?page=chapter&id=' . $id . '">';
+                }
+                break;
+
+            case "admin" :
+                if($_SESSION['rank'] === 'Admin') {
+                $this->userController->displayAdmin();
+                } else {$this->postsController->errorChapter();
+                }
+                break;
+
+            case "addPost" :
+                $this->postsController->addPost();
                 break;
 
             case "error" :

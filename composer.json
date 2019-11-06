@@ -1,12 +1,11 @@
 {
     "name": "thomas/projet4",
-    "version": "0.1.0",
+    "version": "0.1.3",
     "type": "library",
     "description": "Fourth project for openclassrooms's web developer formation",
     "require": {
         "twig/twig": "^2.10",
-        "php": "^7.3",
-        "ext-pdo": "*"
+        "php": "^7.3"
     },
     "require-dev": {
         "tracy/tracy": "^2.6"

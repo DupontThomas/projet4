@@ -1,17 +1,16 @@
 <?php
 namespace App\Models;
 
-use \PDO;
+use PDO;
 
-class Manager {
-    function dbConnect() {
-        try
-        {
+class Manager
+{
+    function dbConnect()
+    {
+        try {
             $db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
             return $db;
-        }
-        catch(Exception $e)
-        {
+        } catch(Exception $e) {
             die('Erreur : '.$e->getMessage());
         }
     }
