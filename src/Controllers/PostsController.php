@@ -44,6 +44,16 @@ class PostsController extends Controller
         echo $this->render('home.twig', ['contents' => $lastChapter]);
     }
 
+    public function addPost()
+    {
+        $title = filter_input(INPUT_POST, 'titleNewPost');
+        $content = filter_input(INPUT_POST, 'contentNewPost');
+        $this->postManager->addPost($title,$content);
+
+        $this->redirect('../public/index.php');
+
+    }
+
     public function errorChapter()
     {
         echo $this->render('error.twig');
