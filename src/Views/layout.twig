@@ -13,10 +13,16 @@
         <ul>
             <li><a href="http://localhost/projet4/public/?page=home">Home</a></li>
             <li><a href="http://localhost/projet4/public/?page=chapters">Chapitres</a></li>
-            <li><a href="http://localhost/projet4/public/?page=inscription">Connexion/Inscription</a></li>
-            <li><a href="http://localhost/projet4/public/?page=delog">Se déconnecter</a></li>
+
             {% block session %}
+                {% if session.pseudo is not defined %}
+                <li><a href="http://localhost/projet4/public/?page=inscription">Connexion/Inscription</a></li>
+                {% endif %}
                 {% if session.pseudo is defined %}
+                    {% if session.rank is same as ("Admin") %}
+                        <li><a href="http://localhost/projet4/public/?page=admin">Administration</a></li>
+                    {% endif %}
+                    <li><a href="http://localhost/projet4/public/?page=delog">Se déconnecter</a></li>
                     <p>Bienvenue {{ session.pseudo }}</p>
                 {% endif %}
             {% endblock %}
@@ -37,13 +43,13 @@
 
         {% block comments %}{% endblock comments %}
 
-    </body>
+
 
 <!-- ----------------------------------------------------------------------->
-
     <footer>
 
     </footer>
-
+        {% block script %}{% endblock script %}
+    </body>
 
 </html>

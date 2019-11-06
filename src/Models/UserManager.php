@@ -9,7 +9,6 @@ class UserManager extends Manager
         $newUser = $req->execute(array( $pseudo, $password, $email ));
 
         return $newUser;
-
     }
 
     public function checkPseudo($pseudo)
@@ -27,5 +26,4 @@ class UserManager extends Manager
         $checkUser = $req->fetch(\PDO::FETCH_ASSOC);
         return $checkUser;
     }
-
 }

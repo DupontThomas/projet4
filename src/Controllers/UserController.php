@@ -38,8 +38,7 @@ class UserController extends Controller
                 $this->alert("Ce pseudo est déjà utilisé. Veuillez en choisir un autre");
                 echo $this->render("inscription.twig");
             }
-        }
-        else {
+        } else {
             $this->alert("Les mots de passe ne sont pas identiques. Veuillez vérifier votre saisie.");
             echo $this->render("inscription.twig");
         }
@@ -72,6 +71,12 @@ class UserController extends Controller
     {
         session_destroy();
         $this->redirect('../public/index.php');
+    }
+
+    public function displayAdmin()
+    {
+        echo $this->render('administration.twig');
+
     }
 }
 
