@@ -32,17 +32,21 @@
 
     {% endfor %}
 
+    {% if session.pseudo is defined %}
     <h3>Ajouter un commentaire : </h3>
 
     <form method="post" action="http://localhost/projet4/public/?page=sendcom&id={{ contents.id }}">
-        <label for="pseudo">Entrez un pseudo : </label>
-        <input required type="text" name="pseudo" id="pseudo"><br><br>
 
         <label for="presentation">Votre message : </label>
         <textarea required name="comment" id="comment"></textarea><br><br>
 
         <input type="submit" value="Envoyer">
     </form>
+    {% endif %}
+
+    {% if session.pseudo is not defined %}
+    <h4>Inscrivez-vous pour laisser un commentaire !</h4>
+    {% endif %}
 
 {% endblock comments %}
 

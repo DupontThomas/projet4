@@ -9,7 +9,7 @@ class CommentController extends Controller
 {
     function addComment($id)
     {
-        $author = filter_input(INPUT_POST, 'pseudo');
+        $author = $_SESSION['pseudo'];
         $comment = filter_input(INPUT_POST, 'comment');
 
         $commentManager = new CommentManager();
