@@ -4,15 +4,25 @@
 
         {% block contents %}
 
-            <div>
+
                 <section>
                     <h2> Publié le {{ contents.postDate }}</h2>
                     <div>
-                        <p>{{ contents.content }}</p>
+                        <p>{{ contents.content | raw }}</p>
                     </div>
 
+                    {% if session.rank is same as ("Admin") %}
+                        <a href="http://localhost/projet4/public/?page=modifPost&id={{ contents.id }}">
+                            <button type="button" >Modifier ce chapitre</button>
+                        </a>
+                        <a href="http://localhost/projet4/public/?page=deletePost&id={{ contents.id }}">
+                            <button type="button" >Supprimer ce chapitre</button>
+                        </a>
+                    {% endif %}
+
+
                 </section>
-            </div>
+
 
         {% endblock contents %}
 
@@ -26,7 +36,7 @@
 
             <h5>Posté par : <strong>{{ comment.author }}</strong>, le {{ comment.date_publication_fr }}</h5>
             <div>
-                <p>{{ comment.comment }}</p>
+                <p>{{ comment.comment | nl2br }}</p>
             </div>
         </section>
 

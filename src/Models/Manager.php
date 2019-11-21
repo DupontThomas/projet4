@@ -13,6 +13,8 @@ class Manager
         } catch(Exception $e) {
             die('Erreur : '.$e->getMessage());
         }
+
+        mysql_query('SET NAMES "UTF8"');
     }
 }
 

@@ -6,6 +6,7 @@
     "require": {
         "twig/twig": "^2.10",
         "php": "^7.3"
+
     },
     "require-dev": {
         "tracy/tracy": "^2.6"
