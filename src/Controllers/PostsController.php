@@ -51,6 +51,11 @@ class PostsController extends Controller
 
         $this->redirect('../public/index.php');
     }
+    public function deletePost($id)
+    {
+        $this->postManager->deletePost($id);
+        $this->redirect('../public/index.php');
+    }
 
     public function errorChapter()
     {

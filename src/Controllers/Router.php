@@ -75,6 +75,10 @@ class Router
                 $this->postsController->addPost();
                 break;
 
+            case "deletePost" :
+                $this->postsController->deletePost($id);
+                break;
+
             case "error" :
                 $this->postsController->errorChapter();
                 break;
