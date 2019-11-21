@@ -7,7 +7,7 @@ use Twig\Environment;
 
 class CommentController extends Controller
 {
-    function addComment($id)
+    public function addComment($id)
     {
         $author = $_SESSION['pseudo'];
         $comment = filter_input(INPUT_POST, 'comment');

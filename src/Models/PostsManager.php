@@ -52,9 +52,6 @@ class PostsManager extends Manager
         $reqPost = $this->dbConnect()->prepare("DELETE FROM posts WHERE id=?");
         $deletePost = $reqPost->execute(array($id));
 
-        $reqComment = $this->dbConnect()->prepare(" DELETE FROM comments WHERE id_post=?");
-        $reqComment->execute(array($id));
-
         return $deletePost;
     }
 }

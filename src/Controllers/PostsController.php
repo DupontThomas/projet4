@@ -54,6 +54,10 @@ class PostsController extends Controller
     public function deletePost($id)
     {
         $this->postManager->deletePost($id);
+        $this->commentManager->deleteCommentList($id);
+
+        $this->alert('Ce chapitre a bien été supprimé.');
+
         $this->redirect('../public/index.php');
     }
 

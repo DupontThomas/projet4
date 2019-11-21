@@ -17,4 +17,14 @@ class CommentManager extends Manager
         $newComment = $req->execute(array($id, $author, $comment));
         return $newComment;
     }
+
+    public function deleteCommentList($id_post)
+    {
+        $reqComment = $this->dbConnect()->prepare(" DELETE FROM comments WHERE id_post=?");
+        $deleteCommentList = $reqComment->execute(array($id_post));
+        
+        return $deleteCommentList;
+    }
+
+
 }
