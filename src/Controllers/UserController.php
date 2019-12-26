@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\UserManager;
+use App\Controllers\CommentController;
 use Twig\Environment;
 
 class UserController extends Controller
@@ -75,6 +76,7 @@ class UserController extends Controller
 
     public function displayAdmin()
     {
+
         echo $this->render('administration.twig');
 
     }

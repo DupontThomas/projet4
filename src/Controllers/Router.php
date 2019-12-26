@@ -88,9 +88,9 @@ class Router
                 $this->postsController->updatePost($id);
                 break;
 
-            case "warningComment" :
-                $this->commentController->warningComment();
-                if( $warningComment = "OK") {
+            case "reportComment" :
+                $this->commentController->reportComment();
+                if( $reportComment = "OK") {
                     echo '<meta http-equiv="refresh" content="0;URL=http://localhost/projet4/public/?page=chapter&id=' . $id . '">';
                 }
                 break;

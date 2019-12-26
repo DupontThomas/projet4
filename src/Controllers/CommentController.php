@@ -18,15 +18,15 @@ class CommentController extends Controller
         return $addComment = "OK";
     }
 
-    public function warningComment()
+    public function reportComment()
     {
         $idComment = $comment = filter_input(INPUT_POST, 'idComment');
 
         $commentManager = new CommentManager();
-        $commentManager->warningComment($idComment);
+        $commentManager->reportComment($idComment);
 
-        $this->alert('Votre signalement a été transmis a bien été transmis.');
+        $this->alert('Votre signalement a été transmis.');
 
-        return $warningComment = "OK";
+        return $reportComment = "OK";
     }
 }

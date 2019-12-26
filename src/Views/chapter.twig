@@ -39,7 +39,7 @@
                 <p>{{ comment.comment | nl2br }}</p>
 
                 {% if session.pseudo is defined %}
-                    <form method="post" action="http://localhost/projet4/public/?page=warningComment&id={{ contents.id }}">
+                    <form method="post" action="http://localhost/projet4/public/?page=reportComment&id={{ contents.id }}">
                         <input type="hidden" name="idComment" value="{{ comment.id }}">
                         <input type="submit" value="Signaler">
                     </form>

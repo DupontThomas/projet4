@@ -26,12 +26,12 @@ class CommentManager extends Manager
         return $deleteCommentList;
     }
 
-    public function warningComment($idComment)
+    public function reportComment($idComment)
     {
-        $req = $this->dbConnect()->prepare(" UPDATE comments SET warning = '1' WHERE id=?");
-        $warningComment = $req->execute(array($idComment));
+        $req = $this->dbConnect()->prepare(" UPDATE comments SET report = '1' WHERE id=?");
+        $reportComment = $req->execute(array($idComment));
 
-        return $warningComment;
+        return $reportComment;
     }
 
 }
