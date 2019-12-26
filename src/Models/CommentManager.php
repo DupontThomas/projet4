@@ -34,4 +34,13 @@ class CommentManager extends Manager
         return $reportComment;
     }
 
+    public function reportedComment()
+    {
+        $req = $this->dbConnect()->prepare("SELECT id, id_post, author, comment, DATE_FORMAT(date_publication, '%d/%m/%Y à %Hh%imin%ss') AS date_publication_fr FROM comments WHERE report=1 ORDER BY id");
+        $req->execute();
+
+        $listReportedComment = $req->fetchAll();
+        return $listReportedComment;
+
+    }
 }

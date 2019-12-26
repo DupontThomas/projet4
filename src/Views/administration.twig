@@ -17,6 +17,16 @@
 
             <h2>Commentaires signalés :</h2>
 
+            {% for content in contents %}
+
+                <div>
+                    <h5>Posté par : {{ content.author }}, le :{{ content.date_publication }} // <a href="http://localhost/projet4/public/?page=chapter&id={{ content.id_post}}"> Lien vers le chapitre</a> </h5>
+                    <div>
+                        <p>{{ content.comment }}</p>
+                    </div>
+                </div>
+
+            {% endfor %}
 
         {% endblock contents %}
 
