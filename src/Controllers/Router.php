@@ -79,6 +79,15 @@ class Router
                 $this->postsController->deletePost($id);
                 break;
 
+            case "modifPost" :
+                $this->postsController->getModifPage($id);
+                var_dump($id);
+                break;
+
+            case "updatePost" :
+                $this->postsController->updatePost($id);
+                break;
+
             case "error" :
                 $this->postsController->errorChapter();
                 break;

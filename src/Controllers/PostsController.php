@@ -61,6 +61,24 @@ class PostsController extends Controller
         $this->redirect('../public/index.php');
     }
 
+    public function getModifPage($id)
+    {
+        $getPost = $this->postManager->getReadPost($id);
+        echo $this->render('modify.twig', ['contents' => $getPost]);
+    }
+
+    public function updatePost($id)
+    {
+        $title = filter_input(INPUT_POST, 'titleUpdatePost');
+        $content = filter_input(INPUT_POST, 'contentUpdatePost');
+
+        $this->postManager->updatePost($title,$content,$id);
+
+        $this->alert('Ce chapitre a bien été modifié.');
+
+        $this->redirect('../public/index.php');
+    }
+
     public function errorChapter()
     {
         echo $this->render('error.twig');
