@@ -15,6 +15,18 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->addComment($id, $author, $comment);
 
-        return $addcomment = "OK";
+        return $addComment = "OK";
+    }
+
+    public function warningComment()
+    {
+        $idComment = $comment = filter_input(INPUT_POST, 'idComment');
+
+        $commentManager = new CommentManager();
+        $commentManager->warningComment($idComment);
+
+        $this->alert('Votre signalement a été transmis a bien été transmis.');
+
+        return $warningComment = "OK";
     }
 }
