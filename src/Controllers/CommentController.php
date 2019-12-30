@@ -29,4 +29,20 @@ class CommentController extends Controller
 
         return $reportComment = "OK";
     }
+
+    public function validateComment($id)
+    {
+        $commentManager = new CommentManager();
+        $commentManager->validateComment($id);
+
+        $this->redirect('../public/?page=admin');
+    }
+
+    public function deleteComment($id)
+    {
+        $commentManager = new CommentManager();
+        $commentManager->deleteComment($id);
+
+        $this->redirect('../public/?page=admin');
+    }
 }

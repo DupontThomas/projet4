@@ -95,6 +95,14 @@ class Router
                 }
                 break;
 
+            case "valcom" :
+                $this->commentController->validateComment($id);
+                break;
+
+            case "delcom" :
+                $this->commentController->deleteComment($id);
+                break;
+
             case "error" :
                 $this->postsController->errorChapter();
                 break;

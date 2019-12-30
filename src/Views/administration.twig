@@ -20,9 +20,11 @@
             {% for content in contents %}
 
                 <div>
-                    <h5>Posté par : {{ content.author }}, le :{{ content.date_publication }} // <a href="http://localhost/projet4/public/?page=chapter&id={{ content.id_post}}"> Lien vers le chapitre</a> </h5>
+                    <h5>Posté par : {{ content.author }}, le : {{ content.date_publication_fr }} // <a href="http://localhost/projet4/public/?page=chapter&id={{ content.id_post}}"> Lien vers le chapitre</a> </h5>
                     <div>
                         <p>{{ content.comment }}</p>
+                        <a href="http://localhost/projet4/public/?page=valcom&id={{ content.id }}">Valider</a>
+                        <a href="http://localhost/projet4/public/?page=delcom&id={{ content.id }}">Supprimer</a>
                     </div>
                 </div>
 
