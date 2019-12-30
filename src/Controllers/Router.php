@@ -81,7 +81,6 @@ class Router
 
             case "modifPost" :
                 $this->postsController->getModifPage($id);
-                var_dump($id);
                 break;
 
             case "updatePost" :

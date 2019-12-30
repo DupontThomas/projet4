@@ -5,7 +5,7 @@ class CommentManager extends Manager
 {
     public function getComment($id_post)
     {
-        $req = $this->dbConnect()->prepare("SELECT id, author, comment, DATE_FORMAT(date_publication, '%d/%m/%Y à %Hh%imin%ss') AS date_publication_fr FROM comments WHERE id_post=? ORDER BY id");
+        $req = $this->dbConnect()->prepare("SELECT id, author, comment, report, DATE_FORMAT(date_publication, '%d/%m/%Y à %Hh%imin%ss') AS date_publication_fr FROM comments WHERE id_post=? ORDER BY id");
         $req->execute(array($id_post));
         $listComments = $req->fetchAll();
         return $listComments;
@@ -13,7 +13,7 @@ class CommentManager extends Manager
 
     public function addComment($id, $author, $comment)
     {
-        $req = $this->dbConnect()->prepare("INSERT INTO comments (id, id_post, author, comment, date_publication) VALUES (NULL, ?, ?, ?, CURRENT_TIME())");
+        $req = $this->dbConnect()->prepare("INSERT INTO comments (id, id_post, author, comment, report, date_publication) VALUES (NULL, ?, ?, ?, 0, CURRENT_TIME())");
         $newComment = $req->execute(array($id, $author, $comment));
         return $newComment;
     }
@@ -36,7 +36,7 @@ class CommentManager extends Manager
 
     public function reportedComment()
     {
-        $req = $this->dbConnect()->prepare("SELECT id, id_post, author, comment, DATE_FORMAT(date_publication, '%d/%m/%Y à %Hh%imin%ss') AS date_publication_fr FROM comments WHERE report=1 ORDER BY id");
+        $req = $this->dbConnect()->prepare("SELECT id, id_post, author, comment, report, DATE_FORMAT(date_publication, '%d/%m/%Y à %Hh%imin%ss') AS date_publication_fr FROM comments WHERE report=1 ORDER BY id");
         $req->execute();
         $listReportedComment = $req->fetchAll();
 
@@ -49,7 +49,7 @@ class CommentManager extends Manager
         $req = $this->dbConnect()->prepare(" UPDATE comments SET report = '0' WHERE id=?");
         $validateComment = $req->execute(array($id));
 
-        return $validateComment = "OK";
+        return $validateComment;
     }
 
     public function deleteComment($id)
@@ -57,6 +57,6 @@ class CommentManager extends Manager
         $req = $this->dbConnect()->prepare(" DELETE FROM comments WHERE id=?");
         $deleteComment = $req->execute(array($id));
 
-        return $deleteComment = "OK";
+        return $deleteComment;
     }
 }

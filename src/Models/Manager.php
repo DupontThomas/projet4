@@ -14,7 +14,6 @@ class Manager
             die('Erreur : '.$e->getMessage());
         }
 
-        mysql_query('SET NAMES "UTF8"');
     }
 }
 
