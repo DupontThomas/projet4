@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\CommentManager;
 use App\Models\UserManager;
 use Twig\Environment;
 
@@ -8,12 +9,14 @@ class UserController extends Controller
 {
 
     private $userManager = null;
+    private $commentManager = null;
 
     public function __construct(Environment $twig)
     {
         parent::__construct($twig);
 
         $this->userManager = new UserManager();
+        $this->commentManager = new CommentManager();
     }
 
     public function display()
@@ -75,11 +78,8 @@ class UserController extends Controller
 
     public function displayAdmin()
     {
-        echo $this->render('administration.twig');
-
+        $listReportedComment = $this->commentManager->reportedComment();
+        echo $this->render('administration.twig', ['contents' => $listReportedComment]);
     }
 }
-
-
-
 

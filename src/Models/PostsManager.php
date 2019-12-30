@@ -8,6 +8,7 @@ class PostsManager extends Manager
         $req = $this->dbConnect()->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS postDate FROM posts ORDER BY id DESC LIMIT 1");
         $req->execute();
         $lastPost = $req->fetch();
+
         return $lastPost;
     }
 
@@ -16,6 +17,7 @@ class PostsManager extends Manager
         $req = $this->dbConnect()->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS postDate FROM posts ORDER BY id DESC");
         $req->execute();
         $listPosts = $req->fetchAll();
+
         return $listPosts;
     }
 
@@ -24,6 +26,7 @@ class PostsManager extends Manager
         $req = $this->dbConnect()->prepare("SELECT COUNT(id) FROM posts WHERE id=?");
         $req->execute(array($id_post));
         $checkPost = $req->fetch();
+
         return $checkPost;
     }
 
@@ -32,6 +35,7 @@ class PostsManager extends Manager
         $req = $this->dbConnect()->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS postDate FROM posts WHERE id=?");
         $req->execute(array($id_post));
         $readPost = $req->fetch();
+
         return $readPost;
     }
 
@@ -39,6 +43,27 @@ class PostsManager extends Manager
     {
         $req = $this->dbConnect()->prepare("INSERT INTO posts (id, title, content, creation_date) VALUES (NULL, ?, ?, CURRENT_TIME())");
         $newPost = $req->execute(array($title, $content));
+
         return $newPost;
+    }
+
+    public function deletePost($id)
+    {
+        $reqPost = $this->dbConnect()->prepare("DELETE FROM posts WHERE id=?");
+        $deletePost = $reqPost->execute(array($id));
+
+        return $deletePost;
+    }
+
+    public function updatePost($title, $content, $id)
+    {
+        $req = $this->dbConnect()->prepare("UPDATE posts SET title= :new_title, content= :new_content where id= :id");
+        $updatePost = $req->execute(array(
+            'new_title' => $title,
+            'new_content' => $content,
+            'id' => $id
+            ));
+
+        return $updatePost;
     }
 }

@@ -75,6 +75,34 @@ class Router
                 $this->postsController->addPost();
                 break;
 
+            case "deletePost" :
+                $this->postsController->deletePost($id);
+                break;
+
+            case "modifPost" :
+                $this->postsController->getModifPage($id);
+                var_dump($id);
+                break;
+
+            case "updatePost" :
+                $this->postsController->updatePost($id);
+                break;
+
+            case "reportComment" :
+                $this->commentController->reportComment();
+                if( $reportComment = "OK") {
+                    echo '<meta http-equiv="refresh" content="0;URL=http://localhost/projet4/public/?page=chapter&id=' . $id . '">';
+                }
+                break;
+
+            case "valcom" :
+                $this->commentController->validateComment($id);
+                break;
+
+            case "delcom" :
+                $this->commentController->deleteComment($id);
+                break;
+
             case "error" :
                 $this->postsController->errorChapter();
                 break;

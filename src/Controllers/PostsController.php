@@ -26,8 +26,7 @@ class PostsController extends Controller
             $lastPosts = $this->postManager->getReadPost($id);
             $listComment = $this->commentManager->getComment($id);
             echo $this->render('chapter.twig', ['contents' => $lastPosts, 'comments' => $listComment]);
-        }
-        else {
+        } else {
             $this->errorChapter();
         }
     }
@@ -51,7 +50,33 @@ class PostsController extends Controller
         $this->postManager->addPost($title,$content);
 
         $this->redirect('../public/index.php');
+    }
+    public function deletePost($id)
+    {
+        $this->postManager->deletePost($id);
+        $this->commentManager->deleteCommentList($id);
 
+        $this->alert('Ce chapitre a bien été supprimé.');
+
+        $this->redirect('../public/index.php');
+    }
+
+    public function getModifPage($id)
+    {
+        $getPost = $this->postManager->getReadPost($id);
+        echo $this->render('modify.twig', ['contents' => $getPost]);
+    }
+
+    public function updatePost($id)
+    {
+        $title = filter_input(INPUT_POST, 'titleUpdatePost');
+        $content = filter_input(INPUT_POST, 'contentUpdatePost');
+
+        $this->postManager->updatePost($title,$content,$id);
+
+        $this->alert('Ce chapitre a bien été modifié.');
+
+        $this->redirect('../public/index.php');
     }
 
     public function errorChapter()
