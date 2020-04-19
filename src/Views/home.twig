@@ -1,16 +1,16 @@
 {% extends "layout.twig" %}
 
-{% block title %} <h1>HOME // Bienvenue sur mon blog !</h1> {% endblock title%}
+{% block title %} <h1 class="main-title">Bienvenue sur mon blog !</h1> {% endblock title%}
 
-{% block subTitle %} <h2>Voici le dernier chapitre en ligne : </h2>{% endblock subTitle%}
+{% block subTitle %} <h2 class="title-home">Voici le dernier chapitre en ligne : </h2>{% endblock subTitle%}
 
 {% block contents %}
 
     <div>
-        <section>
-            <h3> Partie {{ contents.id }} : <strong>{{ contents.title }}</strong> | Publié le {{ contents.postDate }}</h3>
+        <section class="chapter-home">
+            <h3 class="title-chapter-home"> Partie {{ contents.id }} : <strong>{{ contents.title }}</strong> | Publié le {{ contents.postDate }}</h3>
             <div>
-                <p>{{ contents.content | raw }}</p>
+                <p class="content-chapter-home">{{ contents.content | raw }}</p>
                 <a href="http://localhost/projet4/public/?page=chapter&id={{ contents.id}}">Lire la suite</a>
             </div>
 

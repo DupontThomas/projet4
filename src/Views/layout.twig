@@ -5,45 +5,53 @@
         <meta name="viewport" content="width=device-width">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Blog de Jean Forteroche</title>
+        <link rel="stylesheet" href="http://localhost/projet4/public/css/style.css">
     </head>
 
 <!-- ----------------------------------------------------------------------->
 
-    <header>
+    <header class="header">
 
-        <ul>
-            <li><a href="http://localhost/projet4/public/?page=home">Home</a></li>
-            <li><a href="http://localhost/projet4/public/?page=chapters">Chapitres</a></li>
+        <ul class="header-menu">
+            <li class="header-option header-title">Un billet pour l'Alaska</li>
+            <li class="header-option header-home"><a class="header-button" href="http://localhost/projet4/public/?page=home">Home</a></li>
+            <li class="header-option"><a class="header-button"  href="http://localhost/projet4/public/?page=chapters">Chapitres</a></li>
 
             {% block session %}
                 {% if session.pseudo is not defined %}
-                <li><a href="http://localhost/projet4/public/?page=inscription">Connexion/Inscription</a></li>
+                <li class="header-option"><a class="header-button"  href="http://localhost/projet4/public/?page=inscription">Connexion/Inscription</a></li>
                 {% endif %}
                 {% if session.pseudo is defined %}
                     {% if session.rank is same as ("Admin") %}
-                        <li><a href="http://localhost/projet4/public/?page=admin">Administration</a></li>
+                        <li class="header-option"><a class="header-button"  href="http://localhost/projet4/public/?page=admin">Administration</a></li>
                     {% endif %}
-                    <li><a href="http://localhost/projet4/public/?page=delog">Se déconnecter</a></li>
-                    <p>Bienvenue {{ session.pseudo }}</p>
+                    <li class="header-option"><a class="header-button"  href="http://localhost/projet4/public/?page=delog">Se déconnecter</a></li>
+                    <p class="header-option welcome">Bienvenue {{ session.pseudo }}</p>
                 {% endif %}
             {% endblock %}
-
 
         </ul>
     </header>
 
 <!-- ----------------------------------------------------------------------->
 
-    <body>
+    <body class="body">
 
-        {% block title %}Titre par défaut{% endblock %}
+        <section class="maintitle-section">
+            {% block title %}Titre par défaut{% endblock %}
+        </section>
 
+        <section class="subtitle">
         {% block subTitle %}{% endblock %}
+        </section>
 
+        <section class="chapter">
         {% block contents %}{% endblock contents %}
+        </section>
 
+        <section class="comments">
         {% block comments %}{% endblock comments %}
-
+        </section>
 
 
 <!-- ----------------------------------------------------------------------->
