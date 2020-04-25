@@ -59,9 +59,6 @@ class Router
 
             case "sendcom" :
                 $this->commentController->addComment($id);
-                if( $addcomment = "OK") {
-                    echo '<meta http-equiv="refresh" content="0;URL=http://localhost/projet4/public/?page=chapter&id=' . $id . '">';
-                }
                 break;
 
             case "admin" :
@@ -88,10 +85,7 @@ class Router
                 break;
 
             case "reportComment" :
-                $this->commentController->reportComment();
-                if( $reportComment = "OK") {
-                    echo '<meta http-equiv="refresh" content="0;URL=http://localhost/projet4/public/?page=chapter&id=' . $id . '">';
-                }
+                $this->commentController->reportComment($id);
                 break;
 
             case "valcom" :

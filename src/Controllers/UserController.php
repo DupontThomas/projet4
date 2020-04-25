@@ -36,7 +36,8 @@ class UserController extends Controller
             if ($checkPseudo[0] === "0") {
                 $cryptedPass = password_hash($password, PASSWORD_DEFAULT);
                 $this->userManager->addUser($pseudo, $mail, $cryptedPass);
-                $this->redirect('../public/index.php');
+                header("Location: http://localhost/projet4/public/index.php");
+                exit;
             } else {
                 $this->alert("Ce pseudo est déjà utilisé. Veuillez en choisir un autre");
                 echo $this->render("inscription.twig");
@@ -59,7 +60,8 @@ class UserController extends Controller
             if ($passwordOk) {
                 $_SESSION['pseudo'] = $pseudo;
                 $_SESSION['rank'] = $user['rank'];
-                $this->redirect('../public/index.php');
+                header("Location: http://localhost/projet4/public/index.php");
+                exit;
             } else {
                 $this->alert("Identifiant ou mot de passe incorrect !");
                 echo $this->render('inscription.twig');
@@ -73,7 +75,8 @@ class UserController extends Controller
     public function deconnection()
     {
         session_destroy();
-        $this->redirect('../public/index.php');
+        header("Location: http://localhost/projet4/public/index.php");
+        exit;
     }
 
     public function displayAdmin()

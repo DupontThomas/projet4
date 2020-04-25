@@ -64,6 +64,6 @@ class PostsManager extends Manager
             'id' => $id
             ));
 
-        return "OK";
+        return $req="OK";
     }
 }

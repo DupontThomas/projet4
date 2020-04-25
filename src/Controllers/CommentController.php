@@ -15,10 +15,12 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->addComment($id, $author, $comment);
 
+        $this->redirect('../public/?page=chapter&id=' . $id);
+
         return $addComment = "OK";
     }
 
-    public function reportComment()
+    public function reportComment($id)
     {
         $idComment = $comment = filter_input(INPUT_POST, 'idComment');
 
@@ -27,6 +29,7 @@ class CommentController extends Controller
 
         $this->alert('Votre signalement a été transmis.');
 
+        $this->redirect('../public/?page=chapter&id=' . $id);
         return $reportComment = "OK";
     }
 
@@ -34,8 +37,8 @@ class CommentController extends Controller
     {
         $commentManager = new CommentManager();
         $commentManager->validateComment($id);
-
-        $this->redirect('../public/?page=admin');
+        header("Location: http://localhost/projet4/public/?page=admin");
+        exit;
     }
 
     public function deleteComment($id)
@@ -43,6 +46,7 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->deleteComment($id);
 
-        $this->redirect('../public/?page=admin');
+        header("Location: http://localhost/projet4/public/?page=admin");
+        exit;
     }
 }

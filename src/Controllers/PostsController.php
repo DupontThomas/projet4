@@ -48,8 +48,7 @@ class PostsController extends Controller
         $title = filter_input(INPUT_POST, 'titleNewPost');
         $content = filter_input(INPUT_POST, 'contentNewPost');
         $this->postManager->addPost($title,$content);
-
-        $this->redirect('../public/index.php');
+        header("Location: http://localhost/projet4/public/index.php");
     }
     public function deletePost($id)
     {
