@@ -13,10 +13,10 @@
 
                     {% if session.rank is same as ("Admin") %}
                         <a href="http://localhost/projet4/public/?page=modifPost&id={{ contents.id }}">
-                            <button type="button" >Modifier ce chapitre</button>
+                            <input type="button" value ="Modifier ce chapitre">
                         </a>
                         <a href="http://localhost/projet4/public/?page=deletePost&id={{ contents.id }}">
-                            <button type="button" >Supprimer ce chapitre</button>
+                            <button class="button deletePost" type="button" >Supprimer ce chapitre</button>
                         </a>
                     {% endif %}
 
@@ -41,7 +41,7 @@
                 {% if session.pseudo is defined %}
                     <form method="post" action="http://localhost/projet4/public/?page=reportComment&id={{ contents.id }}">
                         <input type="hidden" name="idComment" value="{{ comment.id }}">
-                        <input type="submit" value="Signaler">
+                        <button class="reportComment" type="submit" value="Signaler">Signaler</button>
                     </form>
                 {% endif %}
             </div>

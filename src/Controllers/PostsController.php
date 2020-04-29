@@ -55,9 +55,7 @@ class PostsController extends Controller
         $this->postManager->deletePost($id);
         $this->commentManager->deleteCommentList($id);
 
-        $this->alert('Ce chapitre a bien été supprimé.');
-
-        $this->redirect('../public/index.php');
+        header("Location: http://localhost/projet4/public/index.php");
     }
 
     public function getModifPage($id)
@@ -73,9 +71,8 @@ class PostsController extends Controller
 
         $this->postManager->updatePost($title,$content,$id);
 
-        $this->alert('Ce chapitre a bien été modifié.');
+        header("Location: http://localhost/projet4/public/index.php");
 
-        $this->redirect('../public/index.php');
     }
 
     public function errorChapter()
