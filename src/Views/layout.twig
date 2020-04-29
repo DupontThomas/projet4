@@ -9,40 +9,37 @@
         <link rel="stylesheet" href="/projet4/public/css/style.css">
     </head>
 
-<!-- ----------------------------------------------------------------------->
-
-    <header class="header">
-
-        <ul class="header-menu">
-            <li class="header-option header-title">Un billet pour l'Alaska</li>
-            <li class="header-option header-home"><a class="header-button" href="http://localhost/projet4/public/?page=home">Home</a></li>
-            <li class="header-option"><a class="header-button"  href="http://localhost/projet4/public/?page=chapters">Chapitres</a></li>
-
+<!------------------------------------------------------------------------->
+    <header class="">
+        <nav class="nav nav-pills flex-column flex-sm-row navbar-dark bg-dark">
+            <p class="navbar-brand">Un billet pour l'Alaska</p>
+            <a class="flex-sm-fill text-sm-center nav-link " href="http://localhost/projet4/public/?page=home">Home</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="http://localhost/projet4/public/?page=chapters">Chapitres</a>
             {% block session %}
                 {% if session.pseudo is not defined %}
-                <li class="header-option"><a class="header-button"  href="http://localhost/projet4/public/?page=inscription">Connexion/Inscription</a></li>
+                <a class="flex-sm-fill text-sm-center nav-link"  href="http://localhost/projet4/public/?page=inscription">Connexion/Inscription</a>
                 {% endif %}
                 {% if session.pseudo is defined %}
                     {% if session.rank is same as ("Admin") %}
-                        <li class="header-option"><a class="header-button"  href="http://localhost/projet4/public/?page=admin">Administration</a></li>
+                        <a class="flex-sm-fill text-sm-center nav-link"  href="http://localhost/projet4/public/?page=admin">Administration</a>
                     {% endif %}
-                    <li class="header-option"><a class="header-button"  href="http://localhost/projet4/public/?page=delog">Se déconnecter</a></li>
-                    <p class="header-option welcome">Bienvenue {{ session.pseudo }}</p>
+                    <a class="flex-sm-fill text-sm-center nav-link"  href="http://localhost/projet4/public/?page=delog">Se déconnecter</a>
+                    <p class="flex-sm-fill text-sm-center nav-link disabled">Bienvenue {{ session.pseudo }}</p>
                 {% endif %}
             {% endblock %}
 
-        </ul>
+        </nav>
     </header>
 
 <!-- ----------------------------------------------------------------------->
 
     <body class="body">
 
-        <section class="section">
+        <section class="card bg-light">
             {% block title %}Titre par défaut{% endblock %}
         </section>
 
-        <section class="section">
+        <section class="jumbotron">
         {% block contents %}{% endblock contents %}
         </section>
 
@@ -55,9 +52,11 @@
     <footer>
 
     </footer>
+
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="/projet4/public/js/main.js"></script>
         {% block script %}{% endblock script %}
     </body>
 

@@ -15,7 +15,7 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->addComment($id, $author, $comment);
 
-        $this->redirect('../public/?page=chapter&id=' . $id);
+        header('../public/?page=chapter&id=' . $id);
 
         return $addComment = "OK";
     }
@@ -27,9 +27,10 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->reportComment($idComment);
 
-        $this->alert('Votre signalement a été transmis.');
+     /*   $this->alert('Votre signalement a été transmis.'); */
 
-        $this->redirect('../public/?page=chapter&id=' . $id);
+        header('../public/?page=chapter&id=' . $id);
+
         return $reportComment = "OK";
     }
 

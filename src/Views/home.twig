@@ -2,8 +2,8 @@
 
 {% block title %}
 
-    <h1 class="title-home">Bienvenue sur mon blog !</h1>
-    <h2 class="subtitle-home">Voici le dernier chapitre en ligne : </h2>
+    <h1 class="text-center h1">Bienvenue sur mon blog !</h1>
+    <h2 class="h3">Voici le dernier chapitre en ligne : </h2>
 
 {% endblock title%}
 
@@ -11,13 +11,12 @@
 
 {% block contents %}
 
-        <section class="chapter-home">
-            <h3 class="title-chapter-home"><strong>{{ contents.title }}</strong> | <span>Publié le {{ contents.postDate }}</span></h3>
-            <div class="content-chapter-home">
-                <p class="extract-chapter-home">{{ contents.content | raw }}</p>
-                <a href="http://localhost/projet4/public/?page=chapter&id={{ contents.id}}">Lire la suite</a>
+        <section class="col p-4 d-flex flex-column position-static">
+            <h3 class="h5 b-0"><strong>{{ contents.title }}</strong> | <span class="h6 text-muted">Publié le {{ contents.postDate }}</span></h3>
+            <div class="">
+                <p class="card-text mb-auto">{{ contents.content | raw }}</p>
+                <a class="stretched-link" href="http://localhost/projet4/public/?page=chapter&id={{ contents.id}}">Lire la suite</a>
             </div>
         </section>
-
 
 {% endblock contents %}
