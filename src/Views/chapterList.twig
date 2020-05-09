@@ -9,7 +9,7 @@
             <section>
                 <h3><strong>{{ content.title }}</strong> | Publié le {{ content.postDate }}</h3>
                 <div>
-                    <p>{{ content.content | raw }}</p>
+                    <div class="extract">{{ content.content | raw }}</div>
                     <a href="http://localhost/projet4/public/?page=chapter&id={{ content.id }}">Lire la suite</a>
                 </div>
 

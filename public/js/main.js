@@ -1,5 +1,7 @@
+
+/*Display a popup when a button is clicked*/
 buttons = document.querySelectorAll("button");
-var message ="kiki";
+var message ="";
 
 window.addEventListener("load", function()
     {
@@ -11,7 +13,6 @@ window.addEventListener("load", function()
             {
                 message = "Ce chapitre a bien été modifié.";
                 alert(message);
-
             }
             else if (buttonElt.classList.contains("deletePost"))
             {
@@ -24,37 +25,17 @@ window.addEventListener("load", function()
                 alert(message);
             }
         }
-
         for(var i=0;i<buttons.length;i++){
-            var prout = buttons[i];
-            console.log(prout)
-            prout.addEventListener('click', popup);
+            var count = buttons[i];
+            count.addEventListener('click', popup);
         }
-
     }
-
-
 )
 
-
-
-
-
-function redirect()
-{
-    window.location = '../public/index.php';
+/*display an extract of the posts*/
+var extract = document.querySelectorAll(".extract");
+for ( let i=0;i<extract.length;i++) {
+    let count = extract[i];
+    count.innerHTML = count.innerHTML.substr(0,300)+"...";
 }
 
-/*
-
-public function alert($message) {
-    $alert = "<script>alert('$message');</script>";
-    echo filter_var($alert);
-}
-
-public function redirect($url)
-{
-    $redirect = "<script>window.location = '$url'</script>";
-    echo filter_var($redirect);
-}
-*/

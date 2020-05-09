@@ -19,7 +19,7 @@ class UserController extends Controller
         $this->commentManager = new CommentManager();
     }
 
-    public function display()
+    public function inscription()
     {
         echo $this->render('inscription.twig');
     }

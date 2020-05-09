@@ -2,20 +2,19 @@
 
 {% block title %}
 
-    <h1 class="text-center h1">Bienvenue sur mon blog !</h1>
-    <h2 class="h3">Voici le dernier chapitre en ligne : </h2>
+    <h1 class="jumbotron text-center h1">Bienvenue sur mon blog !</h1>
+
 
 {% endblock title%}
 
-
-
 {% block contents %}
 
-        <section class="col p-4 d-flex flex-column position-static">
-            <h3 class="h5 b-0"><strong>{{ contents.title }}</strong> | <span class="h6 text-muted">Publié le {{ contents.postDate }}</span></h3>
-            <div class="">
-                <p class="card-text mb-auto">{{ contents.content | raw }}</p>
-                <a class="stretched-link" href="http://localhost/projet4/public/?page=chapter&id={{ contents.id}}">Lire la suite</a>
+        <section class="card col-sm p-4 d-flex flex-column position-static ">
+            <h2 class="h3 container ">Voici le dernier chapitre en ligne : </h2>
+            <h3 class="card-header h5 b-0"><strong>{{ contents.title }}</strong> | <span class="h6 text-muted">Publié le {{ contents.postDate }}</span></h3>
+            <div class="card">
+                <div class="extract card-text mb-auto">{{ contents.content | raw }}</div>
+                <a class="stretched-link card-link linkoff" href="http://localhost/projet4/public/?page=chapter&id={{ contents.id}}">Lire la suite</a>
             </div>
         </section>
 

@@ -13,7 +13,7 @@
 
                     {% if session.rank is same as ("Admin") %}
                         <a href="http://localhost/projet4/public/?page=modifPost&id={{ contents.id }}">
-                            <input type="button" value ="Modifier ce chapitre">
+                            <button type="button">Modifier ce chapitre</button>
                         </a>
                         <a href="http://localhost/projet4/public/?page=deletePost&id={{ contents.id }}">
                             <button class="button deletePost" type="button" >Supprimer ce chapitre</button>

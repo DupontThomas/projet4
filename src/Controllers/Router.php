@@ -42,7 +42,7 @@ class Router
                 break;
 
             case "inscription" :
-                $this->userController->display();
+                $this->userController->inscription();
                 break;
 
             case "sendinscription" :

@@ -48,6 +48,7 @@ class PostsController extends Controller
         $title = filter_input(INPUT_POST, 'titleNewPost');
         $content = filter_input(INPUT_POST, 'contentNewPost');
         $this->postManager->addPost($title,$content);
+
         header("Location: http://localhost/projet4/public/index.php");
     }
     public function deletePost($id)
@@ -72,11 +73,10 @@ class PostsController extends Controller
         $this->postManager->updatePost($title,$content,$id);
 
         header("Location: http://localhost/projet4/public/index.php");
-
     }
 
     public function errorChapter()
     {
-        echo $this->render('error.twig');
+        $this->display('error.twig');
     }
 }
