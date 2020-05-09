@@ -1,20 +1,19 @@
 {% extends "layout.twig" %}
 
-{% block title %} <h1>{{ contents.title }}</h1> {% endblock title%}
+{% block title %} <h1 class="jumbotron jumbotron-fluid text-center h1">Modifier un chapitre</h1> {% endblock title%}
 
 {% block contents %}
 
+    <div class="modify">
+        <form method="post" action="http://localhost/projet4/public/?page=updatePost&id={{ contents.id }}">
+            <label for="title">Titre</label>
+            <input type="text" class="text-center" name="titleUpdatePost" value="{{ contents.title }}">
 
-    <h2>Ajouter un nouveau chapitre :</h2>
+            <textarea aria-label="content" id="contentUpdatePost" name="contentUpdatePost" rows="22" cols ="100">{{ contents.content | raw }}</textarea>
 
-    <form method="post" action="http://localhost/projet4/public/?page=updatePost&id={{ contents.id }}">
-        <label for="title">Titre</label>
-        <input type="text" name="titleUpdatePost" value="{{ contents.title }}">
-
-        <textarea aria-label="content" id="contentUpdatePost" name="contentUpdatePost" rows="22" cols ="100">{{ contents.content | raw }}</textarea>
-
-        <button class="button modifyPost" type="submit">Mettre à jour</button>
-    </form>
+            <button class="button modifyPost" type="submit">Mettre à jour</button>
+        </form>
+    </div>
 
 {% endblock contents %}
 

@@ -36,6 +36,6 @@ window.addEventListener("load", function()
 var extract = document.querySelectorAll(".extract");
 for ( let i=0;i<extract.length;i++) {
     let count = extract[i];
-    count.innerHTML = count.innerHTML.substr(0,300)+"...";
+    count.innerHTML = count.innerHTML.substr(0,470)+"...";
 }
 
