@@ -1,21 +1,23 @@
 {% extends "layout.twig" %}
 
-{% block title %} <h1 class="jumbotron jumbotron-fluid text-center h1 bg">{{ contents.title }}</h1> {% endblock %}
+{% block title %} {{ contents.title }} {% endblock %}
 
         {% block contents %}
 
 
                 <section class="card">
-                    <h2 class="card-title"> Publié le {{ contents.postDate }}</h2>
+                    <h2 class="card-header"> Publié le {{ contents.postDate }}</h2>
                     <div class="card-text text-left">{{ contents.content | raw }}</div>
 
                     {% if session.rank is same as ("Admin") %}
-                        <a href="http://localhost/projet4/public/?page=modifPost&id={{ contents.id }}">
-                            <button type="button">Modifier ce chapitre</button>
-                        </a>
-                        <a href="http://localhost/projet4/public/?page=deletePost&id={{ contents.id }}">
-                            <button class="button deletePost" type="button" >Supprimer ce chapitre</button>
-                        </a>
+                        <div class="chapterBtn btn-group" role="group" aria-label="Editing chapter"></div>
+                            <a href="http://localhost/projet4/public/?page=modifPost&id={{ contents.id }}">
+                                <button type="button" class="btn btn-secondary">Modifier ce chapitre</button>
+                            </a>
+                            <a href="http://localhost/projet4/public/?page=deletePost&id={{ contents.id }}">
+                                <button class="btn btn-secondary deletePost" type="button" >Supprimer ce chapitre</button>
+                            </a>
+                        </div>
                     {% endif %}
 
 
@@ -30,16 +32,16 @@
     <h3>Commentaires : </h3>
 
     {% for comment in comments %}
-        <section>
+        <section class="card">
 
-            <h5>Posté par : <strong>{{ comment.author }}</strong>, le {{ comment.date_publication_fr }}</h5>
+            <h5 class="card-header">Posté par : <strong class="card-title">{{ comment.author }}</strong>, le {{ comment.date_publication_fr }}</h5>
             <div>
-                <p>{{ comment.comment | nl2br }}</p>
+                <p class="card-text text-left">{{ comment.comment | nl2br }}</p>
 
                 {% if session.pseudo is defined %}
-                    <form method="post" action="http://localhost/projet4/public/?page=reportComment&id={{ contents.id }}">
+                    <form method="post" class="modify" action="http://localhost/projet4/public/?page=reportComment&id={{ contents.id }}">
                         <input type="hidden" name="idComment" value="{{ comment.id }}">
-                        <button class="reportComment" type="submit" value="Signaler">Signaler</button>
+                        <button class="reportComment space" type="submit" value="Signaler">Signaler</button>
                     </form>
                 {% endif %}
             </div>

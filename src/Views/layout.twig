@@ -10,7 +10,7 @@
     </head>
 
 <!------------------------------------------------------------------------->
-    <header class="">
+    <header class="fixed-top">
         <nav class="nav nav-pills flex-column flex-sm-row navbar-dark bg-dark ">
 
             <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
@@ -41,14 +41,14 @@
     <body class="body">
 
         <section id="title" class="text-center ">
-            {% block title %}Titre par défaut{% endblock %}
+            <h1 class="jumbotron jumbotron-fluid text-center h1 bg">{% block title %}Titre par défaut{% endblock %}</h1>
         </section>
 
         <section id="content" class="container text-center ">
         {% block contents %}{% endblock contents %}
         </section>
 
-        <section id="comment" class="section">
+        <section id="comment" class="container section">
         {% block comments %}{% endblock comments %}
         </section>
 

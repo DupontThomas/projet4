@@ -29,7 +29,33 @@ body, html {
     justify-content: center;
 }
 
-.chapter-list
+.space
 {
     margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.margin-auto
+{
+    margin: auto;
+}
+
+.card-header, .card-text
+{
+    padding: 20px;
+}
+
+.btnAdminComment
+{
+    width: 100px;
+    margin: 20px;
+}
+.supprComment
+{
+    background-color: darkred;
+}
+
+.validComment
+{
+    background-color: mediumseagreen;
 }

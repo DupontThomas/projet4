@@ -1,12 +1,12 @@
 {% extends "layout.twig" %}
 
-        {% block title %}<h1 class="jumbotron jumbotron-fluid text-center h1">Liste des chapitres</h1>{% endblock %}
+        {% block title %}Liste des chapitres{% endblock %}
 
 
         {% block contents %}
             {% for content in contents %}
 
-            <section class="card chapter-list">
+            <section class="card space">
                 <h3 class="card-header h5 b-0 text-left"><strong class="card-title">{{ content.title }}</strong> | <span class="h6 text-muted"> Publié le {{ content.postDate }}</span></h3>
                 <div>
                     <div class="extract text-left">{{ content.content | raw }}</div>

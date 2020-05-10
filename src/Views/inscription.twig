@@ -1,40 +1,43 @@
 {% extends "layout.twig" %}
 
-    {% block title %}<h1 class="jumbotron jumbotron-fluid text-center h1">Inscrivez-vous !</h1>{% endblock %}
+    {% block title %}Inscrivez-vous !{% endblock %}
 
     {% block contents %}
 
-        <h2>Vous êtes déjà inscrit ? Connectez-vous :</h2>
+        <h2 class="space">Vous êtes déjà inscrit ? Connectez-vous :</h2>
 
-        <form method="post" action="http://localhost/projet4/public/?page=sendconnection">
+        <div class="form-group">
+            <form class="space" method="post" action="http://localhost/projet4/public/?page=sendconnection">
+
+                    <label for="pseudo">Votre pseudo :</label>
+                    <input type="text" class="form-control w-50 p-3 margin-auto" name="pseudoConnection" id="pseudoConnection">
+
+                    <label for="password">Votre mot de passe :</label>
+                    <input type="password" class="form-control w-50 p-3 margin-auto" name="passwordConnection" id="passwordConnection" />
+
+                <input type="submit" value="Envoyer">
+            </form>
+        </div>
+
+        <h2 class="space">Pas encore inscrit ? Remplissez le formulaire ci-dessous pour rejoindre notre communauté :</h2>
+
+        <form class="space form-group " method="post" action="http://localhost/projet4/public/?page=sendinscription">
             <label for="pseudo">Votre pseudo :</label>
-            <input type="text" name="pseudoConnection" id="pseudoConnection">
+            <input type="text" class="form-control w-50 p-3 margin-auto" name="pseudo" id="pseudo">
 
             <label for="password">Votre mot de passe :</label>
-            <input type="password" name="passwordConnection" id="passwordConnection" />
-
-            <input type="submit" value="Envoyer">
-        </form>
-
-        <h2>Pas encore inscrit ? Remplissez le formulaire ci-dessous pour rejoindre notre communauté :</h2>
-
-        <form method="post" action="http://localhost/projet4/public/?page=sendinscription">
-            <label for="pseudo">Votre pseudo :</label>
-            <input type="text" name="pseudo" id="pseudo">
-
-            <label for="password">Votre mot de passe :</label>
-            <input type="password" name="password" id="password" />
+            <input type="password" class="form-control w-50 p-3 margin-auto" name="password" id="password" />
 
             <label for="password2">Retapez votre mot de passe :</label>
-            <input type="password" name="password2" id="password2" />
+            <input type="password" class="form-control w-50 p-3 margin-auto" name="password2" id="password2" />
 
             <label for="email">Votre adresse e-mail :</label>
-            <input type="email" name="email" id="email"/>
+            <input type="email" class="form-control w-50 p-3 margin-auto " name="email" id="email"/>
 
-            <input type="submit" value="Envoyer">
+            <input type="submit" class="btn btn-primary space" value="Envoyer">
 
         </form>
 
-        <p>Devenir membre vous permettra de publier des commentaires sur mon site !</p>
+        <p class="h5">Devenir membre vous permettra de publier des commentaires sur mon site !</p>
 
     {% endblock contents %}
