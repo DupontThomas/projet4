@@ -13,11 +13,6 @@ class Controller
         $this->twig = $twig;
     }
 
-    public function render($view, array $params = [])
-    {
-        return $this->twig->render($view, $params);
-    }
-
     public function display($view, array $params = [])
     {
         return $this->twig->display($view, $params);

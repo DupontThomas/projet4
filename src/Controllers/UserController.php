@@ -21,7 +21,7 @@ class UserController extends Controller
 
     public function inscription()
     {
-        echo $this->render('inscription.twig');
+        $this->display('inscription.twig');
     }
 
     public function addUser()
@@ -40,11 +40,11 @@ class UserController extends Controller
                 exit;
             } else {
                 $this->alert("Ce pseudo est déjà utilisé. Veuillez en choisir un autre");
-                echo $this->render("inscription.twig");
+                $this->display("inscription.twig");
             }
         } else {
             $this->alert("Les mots de passe ne sont pas identiques. Veuillez vérifier votre saisie.");
-            echo $this->render("inscription.twig");
+            $this->display("inscription.twig");
         }
     }
 
@@ -64,11 +64,11 @@ class UserController extends Controller
                 exit;
             } else {
                 $this->alert("Identifiant ou mot de passe incorrect !");
-                echo $this->render('inscription.twig');
+                $this->display('inscription.twig');
             }
         } else {
             $this->alert("Identifiant ou mot de passe incorrect !");
-            echo $this->render('inscription.twig');
+           $this->display('inscription.twig');
         }
     }
 
@@ -82,7 +82,7 @@ class UserController extends Controller
     public function displayAdmin()
     {
         $listReportedComment = $this->commentManager->reportedComment();
-        echo $this->render('administration.twig', ['contents' => $listReportedComment]);
+        $this->display('administration.twig', ['contents' => $listReportedComment]);
     }
 }
 

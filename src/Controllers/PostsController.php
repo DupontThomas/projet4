@@ -25,7 +25,7 @@ class PostsController extends Controller
         if($checkPost[0] > 0) {
             $lastPosts = $this->postManager->getReadPost($id);
             $listComment = $this->commentManager->getComment($id);
-            echo $this->render('chapter.twig', ['contents' => $lastPosts, 'comments' => $listComment]);
+            $this->display('chapter.twig', ['contents' => $lastPosts, 'comments' => $listComment]);
         } else {
             $this->errorChapter();
         }
@@ -34,13 +34,13 @@ class PostsController extends Controller
     public function chapterList()
     {
         $listPosts = $this->postManager->getPostList();
-        echo $this->render('chapterList.twig', ['contents' => $listPosts]);
+        $this->display('chapterList.twig', ['contents' => $listPosts]);
     }
 
     public function lastChapter()
     {
         $lastChapter = $this->postManager->getLastPost();
-        echo $this->render('home.twig', ['contents' => $lastChapter]);
+        $this->display('home.twig', ['contents' => $lastChapter]);
     }
 
     public function addPost()
@@ -62,7 +62,7 @@ class PostsController extends Controller
     public function getModifPage($id)
     {
         $getPost = $this->postManager->getReadPost($id);
-        echo $this->render('modify.twig', ['contents' => $getPost]);
+        $this->display('modify.twig', ['contents' => $getPost]);
     }
 
     public function updatePost($id)

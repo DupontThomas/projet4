@@ -22,7 +22,7 @@ class CommentController extends Controller
 
     public function reportComment($id)
     {
-        $idComment = $comment = filter_input(INPUT_POST, 'idComment');
+        $idComment = filter_input(INPUT_POST, 'idComment');
 
         $commentManager = new CommentManager();
         $commentManager->reportComment($idComment);
@@ -38,7 +38,7 @@ class CommentController extends Controller
     {
         $commentManager = new CommentManager();
         $commentManager->validateComment($id);
-        header("Location: http://localhost/projet4/public/?page=admin");
+        header("Location: ?page=admin");
         exit;
     }
 
