@@ -24,8 +24,8 @@
                     <h5 class="card-header"><span class="card-title">Posté par : {{ content.author }} le {{ content.date_publication_fr }} </span>  // <a href="http://localhost/projet4/public/?page=chapter&id={{ content.id_post}}"> Lien vers le chapitre</a> </h5>
                     <div>
                         <p>{{ content.comment }}</p>
-                        <a  class="btn btn-primary space validComment btnAdminComment" href="http://localhost/projet4/public/?page=valcom&id={{ content.id }}">Valider</a>
-                        <a  class="btn btn-primary space supprComment btnAdminComment" href="http://localhost/projet4/public/?page=delcom&id={{ content.id }}">Supprimer</a>
+                        <a  class="btn btn-primary space greenBtn btnAdmin" href="http://localhost/projet4/public/?page=valcom&id={{ content.id }}">Valider</a>
+                        <a  class="btn btn-primary space redBtn btnAdmin" href="http://localhost/projet4/public/?page=delcom&id={{ content.id }}">Supprimer</a>
                     </div>
                 </div>
 

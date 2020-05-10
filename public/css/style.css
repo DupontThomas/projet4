@@ -45,17 +45,22 @@ body, html {
     padding: 20px;
 }
 
-.btnAdminComment
+.btnAdmin
 {
     width: 100px;
     margin: 20px;
 }
-.supprComment
+.redBtn
 {
     background-color: darkred;
 }
 
-.validComment
+.greenBtn
 {
     background-color: mediumseagreen;
+}
+
+.alertBtn
+{
+    background-color: orange;
 }
