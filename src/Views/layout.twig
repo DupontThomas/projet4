@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Blog de Jean Forteroche</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="http://localhost/projet4/public/css/style.css">
+        <link rel="stylesheet" href="{{ url.URL }}public/css/style.css">
     </head>
 
 <!------------------------------------------------------------------------->
@@ -29,6 +29,8 @@
                     <a class="flex-sm-fill text-sm-center nav-link"  href="http://localhost/projet4/public/?page=delog">Se déconnecter</a>
                     <p class="flex-sm-fill text-sm-center nav-link disabled">Bienvenue {{ session.pseudo }}</p>
                 {% endif %}
+
+                <p>{{ url.URL }}</p>
             </div>
 
             <div class="resp-menu">
