@@ -13,19 +13,12 @@ class Controller
         $this->twig = $twig;
     }
 
-    public function render($view, array $params = [])
+    public function display($view, array $params = [])
     {
-        return $this->twig->render($view, $params);
+        return $this->twig->display($view, $params);
     }
 
     public function alert($message) {
-        $alert = "<script>alert('$message');</script>";
-        echo filter_var($alert);
-    }
-
-    public function redirect($url)
-    {
-        $redirect = "<script>window.location = '$url'</script>";
-        echo filter_var($redirect);
+        $this->twig->addGlobal("alertMessage", $message);
     }
 }

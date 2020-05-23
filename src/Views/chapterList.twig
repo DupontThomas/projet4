@@ -1,15 +1,15 @@
 {% extends "layout.twig" %}
 
-        {% block title %}CHAPTERLIST // Liste des chapitres{% endblock %}
+        {% block title %}Liste des chapitres{% endblock %}
 
 
         {% block contents %}
             {% for content in contents %}
 
-            <section>
-                <h3><strong>{{ content.title }}</strong> | Publié le {{ content.postDate }}</h3>
+            <section class="card space">
+                <h3 class="card-header h5 b-0 text-left"><strong class="card-title">{{ content.title }}</strong> | <span class="h6 text-muted"> Publié le {{ content.postDate }}</span></h3>
                 <div>
-                    <p>{{ content.content | raw }}</p>
+                    <div class="extract card-text text-left">{{ content.content | raw }}</div>
                     <a href="http://localhost/projet4/public/?page=chapter&id={{ content.id }}">Lire la suite</a>
                 </div>
 

@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Configuration;
 use App\Models\CommentManager;
 use App\Models\UserManager;
 use Twig\Environment;
@@ -8,8 +9,8 @@ use Twig\Environment;
 class UserController extends Controller
 {
 
-    private $userManager = null;
-    private $commentManager = null;
+    private $userManager;
+    private $commentManager;
 
     public function __construct(Environment $twig)
     {
@@ -19,9 +20,9 @@ class UserController extends Controller
         $this->commentManager = new CommentManager();
     }
 
-    public function display()
+    public function inscription()
     {
-        echo $this->render('inscription.twig');
+        $this->display('inscription.twig');
     }
 
     public function addUser()
@@ -36,14 +37,15 @@ class UserController extends Controller
             if ($checkPseudo[0] === "0") {
                 $cryptedPass = password_hash($password, PASSWORD_DEFAULT);
                 $this->userManager->addUser($pseudo, $mail, $cryptedPass);
-                $this->redirect('../public/index.php');
+                header("Location:" . Configuration::URL . "public/index.php");
+                exit;
             } else {
                 $this->alert("Ce pseudo est déjà utilisé. Veuillez en choisir un autre");
-                echo $this->render("inscription.twig");
+                $this->display("inscription.twig");
             }
         } else {
             $this->alert("Les mots de passe ne sont pas identiques. Veuillez vérifier votre saisie.");
-            echo $this->render("inscription.twig");
+            $this->display("inscription.twig");
         }
     }
 
@@ -59,27 +61,29 @@ class UserController extends Controller
             if ($passwordOk) {
                 $_SESSION['pseudo'] = $pseudo;
                 $_SESSION['rank'] = $user['rank'];
-                $this->redirect('../public/index.php');
+                header("Location:" . Configuration::URL . "public/index.php");
+                exit;
             } else {
                 $this->alert("Identifiant ou mot de passe incorrect !");
-                echo $this->render('inscription.twig');
+                $this->display('inscription.twig');
             }
         } else {
             $this->alert("Identifiant ou mot de passe incorrect !");
-            echo $this->render('inscription.twig');
+           $this->display('inscription.twig');
         }
     }
 
     public function deconnection()
     {
         session_destroy();
-        $this->redirect('../public/index.php');
+        header("Location:" . Configuration::URL . "public/index.php");
+        exit;
     }
 
     public function displayAdmin()
     {
         $listReportedComment = $this->commentManager->reportedComment();
-        echo $this->render('administration.twig', ['contents' => $listReportedComment]);
+        $this->display('administration.twig', ['contents' => $listReportedComment]);
     }
 }
 

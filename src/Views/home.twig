@@ -1,20 +1,22 @@
 {% extends "layout.twig" %}
 
-{% block title %} <h1>HOME // Bienvenue sur mon blog !</h1> {% endblock title%}
+{% block title %}
 
-{% block subTitle %} <h2>Voici le dernier chapitre en ligne : </h2>{% endblock subTitle%}
+    Bienvenue sur mon blog !
+
+{% endblock title%}
 
 {% block contents %}
 
-    <div>
-        <section>
-            <h3> Partie {{ contents.id }} : <strong>{{ contents.title }}</strong> | Publié le {{ contents.postDate }}</h3>
-            <div>
-                <p>{{ contents.content | raw }}</p>
-                <a href="http://localhost/projet4/public/?page=chapter&id={{ contents.id}}">Lire la suite</a>
+            <section class=" col-sm p-4 d-flex flex-column position-static ">
+            <h2 class="h3 container space">Voici le dernier chapitre en ligne : </h2>
+            <div class="card">
+                <h3 class="card-header h5 b-0"><strong class="card-title">{{ contents.title }}</strong> | <span class="h6 text-muted">Publié le {{ contents.postDate }}</span></h3>
+                <div class="card">
+                    <div class="extract card-text mb-auto text-left">{{ contents.content | raw }}</div>
+                    <a class="stretched-link card-link linkoff" href="http://localhost/projet4/public/?page=chapter&id={{ contents.id}}">Lire la suite</a>
+                </div>
             </div>
-
         </section>
-    </div>
 
 {% endblock contents %}

@@ -42,7 +42,7 @@ class Router
                 break;
 
             case "inscription" :
-                $this->userController->display();
+                $this->userController->inscription();
                 break;
 
             case "sendinscription" :
@@ -59,9 +59,6 @@ class Router
 
             case "sendcom" :
                 $this->commentController->addComment($id);
-                if( $addcomment = "OK") {
-                    echo '<meta http-equiv="refresh" content="0;URL=http://localhost/projet4/public/?page=chapter&id=' . $id . '">';
-                }
                 break;
 
             case "admin" :
@@ -81,7 +78,6 @@ class Router
 
             case "modifPost" :
                 $this->postsController->getModifPage($id);
-                var_dump($id);
                 break;
 
             case "updatePost" :
@@ -89,10 +85,7 @@ class Router
                 break;
 
             case "reportComment" :
-                $this->commentController->reportComment();
-                if( $reportComment = "OK") {
-                    echo '<meta http-equiv="refresh" content="0;URL=http://localhost/projet4/public/?page=chapter&id=' . $id . '">';
-                }
+                $this->commentController->reportComment($id);
                 break;
 
             case "valcom" :

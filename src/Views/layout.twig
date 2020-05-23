@@ -2,54 +2,134 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Blog de Jean Forteroche</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url.URL }}public/css/style.css">
     </head>
 
-<!-- ----------------------------------------------------------------------->
+<!------------------------------------------------------------------------->
+    <header class="fixed-top">
+        <nav class="nav nav-pills flex-column flex-sm-row navbar-dark bg-dark ">
 
-    <header>
+            <a href="http://localhost/projet4/public/?page=home" class="navbar-brand">Un billet pour l'Alaska</a>
 
-        <ul>
-            <li><a href="http://localhost/projet4/public/?page=home">Home</a></li>
-            <li><a href="http://localhost/projet4/public/?page=chapters">Chapitres</a></li>
+            <div class="menu">
+                <a class="flex-sm-fill text-sm-center nav-link " href="http://localhost/projet4/public/?page=home">Home</a>
+                <a class="flex-sm-fill text-sm-center nav-link" href="http://localhost/projet4/public/?page=chapters">Chapitres</a>
 
-            {% block session %}
                 {% if session.pseudo is not defined %}
-                <li><a href="http://localhost/projet4/public/?page=inscription">Connexion/Inscription</a></li>
+                  <a class="flex-sm-fill text-sm-center nav-link"  href="http://localhost/projet4/public/?page=inscription">Connexion/Inscription</a>
                 {% endif %}
                 {% if session.pseudo is defined %}
                     {% if session.rank is same as ("Admin") %}
-                        <li><a href="http://localhost/projet4/public/?page=admin">Administration</a></li>
+                        <a class="flex-sm-fill text-sm-center nav-link"  href="http://localhost/projet4/public/?page=admin">Administration</a>
                     {% endif %}
-                    <li><a href="http://localhost/projet4/public/?page=delog">Se déconnecter</a></li>
-                    <p>Bienvenue {{ session.pseudo }}</p>
+                    <a class="flex-sm-fill text-sm-center nav-link"  href="http://localhost/projet4/public/?page=delog">Se déconnecter</a>
+                    <p class="flex-sm-fill text-sm-center nav-link disabled">Bienvenue {{ session.pseudo }}</p>
                 {% endif %}
-            {% endblock %}
+
+                <p>{{ url.URL }}</p>
+            </div>
+
+            <div class="resp-menu">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="flex-sm-fill  nav-link " href="http://localhost/projet4/public/?page=home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="flex-sm-fill  nav-link" href="http://localhost/projet4/public/?page=chapters">Chapitres</a>
+                        </li>
+
+                        {% if session.pseudo is not defined %}
+                            <li class="nav-item">
+                                <a class="flex-sm-fill nav-link"  href="http://localhost/projet4/public/?page=inscription">Connexion/Inscription</a>
+                            </li>
+                        {% endif %}
+                        {% if session.pseudo is defined %}
+                            {% if session.rank is same as ("Admin") %}
+                                <li class="nav-item">
+                                    <a class="flex-sm-fill nav-link"  href="http://localhost/projet4/public/?page=admin">Administration</a>
+                                </li>
+                            {% endif %}
+                            <li class="nav-item dropdown">
+                                <p class="flex-sm-fill nav-link disabled">Bienvenue {{ session.pseudo }}</p>
+                            </li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
 
 
-        </ul>
+        </nav>
     </header>
 
-<!-- ----------------------------------------------------------------------->
+<!------------------------------------------------------------------------->
 
-    <body>
+    <body class="body">
 
-        {% block title %}Titre par défaut{% endblock %}
+        <section id="title" class="text-center ">
+            <h1 class="jumbotron jumbotron-fluid text-center h1 bg">{% block title %}Titre par défaut{% endblock %}</h1>
+        </section>
 
-        {% block subTitle %}{% endblock %}
-
+        <section id="content" class="container text-center ">
         {% block contents %}{% endblock contents %}
+        </section>
 
+        <section id="comment" class="container section">
         {% block comments %}{% endblock comments %}
-
+        </section>
 
 
 <!-- ----------------------------------------------------------------------->
-    <footer>
+    <footer class="page-footer font-small special-color-dark pt-4">
 
+            <!-- Footer Elements -->
+            <div class="container">
+
+                <!-- Social buttons -->
+                <ul class="list-unstyled list-inline text-center">
+                    <li class="list-inline-item">
+                        <a class="btn-floating btn-fb mx-1">
+                            <i class="fab fa-facebook-f"> </i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="btn-floating btn-tw mx-1">
+                            <i class="fab fa-twitter"> </i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="btn-floating btn-gplus mx-1">
+                            <i class="fab fa-google-plus-g"> </i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="btn-floating btn-li mx-1">
+                            <i class="fab fa-linkedin-in"> </i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="btn-floating btn-dribbble mx-1">
+                            <i class="fab fa-dribbble"> </i>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
     </footer>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/882646a306.js" crossorigin="anonymous"></script>
+        <script src="/projet4/public/js/main.js"></script>
         {% block script %}{% endblock script %}
     </body>
 

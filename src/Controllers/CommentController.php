@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Configuration;
 use App\Models\CommentManager;
 use App\Controllers\PostsController;
 use Twig\Environment;
@@ -15,17 +16,19 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->addComment($id, $author, $comment);
 
+        header("Location:?page=chapter&id=" . $id);
+
         return $addComment = "OK";
     }
 
-    public function reportComment()
+    public function reportComment($id)
     {
-        $idComment = $comment = filter_input(INPUT_POST, 'idComment');
+        $idComment = filter_input(INPUT_POST, 'idComment');
 
         $commentManager = new CommentManager();
         $commentManager->reportComment($idComment);
 
-        $this->alert('Votre signalement a été transmis.');
+        header("Location:?page=chapter&id=" . $id);
 
         return $reportComment = "OK";
     }
@@ -35,7 +38,8 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->validateComment($id);
 
-        $this->redirect('../public/?page=admin');
+        header("Location: ?page=admin");
+        exit;
     }
 
     public function deleteComment($id)
@@ -43,6 +47,7 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->deleteComment($id);
 
-        $this->redirect('../public/?page=admin');
+        header("Location:" . Configuration::URL . "public/?page=admin");
+        exit;
     }
 }

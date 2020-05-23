@@ -1,5 +1,9 @@
 <?php
+
+use App\Controllers\CommentController;
+use App\Controllers\PostsController;
 use App\Controllers\Router;
+use App\Controllers\UserController;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Tracy\Debugger;
@@ -16,10 +20,9 @@ $twig = new Environment($loader, [
     //'debug' => false
 ]);
 $twig->addGlobal('session', $_SESSION);
-$postController= new \App\Controllers\PostsController($twig);
-$commentController = new \App\Controllers\CommentController($twig);
-$userController = new \App\Controllers\UserController($twig);
-
+$postController= new PostsController($twig);
+$commentController = new CommentController($twig);
+$userController = new UserController($twig);
 
 $router = new Router($postController,$commentController,$userController);
 $router->run();

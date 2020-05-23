@@ -1,0 +1,98 @@
+body, html {
+    height: 100%;
+    background-image: url("../img/bgText.jpg");
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+}
+
+.bg
+{
+    /* The image used */
+    background-image: url("../img/bgHome.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    color: white;
+    padding-bottom: 230px;
+}
+
+.modify
+{
+    display: flex;
+    justify-content: center;
+}
+
+.space
+{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.margin-auto
+{
+    margin: auto;
+}
+
+.card-header, .card-text
+{
+    padding: 20px;
+}
+
+.btnAdmin
+{
+    width: 100px;
+    margin: 20px;
+}
+.redBtn
+{
+    background-color: darkred;
+}
+
+.greenBtn
+{
+    background-color: mediumseagreen;
+}
+
+.alertBtn
+{
+    background-color: orange;
+}
+
+.resp-menu
+{
+    display: none;
+}
+
+.menu
+{
+    display: flex;
+}
+
+@media (max-width: 991.98px)
+{
+    nav
+    {
+        display: flex;
+        width: 100%;
+
+        justify-content: space-between;
+    }
+    .resp-menu
+    {
+        display: initial;
+        text-align: right;
+        margin-right: 3%;
+    }
+
+    .menu
+    {
+        display: none;
+    }
+}

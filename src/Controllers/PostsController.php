@@ -1,14 +1,15 @@
 <?php
 namespace App\Controllers;
 
+use App\Configuration;
 use App\Models\CommentManager;
 use App\Models\PostsManager;
 use Twig\Environment;
 
 class PostsController extends Controller
 {
-    private $postManager = null;
-    private $commentManager = null;
+    private $postManager;
+    private $commentManager;
 
     public function __construct(Environment $twig)
     {
@@ -25,7 +26,7 @@ class PostsController extends Controller
         if($checkPost[0] > 0) {
             $lastPosts = $this->postManager->getReadPost($id);
             $listComment = $this->commentManager->getComment($id);
-            echo $this->render('chapter.twig', ['contents' => $lastPosts, 'comments' => $listComment]);
+            $this->display('chapter.twig', ['contents' => $lastPosts, 'comments' => $listComment]);
         } else {
             $this->errorChapter();
         }
@@ -34,13 +35,13 @@ class PostsController extends Controller
     public function chapterList()
     {
         $listPosts = $this->postManager->getPostList();
-        echo $this->render('chapterList.twig', ['contents' => $listPosts]);
+        $this->display('chapterList.twig', ['contents' => $listPosts]);
     }
 
     public function lastChapter()
     {
         $lastChapter = $this->postManager->getLastPost();
-        echo $this->render('home.twig', ['contents' => $lastChapter]);
+        $this->display('home.twig', ['contents' => $lastChapter]);
     }
 
     public function addPost()
@@ -49,22 +50,20 @@ class PostsController extends Controller
         $content = filter_input(INPUT_POST, 'contentNewPost');
         $this->postManager->addPost($title,$content);
 
-        $this->redirect('../public/index.php');
+        header("Location:" . Configuration::URL . "public/index.php");
     }
     public function deletePost($id)
     {
         $this->postManager->deletePost($id);
         $this->commentManager->deleteCommentList($id);
 
-        $this->alert('Ce chapitre a bien été supprimé.');
-
-        $this->redirect('../public/index.php');
+        header("Location:" . Configuration::URL . "public/index.php");
     }
 
     public function getModifPage($id)
     {
         $getPost = $this->postManager->getReadPost($id);
-        echo $this->render('modify.twig', ['contents' => $getPost]);
+        $this->display('modify.twig', ['contents' => $getPost]);
     }
 
     public function updatePost($id)
@@ -74,13 +73,11 @@ class PostsController extends Controller
 
         $this->postManager->updatePost($title,$content,$id);
 
-        $this->alert('Ce chapitre a bien été modifié.');
-
-        $this->redirect('../public/index.php');
+        header("Location:" . Configuration::URL . "public/index.php");
     }
 
     public function errorChapter()
     {
-        echo $this->render('error.twig');
+        $this->display('error.twig');
     }
 }
