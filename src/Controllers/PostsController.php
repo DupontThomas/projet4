@@ -1,14 +1,15 @@
 <?php
 namespace App\Controllers;
 
+use App\Configuration;
 use App\Models\CommentManager;
 use App\Models\PostsManager;
 use Twig\Environment;
 
 class PostsController extends Controller
 {
-    private $postManager = null;
-    private $commentManager = null;
+    private $postManager;
+    private $commentManager;
 
     public function __construct(Environment $twig)
     {
@@ -49,14 +50,14 @@ class PostsController extends Controller
         $content = filter_input(INPUT_POST, 'contentNewPost');
         $this->postManager->addPost($title,$content);
 
-        header("Location: http://localhost/projet4/public/index.php");
+        header("Location:" . Configuration::URL . "public/index.php");
     }
     public function deletePost($id)
     {
         $this->postManager->deletePost($id);
         $this->commentManager->deleteCommentList($id);
 
-        header("Location: http://localhost/projet4/public/index.php");
+        header("Location:" . Configuration::URL . "public/index.php");
     }
 
     public function getModifPage($id)
@@ -72,7 +73,7 @@ class PostsController extends Controller
 
         $this->postManager->updatePost($title,$content,$id);
 
-        header("Location: http://localhost/projet4/public/index.php");
+        header("Location:" . Configuration::URL . "public/index.php");
     }
 
     public function errorChapter()

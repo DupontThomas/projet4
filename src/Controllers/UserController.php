@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Configuration;
 use App\Models\CommentManager;
 use App\Models\UserManager;
 use Twig\Environment;
@@ -8,8 +9,8 @@ use Twig\Environment;
 class UserController extends Controller
 {
 
-    private $userManager = null;
-    private $commentManager = null;
+    private $userManager;
+    private $commentManager;
 
     public function __construct(Environment $twig)
     {
@@ -36,7 +37,7 @@ class UserController extends Controller
             if ($checkPseudo[0] === "0") {
                 $cryptedPass = password_hash($password, PASSWORD_DEFAULT);
                 $this->userManager->addUser($pseudo, $mail, $cryptedPass);
-                header("Location: http://localhost/projet4/public/index.php");
+                header("Location:" . Configuration::URL . "public/index.php");
                 exit;
             } else {
                 $this->alert("Ce pseudo est déjà utilisé. Veuillez en choisir un autre");
@@ -60,7 +61,7 @@ class UserController extends Controller
             if ($passwordOk) {
                 $_SESSION['pseudo'] = $pseudo;
                 $_SESSION['rank'] = $user['rank'];
-                header("Location: http://localhost/projet4/public/index.php");
+                header("Location:" . Configuration::URL . "public/index.php");
                 exit;
             } else {
                 $this->alert("Identifiant ou mot de passe incorrect !");
@@ -75,7 +76,7 @@ class UserController extends Controller
     public function deconnection()
     {
         session_destroy();
-        header("Location: http://localhost/projet4/public/index.php");
+        header("Location:" . Configuration::URL . "public/index.php");
         exit;
     }
 

@@ -41,3 +41,9 @@
         <p class="h5">Devenir membre vous permettra de publier des commentaires sur mon site !</p>
 
     {% endblock contents %}
+
+    {% block script %}
+        {% if alertMessage is defined %}
+            <script>alert ( '{{ alertMessage }}' );</script>
+        {% endif %}
+    {% endblock script %}

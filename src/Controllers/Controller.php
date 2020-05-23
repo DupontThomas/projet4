@@ -18,4 +18,7 @@ class Controller
         return $this->twig->display($view, $params);
     }
 
+    public function alert($message) {
+        $this->twig->addGlobal("alertMessage", $message);
+    }
 }
