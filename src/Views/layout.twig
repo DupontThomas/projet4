@@ -6,24 +6,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Blog de Jean Forteroche</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="/projet4/public/css/style.css">
+        <link rel="stylesheet" href="http://localhost/projet4/public/css/style.css">
     </head>
 
 <!------------------------------------------------------------------------->
     <header class="fixed-top">
         <nav class="nav nav-pills flex-column flex-sm-row navbar-dark bg-dark ">
 
-            <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
-                    aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="animated-icon1"></div>
-            </button>
+            <a href="http://localhost/projet4/public/?page=home" class="navbar-brand">Un billet pour l'Alaska</a>
 
-            <p class="navbar-brand">Un billet pour l'Alaska</p>
-            <a class="flex-sm-fill text-sm-center nav-link " href="http://localhost/projet4/public/?page=home">Home</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="http://localhost/projet4/public/?page=chapters">Chapitres</a>
-            {% block session %}
+            <div class="menu">
+                <a class="flex-sm-fill text-sm-center nav-link " href="http://localhost/projet4/public/?page=home">Home</a>
+                <a class="flex-sm-fill text-sm-center nav-link" href="http://localhost/projet4/public/?page=chapters">Chapitres</a>
+
                 {% if session.pseudo is not defined %}
-                <a class="flex-sm-fill text-sm-center nav-link"  href="http://localhost/projet4/public/?page=inscription">Connexion/Inscription</a>
+                  <a class="flex-sm-fill text-sm-center nav-link"  href="http://localhost/projet4/public/?page=inscription">Connexion/Inscription</a>
                 {% endif %}
                 {% if session.pseudo is defined %}
                     {% if session.rank is same as ("Admin") %}
@@ -32,7 +29,42 @@
                     <a class="flex-sm-fill text-sm-center nav-link"  href="http://localhost/projet4/public/?page=delog">Se déconnecter</a>
                     <p class="flex-sm-fill text-sm-center nav-link disabled">Bienvenue {{ session.pseudo }}</p>
                 {% endif %}
-            {% endblock %}
+            </div>
+
+            <div class="resp-menu">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="flex-sm-fill  nav-link " href="http://localhost/projet4/public/?page=home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="flex-sm-fill  nav-link" href="http://localhost/projet4/public/?page=chapters">Chapitres</a>
+                        </li>
+
+                        {% if session.pseudo is not defined %}
+                            <li class="nav-item">
+                                <a class="flex-sm-fill nav-link"  href="http://localhost/projet4/public/?page=inscription">Connexion/Inscription</a>
+                            </li>
+                        {% endif %}
+                        {% if session.pseudo is defined %}
+                            {% if session.rank is same as ("Admin") %}
+                                <li class="nav-item">
+                                    <a class="flex-sm-fill nav-link"  href="http://localhost/projet4/public/?page=admin">Administration</a>
+                                </li>
+                            {% endif %}
+                            <li class="nav-item dropdown">
+                                <p class="flex-sm-fill nav-link disabled">Bienvenue {{ session.pseudo }}</p>
+                            </li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+
+
         </nav>
     </header>
 
