@@ -5,7 +5,7 @@
 {% block contents %}
 
     <div class="modify">
-        <form method="post" action="http://localhost/projet4/public/?page=updatePost&id={{ contents.id }}">
+        <form method="post" action="{{ url.URL }}public/?page=updatePost&id={{ contents.id }}">
             <label for="title">Titre</label>
             <input type="text" class="text-center" name="titleUpdatePost" value="{{ contents.title }}">
 

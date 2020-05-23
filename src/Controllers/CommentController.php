@@ -1,10 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use App\Configuration;
 use App\Models\CommentManager;
-use App\Controllers\PostsController;
-use Twig\Environment;
 
 class CommentController extends Controller
 {
@@ -47,7 +44,7 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->deleteComment($id);
 
-        header("Location:" . Configuration::URL . "public/?page=admin");
+        header("Location: ?page=admin");
         exit;
     }
 }

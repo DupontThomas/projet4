@@ -7,7 +7,7 @@
         <h2 class="space">Vous êtes déjà inscrit ? Connectez-vous :</h2>
 
         <div class="form-group">
-            <form class="space" method="post" action="http://localhost/projet4/public/?page=sendconnection">
+            <form class="space" method="post" action="{{ url.URL }}public/?page=sendconnection">
 
                     <label for="pseudo">Votre pseudo :</label>
                     <input type="text" class="form-control w-50 p-3 margin-auto" name="pseudoConnection" id="pseudoConnection">
@@ -21,7 +21,7 @@
 
         <h2 class="space">Pas encore inscrit ? Remplissez le formulaire ci-dessous pour rejoindre notre communauté :</h2>
 
-        <form class="space form-group " method="post" action="http://localhost/projet4/public/?page=sendinscription">
+        <form class="space form-group " method="post" action="{{ url.URL }}public/?page=sendinscription">
             <label for="pseudo">Votre pseudo :</label>
             <input type="text" class="form-control w-50 p-3 margin-auto" name="pseudo" id="pseudo">
 

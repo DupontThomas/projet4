@@ -1,5 +1,6 @@
 <?php
 
+use App\Configuration;
 use App\Controllers\CommentController;
 use App\Controllers\PostsController;
 use App\Controllers\Router;
@@ -20,6 +21,7 @@ $twig = new Environment($loader, [
     //'debug' => false
 ]);
 $twig->addGlobal('session', $_SESSION);
+$twig->addGlobal('url', new Configuration());
 $postController= new PostsController($twig);
 $commentController = new CommentController($twig);
 $userController = new UserController($twig);

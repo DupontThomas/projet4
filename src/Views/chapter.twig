@@ -10,8 +10,8 @@
 
         {% if session.rank is same as ("Admin") %}
             <div class="modify btn-group" role="group" aria-label="Editing chapter">
-                <a class="btn btn-primary space greenBtn btnAdmin" href="http://localhost/projet4/public/?page=modifPost&id={{ contents.id }}">Modifier</a>
-                <a class="btn btn-primary space redBtn btnAdmin" href="http://localhost/projet4/public/?page=deletePost&id={{ contents.id }}">Supprimer</a>
+                <a class="btn btn-primary space greenBtn btnAdmin" href="{{ url.URL }}public/?page=modifPost&id={{ contents.id }}">Modifier</a>
+                <a class="btn btn-primary space redBtn btnAdmin" href="{{ url.URL }}public/?page=deletePost&id={{ contents.id }}">Supprimer</a>
             </div>
         {% endif %}
 
@@ -33,7 +33,7 @@
                 <p class="card-text text-left">{{ comment.comment | nl2br }}</p>
 
                 {% if session.pseudo is defined %}
-                    <form method="post" class="modify" action="http://localhost/projet4/public/?page=reportComment&id={{ contents.id }}">
+                    <form method="post" class="modify" action="{{ url.URL }}public/?page=reportComment&id={{ contents.id }}">
                         <input type="hidden" name="idComment" value="{{ comment.id }}">
                         <button class="reportComment space alertBtn" type="submit" value="Signaler">Signaler</button>
                     </form>
@@ -47,7 +47,7 @@
     {% if session.pseudo is defined %}
     <h3 class="space text-center">Ajouter un commentaire : </h3>
 
-    <form class="d-flex flex-column justify-content-center" method="post" action="http://localhost/projet4/public/?page=sendcom&id={{ contents.id }}">
+    <form class="d-flex flex-column justify-content-center" method="post" action="{{ url.URL }}public/?page=sendcom&id={{ contents.id }}">
 
         <label for="presentation"></label>
         <textarea required name="comment" id="comment"></textarea><br><br>
