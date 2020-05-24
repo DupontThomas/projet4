@@ -9,6 +9,9 @@ use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Tracy\Debugger;
 
+error_reporting(E_ALL);
+ini_set("display_errors",1);
+
 require_once '../vendor/autoload.php';
 
 session_start();

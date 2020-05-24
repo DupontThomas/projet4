@@ -9,11 +9,10 @@ class Configuration
     const USERNAME = "root";
     const PASSWORD = "";
     const URL = "http://localhost/projet4/";
-    public $URL = "http://localhost/projet4/";
 
     public function url()
     {
-        return $this->$URL;
+        return self::URL;
     }
 
 }
