@@ -36,7 +36,6 @@ class CommentController extends Controller
         $commentManager->validateComment($id);
 
         header("Location: ?page=admin");
-        exit;
     }
 
     public function deleteComment($id)
@@ -45,6 +44,5 @@ class CommentController extends Controller
         $commentManager->deleteComment($id);
 
         header("Location: ?page=admin");
-        exit;
     }
 }

@@ -38,11 +38,9 @@ class UserController extends Controller
                 $cryptedPass = password_hash($password, PASSWORD_DEFAULT);
                 $this->userManager->addUser($pseudo, $mail, $cryptedPass);
                 header("Location:" . Configuration::URL . "public/index.php");
-                exit;
-            } else {
+            }
                 $this->alert("Ce pseudo est déjà utilisé. Veuillez en choisir un autre");
                 $this->display("inscription.twig");
-            }
         } else {
             $this->alert("Les mots de passe ne sont pas identiques. Veuillez vérifier votre saisie.");
             $this->display("inscription.twig");

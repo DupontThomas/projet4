@@ -1,6 +1,6 @@
 
 /*Display a popup when a button is clicked*/
-buttons = document.querySelectorAll("button");
+var buttons = document.querySelectorAll("button");
 var message ="";
 
 window.addEventListener("load", function()
@@ -16,7 +16,7 @@ window.addEventListener("load", function()
             }
             else if (buttonElt.classList.contains("deletePost"))
             {
-                message = "Ce chapitre a bien été supprimé."
+                message = "Ce chapitre a bien été supprimé.";
                 alert(message);
             }
             else if (buttonElt.classList.contains("reportComment"))
@@ -24,13 +24,13 @@ window.addEventListener("load", function()
                 message = "Ce commentaire a bien été signalé."
                 alert(message);
             }
-        }
+        };
         for(var i=0;i<buttons.length;i++){
             var count = buttons[i];
-            count.addEventListener('click', popup);
+            count.addEventListener("click", popup);
         }
     }
-)
+);
 
 /*display an extract of the posts*/
 var extract = document.querySelectorAll(".extract");

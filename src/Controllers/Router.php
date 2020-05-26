@@ -64,8 +64,8 @@ class Router
             case "admin" :
                 if($_SESSION['rank'] === 'Admin') {
                 $this->userController->displayAdmin();
-                } else {$this->postsController->errorChapter();
                 }
+                $this->postsController->errorChapter();
                 break;
 
             case "addPost" :
