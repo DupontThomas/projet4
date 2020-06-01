@@ -64,6 +64,7 @@ class Router
             case "admin" :
                 if($_SESSION['rank'] === 'Admin') {
                 $this->userController->displayAdmin();
+                exit;
                 }
                 $this->postsController->errorChapter();
                 break;

@@ -27,6 +27,7 @@ class PostsController extends Controller
             $lastPosts = $this->postManager->getReadPost($id);
             $listComment = $this->commentManager->getComment($id);
             $this->display('chapter.twig', ['contents' => $lastPosts, 'comments' => $listComment]);
+            exit;
         }
             $this->errorChapter();
     }

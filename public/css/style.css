@@ -1,4 +1,6 @@
-body, html {
+body, html
+{
+    padding-top: 20px;
     height: 100%;
     background-image: url("../img/bgText.jpg");
     background-position: center;
@@ -22,6 +24,13 @@ body, html {
     padding-bottom: 230px;
 }
 
+.nav
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
 .modify
 {
     display: flex;
@@ -42,6 +51,12 @@ body, html {
 .card-header, .card-text
 {
     padding: 20px;
+}
+
+.card-header
+{
+    display: flex;
+    flex-direction: column;
 }
 
 .btnAdmin
@@ -67,6 +82,10 @@ body, html {
 .resp-menu
 {
     display: none;
+    float: right;
+    text-align: right;
+    margin-right: 3%;
+    width: 20%;
 }
 
 .menu
@@ -74,24 +93,43 @@ body, html {
     display: flex;
 }
 
+
 @media (max-width: 991.98px)
 {
+
     nav
     {
         display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
         width: 100%;
-
         justify-content: space-between;
     }
+
+    .navbar-brand
+    {
+        width: 20%;
+    }
+
     .resp-menu
     {
-        display: initial;
-        text-align: right;
-        margin-right: 3%;
+        display: inline;
+
     }
 
     .menu
     {
         display: none;
+    }
+}
+
+@media (max-width: 768px)
+{
+
+
+    .card-header
+    {
+        display: flex;
+        flex-direction: column;
     }
 }

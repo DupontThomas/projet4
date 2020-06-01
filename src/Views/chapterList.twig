@@ -7,7 +7,7 @@
             {% for content in contents %}
 
             <section class="card space">
-                <h3 class="card-header h5 b-0 text-left"><strong class="card-title">{{ content.title }}</strong> | <span class="h6 text-muted"> Publié le {{ content.postDate }}</span></h3>
+                <h3 class="card-header h5 b-0 text-left"><strong class="card-title">{{ content.title }}</strong><span class="h6 text-muted"> Publié le {{ content.postDate }}</span></h3>
                 <div>
                     <div class="extract card-text text-left">{{ content.content | raw }}</div>
                     <a href="{{ url.URL }}public/?page=chapter&id={{ content.id }}">Lire la suite</a>
