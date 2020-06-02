@@ -1,5 +1,6 @@
-body, html
-{
+
+body,
+html {
     padding-top: 20px;
     height: 100%;
     background-image: url("../img/bgText.jpg");
@@ -8,14 +9,11 @@ body, html
     background-size: cover;
 }
 
-.bg
-{
+.bg {
     /* The image used */
     background-image: url("../img/bgHome.jpg");
-
     /* Full height */
     height: 100%;
-
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -24,112 +22,97 @@ body, html
     padding-bottom: 230px;
 }
 
-.nav
-{
+.nav {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
 }
 
-.modify
-{
+.modify {
     display: flex;
     justify-content: center;
 }
 
-.space
-{
+.space {
     margin-bottom: 20px;
     margin-top: 20px;
 }
 
-.margin-auto
-{
+.margin-auto {
     margin: auto;
 }
 
-.card-header, .card-text
-{
+.card-header,
+.card-text {
     padding: 20px;
 }
 
-.card-header
-{
+.card-header {
     display: flex;
     flex-direction: column;
 }
 
-.btnAdmin
-{
+.btnAdmin {
     width: 100px;
     margin: 20px;
 }
-.redBtn
-{
+
+.redBtn {
     background-color: darkred;
 }
 
-.greenBtn
-{
+.greenBtn {
     background-color: mediumseagreen;
 }
 
-.alertBtn
-{
+.alertBtn {
     background-color: orange;
 }
 
-.resp-menu
-{
+.resp-menu {
     display: none;
-    float: right;
     text-align: right;
     margin-right: 3%;
-    width: 20%;
+    width: 40%;
 }
 
-.menu
-{
+.menu {
     display: flex;
 }
 
+form {
+    width: 70%;
+    margin: auto;
+}
 
-@media (max-width: 991.98px)
-{
-
-    nav
-    {
+@media (max-width: 991.98px) {
+    nav {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         width: 100%;
         justify-content: space-between;
     }
-
-    .navbar-brand
-    {
+    .navbar-brand {
         width: 20%;
     }
-
-    .resp-menu
-    {
+    .resp-menu {
         display: inline;
-
     }
-
-    .menu
-    {
+    .menu {
         display: none;
     }
 }
 
-@media (max-width: 768px)
-{
-
-
-    .card-header
-    {
+@media (max-width: 768px) {
+    .card-header {
         display: flex;
         flex-direction: column;
+    }
+}
+
+@media (max-width: 450px) {
+    form {
+        width: 100%;
     }
 }

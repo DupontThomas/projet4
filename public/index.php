@@ -16,7 +16,7 @@ require_once '../vendor/autoload.php';
 
 session_start();
 
-Debugger::enable();
+//Debugger::enable();
 
 $loader = new FilesystemLoader( '../src/Views');
 $twig = new Environment($loader, [

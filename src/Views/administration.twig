@@ -23,7 +23,7 @@
             {% for content in contents %}
 
                 <div class="card space">
-                    <h5 class="card-header"><span class="card-title">Posté par : {{ content.author }} le {{ content.date_publication_fr }} </span>  // <a href="{{ url.URL }}public/?page=chapter&id={{ content.id_post}}"> Lien vers le chapitre</a> </h5>
+                    <h5 class="card-header"><span class="card-title">Posté par : {{ content.author }} le {{ content.date_publication_fr }} </span><a href="{{ url.URL }}public/?page=chapter&id={{ content.id_post}}"> Lien vers le chapitre</a> </h5>
                     <div>
                         <p>{{ content.comment }}</p>
                         <a  class="btn btn-primary space greenBtn btnAdmin" href="{{ url.URL }}public/?page=valcom&id={{ content.id }}">Valider</a>
@@ -49,6 +49,7 @@
                 force_p_newlines : false,
                 forced_root_block : false,
                 force_br_newlines : true,
+                nowrap : true,
                 menubar: false,
                 plugins: [
                     'advlist autolink lists link image charmap print preview anchor',
