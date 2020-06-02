@@ -10,4 +10,9 @@ class Configuration
     const PASSWORD = "";
     const URL = "http://localhost/projet4/";
 
+    public function url()
+    {
+        return self::URL;
+    }
+
 }

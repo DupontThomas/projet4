@@ -7,13 +7,15 @@
             <h2>Ajouter un nouveau chapitre :</h2>
 
             <div class="modify">
-                <form method="post" action="http://localhost/projet4/public/?page=addPost">
-                    <label for="title">Titre</label>
-                    <input type="text" name="titleNewPost">
+                <form method="post" action="{{ url.URL }}public/?page=addPost">
+                    <div class="form-group">
+                        <label for="title">Titre</label>
+                        <input type="text" name="titleNewPost">
 
-                    <textarea aria-label="content" id="contentNewPost" name="contentNewPost" rows="22" cols ="100"></textarea>
+                        <textarea aria-label="content" class="form-control-sm" id="contentNewPost" name="contentNewPost" rows="22" cols ="100"></textarea>
 
-                    <input type="submit" value="Publier">
+                        <input type="submit" value="Publier">
+                    </div>
                 </form>
             </div>
             <h2>Commentaires signalés :</h2>
@@ -21,11 +23,11 @@
             {% for content in contents %}
 
                 <div class="card space">
-                    <h5 class="card-header"><span class="card-title">Posté par : {{ content.author }} le {{ content.date_publication_fr }} </span>  // <a href="http://localhost/projet4/public/?page=chapter&id={{ content.id_post}}"> Lien vers le chapitre</a> </h5>
+                    <h5 class="card-header"><span class="card-title">Posté par : {{ content.author }} le {{ content.date_publication_fr }} </span><a href="{{ url.URL }}public/?page=chapter&id={{ content.id_post}}"> Lien vers le chapitre</a> </h5>
                     <div>
                         <p>{{ content.comment }}</p>
-                        <a  class="btn btn-primary space greenBtn btnAdmin" href="http://localhost/projet4/public/?page=valcom&id={{ content.id }}">Valider</a>
-                        <a  class="btn btn-primary space redBtn btnAdmin" href="http://localhost/projet4/public/?page=delcom&id={{ content.id }}">Supprimer</a>
+                        <a  class="btn btn-primary space greenBtn btnAdmin" href="{{ url.URL }}public/?page=valcom&id={{ content.id }}">Valider</a>
+                        <a  class="btn btn-primary space redBtn btnAdmin" href="{{ url.URL }}public/?page=delcom&id={{ content.id }}">Supprimer</a>
                     </div>
                 </div>
 
@@ -38,7 +40,7 @@
         <script src="https://cdn.tiny.cloud/1/86dwj93jeidl87z3q3afvplo43p9md7qlo4xpeq0hkuqinwu/tinymce/5/tinymce.min.js"></script>
         <script>tinymce.init({
                 selector: "textarea",
-                width: 755,
+                width: "100%",
                 height: 500,
                 resize: false,
                 elements:"contenu",
@@ -47,6 +49,7 @@
                 force_p_newlines : false,
                 forced_root_block : false,
                 force_br_newlines : true,
+                nowrap : true,
                 menubar: false,
                 plugins: [
                     'advlist autolink lists link image charmap print preview anchor',

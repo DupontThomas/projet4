@@ -11,10 +11,10 @@
             <section class=" col-sm p-4 d-flex flex-column position-static ">
             <h2 class="h3 container space">Voici le dernier chapitre en ligne : </h2>
             <div class="card">
-                <h3 class="card-header h5 b-0"><strong class="card-title">{{ contents.title }}</strong> | <span class="h6 text-muted">Publié le {{ contents.postDate }}</span></h3>
+                <h3 class="card-header h5 b-0"><strong class="card-title">{{ contents.title }}</strong><span class="h6 text-muted">Publié le {{ contents.postDate }}</span></h3>
                 <div class="card">
                     <div class="extract card-text mb-auto text-left">{{ contents.content | raw }}</div>
-                    <a class="stretched-link card-link linkoff" href="http://localhost/projet4/public/?page=chapter&id={{ contents.id}}">Lire la suite</a>
+                    <a class="stretched-link card-link linkoff" href="{{ url.URL }}public/?page=chapter&id={{ contents.id}}">Lire la suite</a>
                 </div>
             </div>
         </section>

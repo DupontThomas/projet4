@@ -5,13 +5,13 @@
 {% block contents %}
 
     <section class="card">
-        <h2 class="card-header"> Publié le {{ contents.postDate }}</h2>
+        <h3 class="card-header"> Publié le {{ contents.postDate }}</h3>
         <div class="card-text text-left">{{ contents.content | raw }}</div>
 
         {% if session.rank is same as ("Admin") %}
             <div class="modify btn-group" role="group" aria-label="Editing chapter">
-                <a class="btn btn-primary space greenBtn btnAdmin" href="http://localhost/projet4/public/?page=modifPost&id={{ contents.id }}">Modifier</a>
-                <a class="btn btn-primary space redBtn btnAdmin" href="http://localhost/projet4/public/?page=deletePost&id={{ contents.id }}">Supprimer</a>
+                <a class="btn btn-primary space greenBtn btnAdmin" href="{{ url.URL }}public/?page=modifPost&id={{ contents.id }}">Modifier</a>
+                <a class="btn btn-primary space redBtn btnAdmin" href="{{ url.URL }}public/?page=deletePost&id={{ contents.id }}">Supprimer</a>
             </div>
         {% endif %}
 
@@ -22,18 +22,18 @@
 
 {% block comments %}
 
-    <h3 class="space text-center">Commentaires : </h3>
+    <h3 class="space text-center h5">Commentaires : </h3>
 
     {% for comment in comments %}
 
         <section class="card">
 
-            <h5 class="card-header">Posté par : <strong class="card-title">{{ comment.author }}</strong>, le {{ comment.date_publication_fr }}</h5>
+            <h5 class="card-header comment-title h6">Posté par : <strong class="card-title">{{ comment.author }}</strong><span class="text-muted"> le {{ comment.date_publication_fr }}</span></h5>
             <div>
                 <p class="card-text text-left">{{ comment.comment | nl2br }}</p>
 
                 {% if session.pseudo is defined %}
-                    <form method="post" class="modify" action="http://localhost/projet4/public/?page=reportComment&id={{ contents.id }}">
+                    <form method="post" class="modify" action="{{ url.URL }}public/?page=reportComment&id={{ contents.id }}">
                         <input type="hidden" name="idComment" value="{{ comment.id }}">
                         <button class="reportComment space alertBtn" type="submit" value="Signaler">Signaler</button>
                     </form>
@@ -45,9 +45,9 @@
     {% endfor %}
 
     {% if session.pseudo is defined %}
-    <h3 class="space text-center">Ajouter un commentaire : </h3>
+    <h3 class="space text-center h5">Ajouter un commentaire : </h3>
 
-    <form class="d-flex flex-column justify-content-center" method="post" action="http://localhost/projet4/public/?page=sendcom&id={{ contents.id }}">
+    <form class="d-flex justify-content-center" method="post" action="{{ url.URL }}public/?page=sendcom&id={{ contents.id }}">
 
         <label for="presentation"></label>
         <textarea required name="comment" id="comment"></textarea><br><br>
@@ -57,7 +57,7 @@
     {% endif %}
 
     {% if session.pseudo is not defined %}
-    <h4>Inscrivez-vous pour laisser un commentaire !</h4>
+    <h4 class="h5">Inscrivez-vous pour laisser un commentaire !</h4>
     {% endif %}
 
 {% endblock comments %}

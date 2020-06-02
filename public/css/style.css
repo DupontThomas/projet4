@@ -1,4 +1,8 @@
-body, html {
+
+
+body,
+html {
+    padding-top: 20px;
     height: 100%;
     background-image: url("../img/bgText.jpg");
     background-position: center;
@@ -6,93 +10,111 @@ body, html {
     background-size: cover;
 }
 
-.bg
-{
+.bg {
     /* The image used */
     background-image: url("../img/bgHome.jpg");
-
     /* Full height */
     height: 100%;
-
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
     color: white;
     padding-bottom: 230px;
 }
 
-.modify
-{
+.nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.modify {
     display: flex;
     justify-content: center;
 }
 
-.space
-{
+.space {
     margin-bottom: 20px;
     margin-top: 20px;
 }
 
-.margin-auto
-{
+.margin-auto {
     margin: auto;
 }
 
-.card-header, .card-text
-{
+.card-header,
+.card-text {
     padding: 20px;
 }
 
-.btnAdmin
-{
+.card-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.btnAdmin {
     width: 100px;
     margin: 20px;
 }
-.redBtn
-{
+
+.redBtn {
     background-color: darkred;
 }
 
-.greenBtn
-{
+.greenBtn {
     background-color: mediumseagreen;
 }
 
-.alertBtn
-{
+.alertBtn {
     background-color: orange;
 }
 
-.resp-menu
-{
+.resp-menu {
     display: none;
+    text-align: right;
+    margin-right: 3%;
+    width: 40%;
 }
 
-.menu
-{
+.menu {
     display: flex;
 }
 
-@media (max-width: 991.98px)
-{
-    nav
-    {
-        display: flex;
-        width: 100%;
+form {
+    width: 70%;
+    margin: auto;
+}
 
+@media (max-width: 991.98px) {
+    nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100%;
         justify-content: space-between;
     }
-    .resp-menu
-    {
-        display: initial;
-        text-align: right;
-        margin-right: 3%;
+    .navbar-brand {
+        width: 20%;
     }
-
-    .menu
-    {
+    .resp-menu {
+        display: inline;
+    }
+    .menu {
         display: none;
     }
 }
+
+@media (max-width: 768px) {
+    .card-header {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 450px) {
+    form {
+        width: 100%;
+    }
+}
+

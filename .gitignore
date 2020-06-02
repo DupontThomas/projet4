@@ -2,5 +2,6 @@
 config/DbConnection.php
 config/db.sql
 public/img/
+src/Configuration.php
 public/node_modules/
 vendor/
