@@ -3,14 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Blog de Jean Forteroche</title>
         <link rel="icon" type="image/png" sizes="32x32" href="{{ url.URL }}img/favicon.png">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href=" {{ url.URL }}css/style.css">
     </head>
 
-<!------------------------------------------------------------------------->
+<!--HEADER-->
+<body>
     <header class="fixed-top">
         <nav class="nav nav-pills flex-sm-row navbar-dark bg-dark flex-row">
             <a href="{{ url.URL }}public/?page=home" class="navbar-brand col-xs-3">Un billet pour l'Alaska</a>
@@ -73,9 +73,9 @@
         </nav>
     </header>
 
-<!------------------------------------------------------------------------->
+<!--BODY-->
 
-    <body class="body">
+
 
         <section id="title" class="text-center ">
             <h1 class="jumbotron jumbotron-fluid text-center h1 bg">{% block title %}Titre par défaut{% endblock %}</h1>
@@ -90,7 +90,7 @@
         </section>
 
 
-<!-- ----------------------------------------------------------------------->
+<!--FOOTER-->
     <footer class="page-footer font-small special-color-dark pt-4">
 
             <!-- Footer Elements -->
