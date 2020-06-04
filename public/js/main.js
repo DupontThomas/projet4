@@ -21,7 +21,7 @@ window.addEventListener("load", function()
             }
             else if (buttonElt.classList.contains("reportComment"))
             {
-                message = "Ce commentaire a bien été signalé."
+                message = "Ce commentaire a bien été signalé.";
                 alert(message);
             }
         };
@@ -36,6 +36,6 @@ window.addEventListener("load", function()
 var extract = document.querySelectorAll(".extract");
 for ( let i=0;i<extract.length;i++) {
     let count = extract[i];
-    count.innerHTML = count.innerHTML.substr(0,470)+"...";
+    count.innerHTML = count.innerHTML.substr(0,270)+"...";
 }
 
