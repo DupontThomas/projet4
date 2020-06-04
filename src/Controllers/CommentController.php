@@ -5,43 +5,43 @@ use App\Models\CommentManager;
 
 class CommentController extends Controller
 {
-    public function addComment($id)
+    public function addComment($id_post)
     {
         $author = $_SESSION['pseudo'];
         $comment = filter_input(INPUT_POST, 'comment');
 
         $commentManager = new CommentManager();
-        $commentManager->addComment($id, $author, $comment);
+        $commentManager->addComment($id_post, $author, $comment);
 
-        header("Location:?page=chapter&id=" . $id);
+        header("Location:?page=chapter&id=" . $id_post);
 
-        return $addComment = "OK";
+        return;
     }
 
-    public function reportComment($id)
+    public function reportComment($id_post)
     {
         $idComment = filter_input(INPUT_POST, 'idComment');
 
         $commentManager = new CommentManager();
         $commentManager->reportComment($idComment);
 
-        header("Location:?page=chapter&id=" . $id);
+        header("Location:?page=chapter&id=" . $id_post);
 
-        return $reportComment = "OK";
+        return;
     }
 
-    public function validateComment($id)
+    public function validateComment($id_post)
     {
         $commentManager = new CommentManager();
-        $commentManager->validateComment($id);
+        $commentManager->validateComment($id_post);
 
         header("Location: ?page=admin");
     }
 
-    public function deleteComment($id)
+    public function deleteComment($id_post)
     {
         $commentManager = new CommentManager();
-        $commentManager->deleteComment($id);
+        $commentManager->deleteComment($id_post);
 
         header("Location: ?page=admin");
     }
