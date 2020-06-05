@@ -12,12 +12,12 @@ class CommentManager extends Manager
         return $listComments;
     }
 
-    public function addComment($id, $author, $comment)
+    public function addComment($id_post, $author, $comment)
     {
         $req = $this->dbConnect()->prepare("INSERT INTO comments (id, id_post, author, comment, report, date_publication) VALUES (NULL, ?, ?, ?, 0, CURRENT_TIME())");
-        $req->execute(array($id, $author, $comment));
+        $req->execute(array($id_post, $author, $comment));
 
-        return "OK";
+        return;
     }
 
     public function deleteCommentList($id_post)
@@ -25,7 +25,7 @@ class CommentManager extends Manager
         $req = $this->dbConnect()->prepare(" DELETE FROM comments WHERE id_post=?");
         $req->execute(array($id_post));
 
-        return "OK";
+        return;
     }
 
     public function reportComment($idComment)
@@ -33,7 +33,7 @@ class CommentManager extends Manager
         $req = $this->dbConnect()->prepare(" UPDATE comments SET report = '1' WHERE id=?");
         $req->execute(array($idComment));
 
-        return "OK";
+        return;
     }
 
     public function reportedComment()
@@ -45,19 +45,19 @@ class CommentManager extends Manager
         return $listReportedComment;
     }
 
-    public function validateComment($id)
+    public function validateComment($id_post)
     {
         $req = $this->dbConnect()->prepare(" UPDATE comments SET report = '0' WHERE id=?");
-        $req->execute(array($id));
+        $req->execute(array($id_post));
 
-        return "OK";
+        return;
     }
 
-    public function deleteComment($id)
+    public function deleteComment($id_post)
     {
         $req = $this->dbConnect()->prepare(" DELETE FROM comments WHERE id=?");
-        $req->execute(array($id));
+        $req->execute(array($id_post));
 
-        return "OK";
+        return;
     }
 }

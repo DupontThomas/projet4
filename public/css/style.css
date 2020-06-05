@@ -1,120 +1,118 @@
 
-
 body,
 html {
-    padding-top: 20px;
-    height: 100%;
-    background-image: url("../img/bgText.jpg");
-    background-position: center;
-    background-repeat: repeat;
-    background-size: cover;
+  padding-top: 20px;
+  height: 100%;
+  background-image: url("../img/bgText.jpg");
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
 }
 
 .bg {
-    /* The image used */
-    background-image: url("../img/bgHome.jpg");
-    /* Full height */
-    height: 100%;
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
-    padding-bottom: 230px;
+  background-image: url("../img/bgHome.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  padding-bottom: 230px;
 }
 
 .nav {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .modify {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .space {
-    margin-bottom: 20px;
-    margin-top: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .margin-auto {
-    margin: auto;
+  margin: auto;
 }
 
 .card-header,
 .card-text {
-    padding: 20px;
+  padding: 20px;
 }
 
 .card-header {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .btnAdmin {
-    width: 100px;
-    margin: 20px;
+  width: 100px;
+  margin: 20px;
 }
 
 .redBtn {
-    background-color: darkred;
+  background-color: darkred;
 }
 
 .greenBtn {
-    background-color: mediumseagreen;
+  background-color: mediumseagreen;
 }
 
 .alertBtn {
-    background-color: orange;
+  background-color: orange;
 }
 
 .resp-menu {
-    display: none;
-    text-align: right;
-    margin-right: 3%;
-    width: 40%;
+  display: none;
+  text-align: right;
+  margin-right: 3%;
+  width: 40%;
 }
 
 .menu {
-    display: flex;
+  display: flex;
 }
 
 form {
-    width: 70%;
-    margin: auto;
+  width: 70%;
+  margin: auto;
 }
 
 @media (max-width: 991.98px) {
-    nav {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        width: 100%;
-        justify-content: space-between;
-    }
-    .navbar-brand {
-        width: 20%;
-    }
-    .resp-menu {
-        display: inline;
-    }
-    .menu {
-        display: none;
-    }
+  nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .navbar-brand {
+    width: 20%;
+  }
+
+  .resp-menu {
+    display: inline;
+  }
+
+  .menu {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
-    .card-header {
-        display: flex;
-        flex-direction: column;
-    }
+  .card-header {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 450px) {
-    form {
-        width: 100%;
-    }
+  form {
+    width: 100%;
+  }
 }
-

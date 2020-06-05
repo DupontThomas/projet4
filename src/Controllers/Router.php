@@ -21,7 +21,7 @@ class Router
         $page = 'home';
         $access = filter_input(INPUT_GET, 'page');
 
-        $id = null;
+        $id_post = null;
         $chapter = filter_input(INPUT_GET, 'id');
 
         if(ISSET($access)) {
@@ -29,7 +29,7 @@ class Router
         }
 
         if(ISSET($chapter) && is_numeric($chapter)) {
-            $id = $chapter;
+            $id_post = $chapter;
         }
 
         switch ($page) {
@@ -38,7 +38,7 @@ class Router
                 break;
 
             case "chapter" :
-                $this->postsController->displayPost($id);
+                $this->postsController->displayPost($id_post);
                 break;
 
             case "inscription" :
@@ -58,7 +58,7 @@ class Router
                 break;
 
             case "sendcom" :
-                $this->commentController->addComment($id);
+                $this->commentController->addComment($id_post);
                 break;
 
             case "admin" :
@@ -74,27 +74,27 @@ class Router
                 break;
 
             case "deletePost" :
-                $this->postsController->deletePost($id);
+                $this->postsController->deletePost($id_post);
                 break;
 
             case "modifPost" :
-                $this->postsController->getModifPage($id);
+                $this->postsController->getModifPage($id_post);
                 break;
 
             case "updatePost" :
-                $this->postsController->updatePost($id);
+                $this->postsController->updatePost($id_post);
                 break;
 
             case "reportComment" :
-                $this->commentController->reportComment($id);
+                $this->commentController->reportComment($id_post);
                 break;
 
             case "valcom" :
-                $this->commentController->validateComment($id);
+                $this->commentController->validateComment($id_post);
                 break;
 
             case "delcom" :
-                $this->commentController->deleteComment($id);
+                $this->commentController->deleteComment($id_post);
                 break;
 
             case "error" :
