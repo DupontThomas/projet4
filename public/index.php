@@ -16,18 +16,7 @@ require_once '../vendor/autoload.php';
 
 session_start();
 
-//Debugger::enable();
+Debugger::enable();
 
-$loader = new FilesystemLoader( '../src/Views');
-$twig = new Environment($loader, [
-    'cache' => false,
-    //'debug' => false
-]);
-$twig->addGlobal('session', $_SESSION);
-$twig->addGlobal('url', new Configuration());
-$postController= new PostsController($twig);
-$commentController = new CommentController($twig);
-$userController = new UserController($twig);
-
-$router = new Router($postController,$commentController,$userController);
+$router = new Router();
 $router->run();

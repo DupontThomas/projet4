@@ -4,16 +4,15 @@ namespace App\Controllers;
 use App\Configuration;
 use App\Models\CommentManager;
 use App\Models\PostsManager;
-use Twig\Environment;
 
 class PostsController extends Controller
 {
     private $postManager;
     private $commentManager;
 
-    public function __construct(Environment $twig)
+    public function __construct()
     {
-        parent::__construct($twig);
+        parent::__construct();
 
         $this->postManager = new PostsManager();
         $this->commentManager = new CommentManager();

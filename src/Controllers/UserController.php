@@ -12,9 +12,9 @@ class UserController extends Controller
     private $userManager;
     private $commentManager;
 
-    public function __construct(Environment $twig)
+    public function __construct()
     {
-        parent::__construct($twig);
+        parent::__construct();
 
         $this->userManager = new UserManager();
         $this->commentManager = new CommentManager();

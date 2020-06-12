@@ -7,14 +7,15 @@ class Router
      * @var PostsController
      */
     private $postsController;
+    private $commentController;
+    private $userController;
 
-    public function __construct(PostsController $postsController, CommentController $commentController, UserController $userController)
+    public function __construct()
     {
-        $this->postsController = $postsController;
-        $this->commentController = $commentController;
-        $this->userController = $userController;
+        $this->postsController = new PostsController();
+        $this->commentController = new CommentController();
+        $this->userController = new UserController();
     }
-
 
     public function run()
     {
