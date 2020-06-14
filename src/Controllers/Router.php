@@ -4,15 +4,15 @@ namespace App\Controllers;
 class Router
 {
     /**
-     * @var PostsController
+     * @var PostController
      */
-    private $postsController;
+    private $postController;
     private $commentController;
     private $userController;
 
     public function __construct()
     {
-        $this->postsController = new PostsController();
+        $this->postController = new PostController();
         $this->commentController = new CommentController();
         $this->userController = new UserController();
     }
@@ -35,11 +35,11 @@ class Router
 
         switch ($page) {
             case "chapters" :
-                $this->postsController->chapterList();
+                $this->postController->chapterList();
                 break;
 
             case "chapter" :
-                $this->postsController->displayPost($id_post);
+                $this->postController->displayPost($id_post);
                 break;
 
             case "inscription" :
@@ -67,23 +67,23 @@ class Router
                 $this->userController->displayAdmin();
                 exit;
                 }
-                $this->postsController->errorChapter();
+                $this->postController->errorChapter();
                 break;
 
             case "addPost" :
-                $this->postsController->addPost();
+                $this->postController->addPost();
                 break;
 
             case "deletePost" :
-                $this->postsController->deletePost($id_post);
+                $this->postController->deletePost($id_post);
                 break;
 
             case "modifPost" :
-                $this->postsController->getModifPage($id_post);
+                $this->postController->getModifPage($id_post);
                 break;
 
             case "updatePost" :
-                $this->postsController->updatePost($id_post);
+                $this->postController->updatePost($id_post);
                 break;
 
             case "reportComment" :
@@ -99,11 +99,11 @@ class Router
                 break;
 
             case "error" :
-                $this->postsController->errorChapter();
+                $this->postController->errorChapter();
                 break;
 
             default :
-                $this->postsController->lastChapter();
+                $this->postController->lastChapter();
                 break;
         }
     }

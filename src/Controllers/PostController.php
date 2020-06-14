@@ -3,9 +3,9 @@ namespace App\Controllers;
 
 use App\Configuration;
 use App\Models\CommentManager;
-use App\Models\PostsManager;
+use App\Models\PostManager;
 
-class PostsController extends Controller
+class PostController extends Controller
 {
     private $postManager;
     private $commentManager;
@@ -14,7 +14,7 @@ class PostsController extends Controller
     {
         parent::__construct();
 
-        $this->postManager = new PostsManager();
+        $this->postManager = new PostManager();
         $this->commentManager = new CommentManager();
     }
 
