@@ -53,8 +53,8 @@ class PostController extends Controller
     }
     public function deletePost($id_post)
     {
-        $this->postManager->deletePost($id_post);
         $this->commentManager->deleteCommentList($id_post);
+        $this->postManager->deletePost($id_post);
 
         header("Location:" . Configuration::URL . "public/index.php");
     }

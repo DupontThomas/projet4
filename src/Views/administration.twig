@@ -18,22 +18,53 @@
                     </div>
                 </form>
             </div>
+        {% endblock contents %}
+
+        {% block comments %}
             <h2>Commentaires signalés :</h2>
 
-            {% for content in contents %}
+            {% for comment in comments %}
 
                 <div class="card space">
-                    <h5 class="card-header"><span class="card-title">Posté par : {{ content.author }} le {{ content.date_publication_fr }} </span><a href="{{ url.URL }}public/?page=chapter&id={{ content.id_post}}"> Lien vers le chapitre</a> </h5>
+                    <h5 class="card-header"><span class="card-title">Posté par : {{ comment.author }} le {{ comment.date_publication_fr }} </span><a href="{{ url.URL }}public/?page=chapter&id={{ comment.id_post}}"> Lien vers le chapitre</a> </h5>
                     <div>
-                        <p>{{ content.comment }}</p>
-                        <a  class="btn btn-primary space greenBtn btnAdmin" href="{{ url.URL }}public/?page=valcom&id={{ content.id }}">Valider</a>
-                        <a  class="btn btn-primary space redBtn btnAdmin" href="{{ url.URL }}public/?page=delcom&id={{ content.id }}">Supprimer</a>
+                        <p>{{ comment.comment }}</p>
+                        <a  class="btn btn-primary space greenBtn btnAdmin" href="{{ url.URL }}public/?page=valcom&id={{ comment.id }}">Valider</a>
+                        <a  class="btn btn-primary space redBtn btnAdmin" href="{{ url.URL }}public/?page=delcom&id={{ comment.id }}">Supprimer</a>
                     </div>
                 </div>
 
             {% endfor %}
+        {% endblock comments %}
 
-        {% endblock contents %}
+        {% block users %}
+
+            <h2>Liste des utilisateurs :</h2>
+
+            <table class="table table-hover table-bordered text-center ">
+                <thead class=" ">
+                <tr>
+                    <th scope="col">Pseudo</th>
+                    <th scope="col">Rang</th>
+                    <th scope="col">Date d'inscription</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody class="userList">
+                {% for user in users %}
+                    <tr>
+                        <th scope="row">{{ user.pseudo }}</th>
+                        <td>{{ user.rank }}</td>
+                        <td>{{ user.date_inscription }}</td>
+                        <td>
+                            <a  class="" href="{{ url.URL }}public/?page=valcom&id={{ content.id }}">Modifier</a>
+                            <a  class="" href="{{ url.URL }}public/?page=delcom&id={{ content.id }}">Supprimer</a>
+                        </td>
+                    </tr>
+
+                {% endfor %}
+
+        {% endblock users %}
 
 {% block script %}
 

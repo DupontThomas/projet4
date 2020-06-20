@@ -82,7 +82,8 @@ class UserController extends Controller
     public function displayAdmin()
     {
         $listReportedComment = $this->commentManager->reportedComment();
-        $this->display('administration.twig', ['contents' => $listReportedComment]);
+        $listUser = $this->userManager->listUser();
+        $this->display('administration.twig', ['comments' => $listReportedComment, 'users' => $listUser]);
     }
 }
 
