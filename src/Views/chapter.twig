@@ -47,7 +47,7 @@
     {% if session.pseudo is defined %}
     <h3 class="space text-center h5">Ajouter un commentaire : </h3>
 
-    <form class="d-flex justify-content-center" method="post" action="{{ url.URL }}public/?page=sendcom&id={{ contents.id }}">
+    <form class="d-flex justify-content-center" method="post" action="{{ url.URL }}public/?page=sendCom&id={{ contents.id }}">
 
         <label for="presentation"></label>
         <textarea required name="comment" id="comment"></textarea><br><br>

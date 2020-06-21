@@ -25,19 +25,12 @@ class Router
         $id_post = null;
         $chapter = filter_input(INPUT_GET, 'id');
 
-        $toDo = null;
-        $action = filter_input(INPUT_GET,'action');
-
         if(ISSET($access)) {
             $page = $access;
         }
 
         if(ISSET($chapter) && is_numeric($chapter)) {
             $id_post = $chapter;
-        }
-
-        if(ISSET($action)) {
-            $toDo = $action;
         }
 
         switch ($page) {
@@ -53,11 +46,11 @@ class Router
                 $this->userController->inscription();
                 break;
 
-            case "sendinscription" :
+            case "sendInscription" :
                 $this->userController->addUser();
                 break;
 
-            case "sendconnection" :
+            case "sendConnection" :
                 $this->userController->connection();
                 break;
 
@@ -65,7 +58,7 @@ class Router
                 $this->userController->deconnection();
                 break;
 
-            case "sendcom" :
+            case "sendCom" :
                 $this->commentController->addComment($id_post);
                 break;
 
@@ -97,11 +90,11 @@ class Router
                 $this->commentController->reportComment($id_post);
                 break;
 
-            case "valcom" :
+            case "valCom" :
                 $this->commentController->validateComment($id_post);
                 break;
 
-            case "delcom" :
+            case "delCom" :
                 $this->commentController->deleteComment($id_post);
                 break;
 
