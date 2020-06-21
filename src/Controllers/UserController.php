@@ -85,5 +85,11 @@ class UserController extends Controller
         $listUser = $this->userManager->listUser();
         $this->display('administration.twig', ['comments' => $listReportedComment, 'users' => $listUser]);
     }
+
+    public function delUser($id_user)
+    {
+        $this->userManager->delUser($id_user);
+        header("Location:" . Configuration::URL . "public/?page=admin");
+    }
 }
 

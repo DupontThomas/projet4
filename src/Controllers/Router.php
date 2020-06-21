@@ -25,12 +25,19 @@ class Router
         $id_post = null;
         $chapter = filter_input(INPUT_GET, 'id');
 
+        $toDo = null;
+        $action = filter_input(INPUT_GET,'action');
+
         if(ISSET($access)) {
             $page = $access;
         }
 
         if(ISSET($chapter) && is_numeric($chapter)) {
             $id_post = $chapter;
+        }
+
+        if(ISSET($action)) {
+            $toDo = $action;
         }
 
         switch ($page) {
@@ -64,8 +71,8 @@ class Router
 
             case "admin" :
                 if($_SESSION['rank'] === 'Admin') {
-                $this->userController->displayAdmin();
-                exit;
+                    $this->userController->displayAdmin();
+                    exit;
                 }
                 $this->postController->errorChapter();
                 break;
@@ -96,6 +103,11 @@ class Router
 
             case "delcom" :
                 $this->commentController->deleteComment($id_post);
+                break;
+
+            case 'delUser' :
+                $id_user = $id_post;
+                $this->userController->delUser($id_user);
                 break;
 
             case "error" :

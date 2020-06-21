@@ -57,8 +57,9 @@
                         <td>{{ user.rank }}</td>
                         <td>{{ user.date_inscription }}</td>
                         <td>
-                            <a  class="" href="{{ url.URL }}public/?page=valcom&id={{ content.id }}">Modifier</a>
-                            <a  class="" href="{{ url.URL }}public/?page=delcom&id={{ content.id }}">Supprimer</a>
+                            {% if not user.rank is same as ("Admin") %}
+                                <a  class="" href="{{ url.URL }}public/?page=delUser&id={{ user.id }}">Supprimer</a>
+                            {% endif %}
                         </td>
                     </tr>
 
