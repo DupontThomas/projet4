@@ -22,7 +22,7 @@ class Router
         $page = 'home';
         $access = filter_input(INPUT_GET, 'page');
 
-        $id_post = null;
+        $getId = null;
         $chapter = filter_input(INPUT_GET, 'id');
 
         if(ISSET($access)) {
@@ -30,17 +30,18 @@ class Router
         }
 
         if(ISSET($chapter) && is_numeric($chapter)) {
-            $id_post = $chapter;
+            $getId = $chapter;
+        }
+
+        //split the router into several pieces
+
+        if (strpos($page, "Post" or "chapter")) {
+            $this->routePost($page, $getId);
+        } elseif (strpos($page,"Com")) {
+            $this->routeCom($page, $getId);
         }
 
         switch ($page) {
-            case "chapters" :
-                $this->postController->chapterList();
-                break;
-
-            case "chapter" :
-                $this->postController->displayPost($id_post);
-                break;
 
             case "inscription" :
                 $this->userController->inscription();
@@ -58,8 +59,8 @@ class Router
                 $this->userController->deconnection();
                 break;
 
-            case "sendCom" :
-                $this->commentController->addComment($id_post);
+            case 'delUser' :
+                $this->userController->delUser($getId);
                 break;
 
             case "admin" :
@@ -70,45 +71,64 @@ class Router
                 $this->postController->errorChapter();
                 break;
 
-            case "addPost" :
-                $this->postController->addPost();
-                break;
-
-            case "deletePost" :
-                $this->postController->deletePost($id_post);
-                break;
-
-            case "modifPost" :
-                $this->postController->getModifPage($id_post);
-                break;
-
-            case "updatePost" :
-                $this->postController->updatePost($id_post);
-                break;
-
-            case "reportComment" :
-                $this->commentController->reportComment($id_post);
-                break;
-
-            case "valCom" :
-                $this->commentController->validateComment($id_post);
-                break;
-
-            case "delCom" :
-                $this->commentController->deleteComment($id_post);
-                break;
-
-            case 'delUser' :
-                $id_user = $id_post;
-                $this->userController->delUser($id_user);
-                break;
-
             case "error" :
                 $this->postController->errorChapter();
                 break;
 
             default :
                 $this->postController->lastChapter();
+                break;
+        }
+    }
+
+    public function routePost($page, $getId) {
+
+        switch ($page) {
+
+            case "chapters" :
+                $this->postController->chapterList();
+                break;
+
+            case "chapter" :
+                $this->postController->displayPost($getId);
+                break;
+
+            case "addPost" :
+                $this->postController->addPost();
+                break;
+
+            case "deletePost" :
+                $this->postController->deletePost($getId);
+                break;
+
+            case "modifPost" :
+                $this->postController->getModifPage($getId);
+                break;
+
+            case "updatePost" :
+                $this->postController->updatePost($getId);
+                break;
+        }
+    }
+
+    public function routeCom($page, $getId) {
+
+        switch ($page) {
+
+            case "reportComment" :
+                $this->commentController->reportComment($getId);
+                break;
+
+            case "valCom" :
+                $this->commentController->validateComment($getId);
+                break;
+
+            case "delCom" :
+                $this->commentController->deleteComment($getId);
+                break;
+
+            case "sendCom" :
+                $this->commentController->addComment($getId);
                 break;
         }
     }
