@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class PostsManager extends Manager
+class PostManager extends Manager
 {
     public function getLastPost()
     {

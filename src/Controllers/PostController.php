@@ -3,19 +3,18 @@ namespace App\Controllers;
 
 use App\Configuration;
 use App\Models\CommentManager;
-use App\Models\PostsManager;
-use Twig\Environment;
+use App\Models\PostManager;
 
-class PostsController extends Controller
+class PostController extends Controller
 {
     private $postManager;
     private $commentManager;
 
-    public function __construct(Environment $twig)
+    public function __construct()
     {
-        parent::__construct($twig);
+        parent::__construct();
 
-        $this->postManager = new PostsManager();
+        $this->postManager = new PostManager();
         $this->commentManager = new CommentManager();
     }
 
@@ -54,8 +53,8 @@ class PostsController extends Controller
     }
     public function deletePost($id_post)
     {
-        $this->postManager->deletePost($id_post);
         $this->commentManager->deleteCommentList($id_post);
+        $this->postManager->deletePost($id_post);
 
         header("Location:" . Configuration::URL . "public/index.php");
     }

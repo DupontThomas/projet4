@@ -12,9 +12,9 @@ class UserController extends Controller
     private $userManager;
     private $commentManager;
 
-    public function __construct(Environment $twig)
+    public function __construct()
     {
-        parent::__construct($twig);
+        parent::__construct();
 
         $this->userManager = new UserManager();
         $this->commentManager = new CommentManager();
@@ -82,7 +82,14 @@ class UserController extends Controller
     public function displayAdmin()
     {
         $listReportedComment = $this->commentManager->reportedComment();
-        $this->display('administration.twig', ['contents' => $listReportedComment]);
+        $listUser = $this->userManager->listUser();
+        $this->display('administration.twig', ['comments' => $listReportedComment, 'users' => $listUser]);
+    }
+
+    public function delUser($id_user)
+    {
+        $this->userManager->delUser($id_user);
+        header("Location:" . Configuration::URL . "public/?page=admin");
     }
 }
 

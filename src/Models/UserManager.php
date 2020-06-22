@@ -26,4 +26,19 @@ class UserManager extends Manager
         $checkUser = $req->fetch(\PDO::FETCH_ASSOC);
         return $checkUser;
     }
+
+    public function listUser()
+    {
+        $req = $this->dbConnect()->prepare("SELECT id, pseudo, rank, date_inscription FROM users ORDER BY rank");
+        $req->execute();
+        $listUser = $req->fetchAll();
+        return $listUser;
+    }
+
+    public function delUser($id_user)
+    {
+        $req = $this->dbConnect()->prepare("DELETE FROM users WHERE id=?");
+        $req->execute(array($id_user));
+        return;
+    }
 }

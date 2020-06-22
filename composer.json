@@ -4,12 +4,12 @@
     "type": "library",
     "description": "Fourth project for openclassrooms's web developer formation",
     "require": {
-        "twig/twig": "^2.10",
+        "twig/twig": "^3.0.3",
         "php": "^7.3"
 
     },
     "require-dev": {
-        "tracy/tracy": "^2.6"
+        "tracy/tracy": "^2.7.5"
     },
     "license": "MIT",
     "authors": [

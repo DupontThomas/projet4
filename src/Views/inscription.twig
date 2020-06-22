@@ -7,7 +7,7 @@
         <h2 class="space">Vous êtes déjà inscrit ? Connectez-vous :</h2>
 
         <div class="form-group">
-            <form class="space" method="post" action="{{ url.URL }}public/?page=sendconnection">
+            <form class="space" method="post" action="{{ url.URL }}public/?page=sendConnection">
 
                     <label for="pseudo">Votre pseudo :</label>
                     <input type="text" class="form-control w-50 p-3 margin-auto" name="pseudoConnection" id="pseudoConnection">
@@ -15,13 +15,13 @@
                     <label for="password">Votre mot de passe :</label>
                     <input type="password" class="form-control w-50 p-3 margin-auto" name="passwordConnection" id="passwordConnection" />
 
-                <input type="submit" value="Envoyer">
+                <input class="btn btn-primary" type="submit" value="Envoyer">
             </form>
         </div>
 
         <h2 class="space">Pas encore inscrit ? Remplissez le formulaire ci-dessous pour rejoindre notre communauté :</h2>
 
-        <form class="space form-group " method="post" action="{{ url.URL }}public/?page=sendinscription">
+        <form class="space form-group " method="post" action="{{ url.URL }}public/?page=sendInscription">
             <label for="pseudo">Votre pseudo :</label>
             <input type="text" class="form-control w-50 p-3 margin-auto" name="pseudo" id="pseudo">
 
@@ -34,7 +34,7 @@
             <label for="email">Votre adresse e-mail :</label>
             <input type="email" class="form-control w-50 p-3 margin-auto " name="email" id="email"/>
 
-            <input type="submit" class="btn btn-primary space" value="Envoyer">
+            <input class="btn btn-primary" type="submit" class="btn btn-primary space" value="Envoyer">
 
         </form>
 

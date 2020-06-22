@@ -1,10 +1,10 @@
 {% extends "layout.twig" %}
 
-{% block title %} Bienvenue dans l'interface d'administration {% endblock %}
+{% block title %} Interface d'administration {% endblock %}
 
         {% block contents %}
 
-            <h2>Ajouter un nouveau chapitre :</h2>
+            <h2 class="space">Ajouter un nouveau chapitre :</h2>
 
             <div class="modify">
                 <form method="post" action="{{ url.URL }}public/?page=addPost">
@@ -14,26 +14,59 @@
 
                         <textarea aria-label="content" class="form-control-sm" id="contentNewPost" name="contentNewPost" rows="22" cols ="100"></textarea>
 
-                        <input type="submit" value="Publier">
+                        <input class="btn btn-primary" type="submit" value="Publier">
                     </div>
                 </form>
             </div>
-            <h2>Commentaires signalés :</h2>
+        {% endblock contents %}
 
-            {% for content in contents %}
+        {% block comments %}
+            <h2 class="text-center">Commentaires signalés :</h2>
 
-                <div class="card space">
-                    <h5 class="card-header"><span class="card-title">Posté par : {{ content.author }} le {{ content.date_publication_fr }} </span><a href="{{ url.URL }}public/?page=chapter&id={{ content.id_post}}"> Lien vers le chapitre</a> </h5>
+            {% for comment in comments %}
+
+                <div class="card space text-center">
+                    <h5 class="card-header"><span class="card-title">Posté par : {{ comment.author }} le {{ comment.date_publication_fr }} </span><a href="{{ url.URL }}public/?page=chapter&id={{ comment.id_post}}"> Lien vers le chapitre</a> </h5>
                     <div>
-                        <p>{{ content.comment }}</p>
-                        <a  class="btn btn-primary space greenBtn btnAdmin" href="{{ url.URL }}public/?page=valcom&id={{ content.id }}">Valider</a>
-                        <a  class="btn btn-primary space redBtn btnAdmin" href="{{ url.URL }}public/?page=delcom&id={{ content.id }}">Supprimer</a>
+                        <p>{{ comment.comment }}</p>
+                        <a  class="btn btn-primary space greenBtn btnAdmin" href="{{ url.URL }}public/?page=valCom&id={{ comment.id }}">Valider</a>
+                        <a  class="btn btn-primary space redBtn btnAdmin" href="{{ url.URL }}public/?page=delCom&id={{ comment.id }}">Supprimer</a>
                     </div>
                 </div>
 
             {% endfor %}
+        {% endblock comments %}
 
-        {% endblock contents %}
+        {% block users %}
+
+            <h2 class="text-center">Liste des membres :</h2>
+
+            <table class="table table-hover table-bordered text-center ">
+                <thead class=" ">
+                <tr>
+                    <th scope="col">Pseudo</th>
+                    <th scope="col">Rang</th>
+                    <th scope="col">Date d'inscription</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody class="userList">
+                {% for user in users %}
+                    <tr>
+                        <th scope="row">{{ user.pseudo }}</th>
+                        <td>{{ user.rank }}</td>
+                        <td>{{ user.date_inscription }}</td>
+                        <td>
+                            {% if not user.rank is same as ("Admin") %}
+                                <a  class="btn btn-primary redBtn " href="{{ url.URL }}public/?page=delUser&id={{ user.id }}">Supprimer</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endblock users %}
 
 {% block script %}
 
