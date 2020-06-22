@@ -39,25 +39,11 @@ class Router
             $this->routePost($page, $getId);
         } elseif (strpos($page,"Com")) {
             $this->routeCom($page, $getId);
+        } elseif (strpos($page, "nscription" or "Connect")) {
+            $this->routeLog($page);
         }
 
         switch ($page) {
-
-            case "inscription" :
-                $this->userController->inscription();
-                break;
-
-            case "sendInscription" :
-                $this->userController->addUser();
-                break;
-
-            case "sendConnection" :
-                $this->userController->connection();
-                break;
-
-            case "delog" :
-                $this->userController->deconnection();
-                break;
 
             case 'delUser' :
                 $this->userController->delUser($getId);
@@ -129,6 +115,28 @@ class Router
 
             case "sendCom" :
                 $this->commentController->addComment($getId);
+                break;
+        }
+    }
+
+    public function routeLog($page) {
+
+        switch ($page) {
+
+            case "inscription" :
+                $this->userController->inscription();
+                break;
+
+            case "sendInscription" :
+                $this->userController->addUser();
+                break;
+
+            case "sendConnection" :
+                $this->userController->connection();
+                break;
+
+            case "deConnect" :
+                $this->userController->deconnection();
                 break;
         }
     }
