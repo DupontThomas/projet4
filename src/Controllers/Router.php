@@ -17,6 +17,10 @@ class Router
         $this->userController = new UserController();
     }
 
+    private function routeChapters($id){
+        $this->postController->chapterList();
+    }
+
     public function run()
     {
         $page = 'home';
@@ -33,17 +37,31 @@ class Router
             $getId = $chapter;
         }
 
-        //split the router into several pieces
-
-        if (strpos($page, "Post" or "chapter")) {
-            $this->routePost($page, $getId);
-        } elseif (strpos($page,"Com")) {
-            $this->routeCom($page, $getId);
-        } elseif (strpos($page, "nscription" or "Connect")) {
-            $this->routeLog($page);
-        }
 
         switch ($page) {
+            case "chapters" :
+                $this->postController->chapterList();
+                break;
+
+            case "chapter" :
+                $this->postController->displayPost($getId);
+                break;
+
+            case "inscription" :
+                $this->userController->inscription();
+                break;
+
+            case "sendInscription" :
+                $this->userController->addUser();
+                break;
+
+            case "sendConnection" :
+                $this->userController->connection();
+                break;
+
+            case "deConnect" :
+                $this->userController->deconnection();
+                break;
 
             case 'delUser' :
                 $this->userController->delUser($getId);
@@ -55,28 +73,6 @@ class Router
                     exit;
                 }
                 $this->postController->errorChapter();
-                break;
-
-            case "error" :
-                $this->postController->errorChapter();
-                break;
-
-            default :
-                $this->postController->lastChapter();
-                break;
-        }
-    }
-
-    public function routePost($page, $getId) {
-
-        switch ($page) {
-
-            case "chapters" :
-                $this->postController->chapterList();
-                break;
-
-            case "chapter" :
-                $this->postController->displayPost($getId);
                 break;
 
             case "addPost" :
@@ -94,12 +90,6 @@ class Router
             case "updatePost" :
                 $this->postController->updatePost($getId);
                 break;
-        }
-    }
-
-    public function routeCom($page, $getId) {
-
-        switch ($page) {
 
             case "reportComment" :
                 $this->commentController->reportComment($getId);
@@ -116,27 +106,13 @@ class Router
             case "sendCom" :
                 $this->commentController->addComment($getId);
                 break;
-        }
-    }
 
-    public function routeLog($page) {
-
-        switch ($page) {
-
-            case "inscription" :
-                $this->userController->inscription();
+            case "error" :
+                $this->postController->errorChapter();
                 break;
 
-            case "sendInscription" :
-                $this->userController->addUser();
-                break;
-
-            case "sendConnection" :
-                $this->userController->connection();
-                break;
-
-            case "deConnect" :
-                $this->userController->deconnection();
+            default :
+                $this->postController->lastChapter();
                 break;
         }
     }
