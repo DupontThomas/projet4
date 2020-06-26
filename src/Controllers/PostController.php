@@ -49,14 +49,14 @@ class PostController extends Controller
         $content = filter_input(INPUT_POST, 'contentNewPost');
         $this->postManager->addPost($title,$content);
 
-        header("Location:" . Configuration::URL . "public/index.php");
+        $this->refresh("index.php");
     }
     public function deletePost($id_post)
     {
         $this->commentManager->deleteCommentList($id_post);
         $this->postManager->deletePost($id_post);
 
-        header("Location:" . Configuration::URL . "public/index.php");
+        $this->refresh("index.php");
     }
 
     public function getModifPage($id_post)
@@ -72,7 +72,7 @@ class PostController extends Controller
 
         $this->postManager->updatePost($title,$content,$id_post);
 
-        header("Location:" . Configuration::URL . "public/index.php");
+        $this->refresh("index.php");
     }
 
     public function errorChapter()

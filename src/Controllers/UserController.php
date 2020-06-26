@@ -37,7 +37,7 @@ class UserController extends Controller
             if ($checkPseudo[0] === "0") {
                 $cryptedPass = password_hash($password, PASSWORD_DEFAULT);
                 $this->userManager->addUser($pseudo, $mail, $cryptedPass);
-                header("Location:" . Configuration::URL . "public/index.php");
+                $this->refresh("index.php");
                 exit;
             }
                 $this->alert("Ce pseudo est déjà utilisé. Veuillez en choisir un autre");
@@ -60,7 +60,7 @@ class UserController extends Controller
             if ($passwordOk) {
                 $_SESSION['pseudo'] = $pseudo;
                 $_SESSION['rank'] = $user['rank'];
-                header("Location:" . Configuration::URL . "public/index.php");
+                $this->refresh("index.php");
                 exit;
             } else {
                 $this->alert("Identifiant ou mot de passe incorrect !");
@@ -75,7 +75,7 @@ class UserController extends Controller
     public function deconnection()
     {
         session_destroy();
-        header("Location:" . Configuration::URL . "public/index.php");
+        $this->refresh("?page=home");
         exit;
     }
 
@@ -89,7 +89,7 @@ class UserController extends Controller
     public function delUser($id_user)
     {
         $this->userManager->delUser($id_user);
-        header("Location:" . Configuration::URL . "public/?page=admin");
+        $this->refresh("?page=admin");
     }
 }
 
