@@ -45,18 +45,18 @@ class CommentManager extends Manager
         return $listReportedComment;
     }
 
-    public function validateComment($id_post)
+    public function validateComment($idComment)
     {
         $req = $this->dbConnect()->prepare(" UPDATE comments SET report = '0' WHERE id=?");
-        $req->execute(array($id_post));
+        $req->execute(array($idComment));
 
         return;
     }
 
-    public function deleteComment($id_post)
+    public function deleteComment($idComment)
     {
         $req = $this->dbConnect()->prepare(" DELETE FROM comments WHERE id=?");
-        $req->execute(array($id_post));
+        $req->execute(array($idComment));
 
         return;
     }

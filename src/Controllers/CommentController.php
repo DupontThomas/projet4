@@ -13,7 +13,7 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->addComment($id_post, $author, $comment);
 
-        header("Location:?page=chapter&id=" . $id_post);
+        $this->refresh("?page=chapter&id=" . $id_post);
 
         return;
     }
@@ -25,7 +25,7 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->reportComment($idComment);
 
-        header("Location:?page=chapter&id=" . $id_post);
+        $this->refresh("?page=chapter&id=" . $id_post);
 
         return;
     }
@@ -35,7 +35,7 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->validateComment($id_post);
 
-        header("Location: ?page=admin");
+        $this->refresh("?page=admin");
     }
 
     public function deleteComment($id_post)
@@ -43,6 +43,6 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->deleteComment($id_post);
 
-        header("Location: ?page=admin");
+        $this->refresh("?page=admin");
     }
 }

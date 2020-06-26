@@ -28,6 +28,12 @@ class Controller
         return $this->twig->display($view, $params);
     }
 
+    public function refresh($page)
+    {
+        header("Location:" . $page);
+    }
+
+
     public function alert($message) {
         $this->twig->addGlobal("alertMessage", $message);
     }

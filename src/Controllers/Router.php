@@ -1,6 +1,8 @@
 <?php
 namespace App\Controllers;
 
+use http\Env\Request;
+
 class Router
 {
     /**
@@ -25,48 +27,47 @@ class Router
         $getId = null;
         $chapter = filter_input(INPUT_GET, 'id');
 
-        if(ISSET($access)) {
+        if(isset($access)) {
             $page = $access;
         }
 
-        if(ISSET($chapter) && is_numeric($chapter)) {
+        if(isset($chapter) && is_numeric($chapter)) {
             $getId = $chapter;
         }
 
-        //split the router into several pieces
+//split the router into several pieces
 
-        if (strpos($page, "Post" or "chapter")) {
+        if ((preg_match ('/Post/', $page)) === 1 || (preg_match ('/chapter/', $page)) === 1)  {
             $this->routePost($page, $getId);
-        } elseif (strpos($page,"Com")) {
+        } elseif ((preg_match ('/Com/', $page)) === 1) {
             $this->routeCom($page, $getId);
-        } elseif (strpos($page, "nscription" or "Connect")) {
+        } elseif ((preg_match ('/nscription/', $page)) === 1 || (preg_match ('/Connect/', $page)) === 1) {
             $this->routeLog($page);
-        }
+        } else {
+            switch ($page) {
 
-        switch ($page) {
+                case 'delUser' :
+                    $this->userController->delUser($getId);
+                    break;
 
-            case 'delUser' :
-                $this->userController->delUser($getId);
-                break;
+                case "admin" :
+                    if($_SESSION['rank'] === 'Admin') {
+                        $this->userController->displayAdmin();
+                        exit;
+                    }
+                    $this->postController->errorChapter();
+                    break;
 
-            case "admin" :
-                if($_SESSION['rank'] === 'Admin') {
-                    $this->userController->displayAdmin();
-                    exit;
-                }
-                $this->postController->errorChapter();
-                break;
+                case "error" :
+                    $this->postController->errorChapter();
+                    break;
 
-            case "error" :
-                $this->postController->errorChapter();
-                break;
-
-            default :
-                $this->postController->lastChapter();
-                break;
+                default :
+                    $this->postController->lastChapter();
+                    break;
+            }
         }
     }
-
     public function routePost($page, $getId) {
 
         switch ($page) {
