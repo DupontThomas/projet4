@@ -3,9 +3,7 @@
 {% block title %} Interface d'administration {% endblock %}
 
         {% block contents %}
-
             <h2 class="space">Ajouter un nouveau chapitre :</h2>
-
             <div class="modify">
                 <form method="post" action="{{ url.URL }}public/?page=addPost">
                     <div class="form-group">
@@ -24,7 +22,6 @@
             <h2 class="text-center">Commentaires signalés :</h2>
 
             {% for comment in comments %}
-
                 <div class="card space text-center">
                     <h5 class="card-header"><span class="card-title">Posté par : {{ comment.author }} le {{ comment.date_publication_fr }} </span><a href="{{ url.URL }}public/?page=chapter&id={{ comment.id_post}}"> Lien vers le chapitre</a> </h5>
                     <div>
@@ -33,14 +30,11 @@
                         <a  class="btn btn-primary space redBtn btnAdmin" href="{{ url.URL }}public/?page=delCom&id={{ comment.id }}">Supprimer</a>
                     </div>
                 </div>
-
             {% endfor %}
         {% endblock comments %}
 
         {% block users %}
-
             <h2 class="text-center">Liste des membres :</h2>
-
             <table class="table table-hover table-bordered text-center ">
                 <thead class=" ">
                 <tr>
@@ -51,6 +45,7 @@
                 </tr>
                 </thead>
                 <tbody class="userList">
+
                 {% for user in users %}
                     <tr>
                         <th scope="row">{{ user.pseudo }}</th>
@@ -62,14 +57,12 @@
                             {% endif %}
                         </td>
                     </tr>
-
                 {% endfor %}
                 </tbody>
             </table>
         {% endblock users %}
 
 {% block script %}
-
         <script src="https://cdn.tiny.cloud/1/86dwj93jeidl87z3q3afvplo43p9md7qlo4xpeq0hkuqinwu/tinymce/5/tinymce.min.js"></script>
         <script>tinymce.init({
                 selector: "textarea",
@@ -89,8 +82,6 @@
                     'searchreplace visualblocks code fullscreen',
                     'insertdatetime media table paste code help wordcount'
                 ],
-                toolbar: 'undo redo | formatselect | bold underline italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-
+                toolbar: 'undo redo | formatselect | bold underline italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
         })</script>
-
 {% endblock %}

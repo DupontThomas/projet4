@@ -3,17 +3,14 @@
     {% block title %}Inscrivez-vous !{% endblock %}
 
     {% block contents %}
-
         <h2 class="space">Vous êtes déjà inscrit ? Connectez-vous :</h2>
-
         <div class="form-group">
             <form class="space" method="post" action="{{ url.URL }}public/?page=sendConnection">
+                <label for="pseudo">Votre pseudo :</label>
+                <input type="text" class="form-control w-50 p-3 margin-auto" name="pseudoConnection" id="pseudoConnection">
 
-                    <label for="pseudo">Votre pseudo :</label>
-                    <input type="text" class="form-control w-50 p-3 margin-auto" name="pseudoConnection" id="pseudoConnection">
-
-                    <label for="password">Votre mot de passe :</label>
-                    <input type="password" class="form-control w-50 p-3 margin-auto" name="passwordConnection" id="passwordConnection" />
+                <label for="password">Votre mot de passe :</label>
+                <input type="password" class="form-control w-50 p-3 margin-auto" name="passwordConnection" id="passwordConnection" />
 
                 <input class="btn btn-primary" type="submit" value="Envoyer">
             </form>
@@ -35,11 +32,8 @@
             <input type="email" class="form-control w-50 p-3 margin-auto " name="email" id="email"/>
 
             <input class="btn btn-primary" type="submit" class="btn btn-primary space" value="Envoyer">
-
         </form>
-
         <p class="h5">Devenir membre vous permettra de publier des commentaires sur mon site !</p>
-
     {% endblock contents %}
 
     {% block script %}
