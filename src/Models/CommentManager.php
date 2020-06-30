@@ -1,8 +1,16 @@
 <?php
 namespace App\Models;
 
+/**
+ * Class CommentManager
+ * @package App\Models
+ */
 class CommentManager extends Manager
 {
+    /**
+     * @param $id_post
+     * @return array
+     */
     public function getComment($id_post)
     {
         $req = $this->dbConnect()->prepare("SELECT id, author, comment, report, DATE_FORMAT(date_publication, '%d/%m/%Y à %Hh%imin%ss') AS date_publication_fr FROM comments WHERE id_post=? ORDER BY id");
@@ -12,6 +20,11 @@ class CommentManager extends Manager
         return $listComments;
     }
 
+    /**
+     * @param $id_post
+     * @param $author
+     * @param $comment
+     */
     public function addComment($id_post, $author, $comment)
     {
         $req = $this->dbConnect()->prepare("INSERT INTO comments (id, id_post, author, comment, report, date_publication) VALUES (NULL, ?, ?, ?, 0, CURRENT_TIME())");
@@ -20,6 +33,9 @@ class CommentManager extends Manager
         return;
     }
 
+    /**
+     * @param $id_post
+     */
     public function deleteCommentList($id_post)
     {
         $req = $this->dbConnect()->prepare(" DELETE FROM comments WHERE id_post=?");
@@ -28,6 +44,9 @@ class CommentManager extends Manager
         return;
     }
 
+    /**
+     * @param $idComment
+     */
     public function reportComment($idComment)
     {
         $req = $this->dbConnect()->prepare(" UPDATE comments SET report = '1' WHERE id=?");
@@ -36,6 +55,9 @@ class CommentManager extends Manager
         return;
     }
 
+    /**
+     * @return array
+     */
     public function reportedComment()
     {
         $req = $this->dbConnect()->prepare("SELECT id, id_post, author, comment, report, DATE_FORMAT(date_publication, '%d/%m/%Y à %Hh%imin%ss') AS date_publication_fr FROM comments WHERE report=1 ORDER BY id");
@@ -45,6 +67,9 @@ class CommentManager extends Manager
         return $listReportedComment;
     }
 
+    /**
+     * @param $idComment
+     */
     public function validateComment($idComment)
     {
         $req = $this->dbConnect()->prepare(" UPDATE comments SET report = '0' WHERE id=?");
@@ -53,6 +78,9 @@ class CommentManager extends Manager
         return;
     }
 
+    /**
+     * @param $idComment
+     */
     public function deleteComment($idComment)
     {
         $req = $this->dbConnect()->prepare(" DELETE FROM comments WHERE id=?");

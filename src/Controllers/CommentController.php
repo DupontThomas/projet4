@@ -3,8 +3,15 @@ namespace App\Controllers;
 
 use App\Models\CommentManager;
 
+/**
+ * Class CommentController
+ * @package App\Controllers
+ */
 class CommentController extends Controller
 {
+    /**
+     * @param $id_post
+     */
     public function addComment($id_post)
     {
         $author = $_SESSION['pseudo'];
@@ -18,6 +25,9 @@ class CommentController extends Controller
         return;
     }
 
+    /**
+     * @param $id_post
+     */
     public function reportComment($id_post)
     {
         $idComment = filter_input(INPUT_POST, 'idComment');
@@ -30,6 +40,9 @@ class CommentController extends Controller
         return;
     }
 
+    /**
+     * @param $id_post
+     */
     public function validateComment($id_post)
     {
         $commentManager = new CommentManager();
@@ -38,6 +51,9 @@ class CommentController extends Controller
         $this->refresh("?page=admin");
     }
 
+    /**
+     * @param $id_post
+     */
     public function deleteComment($id_post)
     {
         $commentManager = new CommentManager();

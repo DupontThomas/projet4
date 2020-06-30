@@ -1,17 +1,22 @@
 <?php
 namespace App\Controllers;
 
-use App\Configuration;
 use App\Models\CommentManager;
 use App\Models\UserManager;
-use Twig\Environment;
 
 class UserController extends Controller
 {
 
+    /**
+     * @var \App\Models\UserManager
+     * @var \App\Models\CommentManager
+     */
     private $userManager;
     private $commentManager;
 
+    /**
+     * UserController constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -68,7 +73,7 @@ class UserController extends Controller
             }
         } else {
             $this->alert("Identifiant ou mot de passe incorrect !");
-           $this->display('inscription.twig');
+            $this->display('inscription.twig');
         }
     }
 
@@ -86,6 +91,9 @@ class UserController extends Controller
         $this->display('administration.twig', ['comments' => $listReportedComment, 'users' => $listUser]);
     }
 
+    /**
+     * @param $id_user
+     */
     public function delUser($id_user)
     {
         $this->userManager->delUser($id_user);
