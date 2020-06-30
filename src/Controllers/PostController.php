@@ -1,15 +1,25 @@
 <?php
 namespace App\Controllers;
 
-use App\Configuration;
 use App\Models\CommentManager;
 use App\Models\PostManager;
 
+/**
+ * Class PostController
+ * @package App\Controllers
+ */
 class PostController extends Controller
 {
+    /**
+     * @var \App\Models\PostManager
+     * @var \App\Models\CommentManager
+     */
     private $postManager;
     private $commentManager;
 
+    /**
+     * PostController constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -18,6 +28,9 @@ class PostController extends Controller
         $this->commentManager = new CommentManager();
     }
 
+    /**
+     * @param $id_post
+     */
     public function displayPost($id_post)
     {
         $checkPost = $this->postManager->checkPost($id_post);
@@ -51,6 +64,10 @@ class PostController extends Controller
 
         $this->refresh("index.php");
     }
+
+    /**
+     * @param $id_post
+     */
     public function deletePost($id_post)
     {
         $this->commentManager->deleteCommentList($id_post);
@@ -59,12 +76,18 @@ class PostController extends Controller
         $this->refresh("index.php");
     }
 
+    /**
+     * @param $id_post
+     */
     public function getModifPage($id_post)
     {
         $getPost = $this->postManager->getReadPost($id_post);
         $this->display('modify.twig', ['contents' => $getPost]);
     }
 
+    /**
+     * @param $id_post
+     */
     public function updatePost($id_post)
     {
         $title = filter_input(INPUT_POST, 'titleUpdatePost');

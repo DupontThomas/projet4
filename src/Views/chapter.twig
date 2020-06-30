@@ -14,11 +14,9 @@
                 <a class="btn btn-primary space redBtn btnAdmin" href="{{ url.URL }}public/?page=deletePost&id={{ contents.id }}">Supprimer</a>
             </div>
         {% endif %}
-
     </section>
 
 {% endblock contents %}
-
 
 {% block comments %}
 
@@ -27,7 +25,6 @@
     {% for comment in comments %}
 
         <section class="card">
-
             <h5 class="card-header comment-title h6">Posté par : <strong class="card-title">{{ comment.author }}</strong><span class="text-muted"> le {{ comment.date_publication_fr }}</span></h5>
             <div>
                 <p class="card-text text-left">{{ comment.comment | nl2br }}</p>

@@ -1,17 +1,24 @@
 <?php
 namespace App\Controllers;
 
-use http\Env\Request;
-
+/**
+ * Class Router
+ * @package App\Controllers
+ */
 class Router
 {
     /**
      * @var PostController
+     * @var \App\Controllers\CommentController
+     * @var \App\Controllers\UserController
      */
     private $postController;
     private $commentController;
     private $userController;
 
+    /**
+     * Router constructor.
+     */
     public function __construct()
     {
         $this->postController = new PostController();
@@ -68,6 +75,11 @@ class Router
             }
         }
     }
+
+    /**
+     * @param $page
+     * @param $getId
+     */
     public function routePost($page, $getId) {
 
         switch ($page) {
@@ -98,6 +110,10 @@ class Router
         }
     }
 
+    /**
+     * @param $page
+     * @param $getId
+     */
     public function routeCom($page, $getId) {
 
         switch ($page) {
@@ -120,6 +136,9 @@ class Router
         }
     }
 
+    /**
+     * @param $page
+     */
     public function routeLog($page) {
 
         switch ($page) {
