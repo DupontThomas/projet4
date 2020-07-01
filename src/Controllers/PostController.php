@@ -11,8 +11,8 @@ use App\Models\PostManager;
 class PostController extends Controller
 {
     /**
-     * @var \App\Models\PostManager
-     * @var \App\Models\CommentManager
+     * @var PostManager
+     * @var CommentManager
      */
     private $postManager;
     private $commentManager;
