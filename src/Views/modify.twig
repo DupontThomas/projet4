@@ -3,7 +3,6 @@
 {% block title %}Modifier un chapitre {% endblock title%}
 
 {% block contents %}
-
     <div class="modify">
         <form method="post" action="{{ url.URL }}public/?page=updatePost&id={{ contents.id }}">
             <label for="title">Titre</label>
@@ -14,12 +13,9 @@
             <button class="button modifyPost" type="submit">Mettre à jour</button>
         </form>
     </div>
-
 {% endblock contents %}
 
-
 {% block script %}
-
     <script src="https://cdn.tiny.cloud/1/86dwj93jeidl87z3q3afvplo43p9md7qlo4xpeq0hkuqinwu/tinymce/5/tinymce.min.js"></script>
     <script>tinymce.init({
             selector: "textarea",
@@ -38,8 +34,6 @@
                 'searchreplace visualblocks code fullscreen',
                 'insertdatetime media table paste code help wordcount'
             ],
-            toolbar: 'undo redo | formatselect | bold underline italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-
-        })</script>
-
+            toolbar: 'undo redo | formatselect | bold underline italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
+    })</script>
 {% endblock %}

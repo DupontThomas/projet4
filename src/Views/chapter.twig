@@ -3,7 +3,6 @@
 {% block title %} {{ contents.title }} {% endblock %}
 
 {% block contents %}
-
     <section class="card">
         <h3 class="card-header"> Publié le {{ contents.postDate }}</h3>
         <div class="card-text text-left">{{ contents.content | raw }}</div>
@@ -15,15 +14,12 @@
             </div>
         {% endif %}
     </section>
-
 {% endblock contents %}
 
 {% block comments %}
-
     <h3 class="space text-center h5">Commentaires : </h3>
 
     {% for comment in comments %}
-
         <section class="card">
             <h5 class="card-header comment-title h6">Posté par : <strong class="card-title">{{ comment.author }}</strong><span class="text-muted"> le {{ comment.date_publication_fr }}</span></h5>
             <div>
@@ -35,20 +31,15 @@
                         <button class="reportComment space alertBtn" type="submit" value="Signaler">Signaler</button>
                     </form>
                 {% endif %}
-
             </div>
         </section>
-
     {% endfor %}
 
     {% if session.pseudo is defined %}
     <h3 class="space text-center h5">Ajouter un commentaire : </h3>
-
     <form class="d-flex justify-content-center" method="post" action="{{ url.URL }}public/?page=sendCom&id={{ contents.id }}">
-
         <label for="presentation"></label>
         <textarea required name="comment" id="comment"></textarea><br><br>
-
         <input class="btn btn-primary" type="submit" value="Envoyer">
     </form>
     {% endif %}
@@ -56,6 +47,5 @@
     {% if session.pseudo is not defined %}
     <h4 class="h5">Inscrivez-vous pour laisser un commentaire !</h4>
     {% endif %}
-
 {% endblock comments %}
 

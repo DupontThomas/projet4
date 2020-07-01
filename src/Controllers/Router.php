@@ -9,8 +9,8 @@ class Router
 {
     /**
      * @var PostController
-     * @var \App\Controllers\CommentController
-     * @var \App\Controllers\UserController
+     * @var CommentController
+     * @var UserController
      */
     private $postController;
     private $commentController;

@@ -8,8 +8,8 @@ class UserController extends Controller
 {
 
     /**
-     * @var \App\Models\UserManager
-     * @var \App\Models\CommentManager
+     * @var UserManager
+     * @var CommentManager
      */
     private $userManager;
     private $commentManager;
